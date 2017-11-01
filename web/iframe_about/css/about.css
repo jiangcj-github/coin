@@ -1,0 +1,20 @@
+/**/
+body{font-size:14px;font-family: "Microsoft YaHei", 微软雅黑, arial, Tahoma, SimSun, sans-serif;}
+.main .h1{margin:20px 0 10px 0;font-size:20px;line-height:46px;font-weight:normal;color:#222;}
+
+.main .left{width:200px;float:left;}
+.left .ul{border-radius:3px;border:1px solid #e4e4e4;}
+.left .ul a:first-child{border-radius:3px 3px 0 0;}
+.left .ul a:last-child{border-radius:0 0 3px 3px;}
+.left .ul a{display:block;line-height:40px;padding-left:20px;}
+.left .ul a.active{background:#3385ff !important;color:#fff !important;}
+.left .ul a:hover{background:#fbfbfb;transition:background 0.5s;}
+
+.main .right{margin-left:220px;padding:0 20px;}
+.right .h3{font-size:18px;font-weight:normal;line-height:30px;margin:0;}
+.right .pg-info{font-size:12px;border-bottom:1px solid #f4f4f4;padding:10px 0 20px 0;color:#666;}
+.right .pg-info span{margin-right:20px;}
+.right .para{margin:16px 0;line-height:24px;word-wrap:break-word;font-weight:200;}
+
+
+
