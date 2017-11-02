@@ -18,7 +18,7 @@ $mysql=array(
     "host"=>"localhost",
     "user"=>"root",
     "password"=>"root",
-    "database"=>"manhua"
+    "database"=>"coin"
 );
 
 /**

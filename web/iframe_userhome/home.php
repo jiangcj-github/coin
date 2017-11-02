@@ -12,7 +12,7 @@
         <p class="h1">消息中心</p>
         <?php include("left.php") ?>
         <div class="right">
-            <img src="/web/img/no-record.png">
+            <img src="/web/common/img/no-record.png">
             <table>
                 <tr> <td>ID：</td>   <td>1011232</td>    <td>好评：</td>    <td>1011232</td>    </tr>
                 <tr> <td>昵称：</td>   <td>林打开</td>    <td>举报：</td>    <td>1011232</td>    </tr>

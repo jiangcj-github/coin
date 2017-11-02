@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/notice.css">
 </head>
 <body>
-<?php include("../top.php") ?>
+<?php include("../layout/top.php") ?>
 <div class="layout">
     <div class="main">
         <p class="h1">消息中心</p>
@@ -16,7 +16,7 @@
 
         </div>
     </div>
-    <?php include("../footer.php") ?>
+    <?php include("../layout/footer.php") ?>
 </div>
 </body>
 </html>
