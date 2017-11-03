@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>coin</title>
-    <link rel="stylesheet" type="text/css" href="css/notice.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/userhome/notice.css">
 </head>
 <body>
 <?php include("../layout/top.php") ?>
@@ -22,7 +22,7 @@
 
         </div>
     </div>
-    <?php include("../footer.php") ?>
+    <?php include("../layout/footer.php") ?>
 </div>
 </body>
 </html>

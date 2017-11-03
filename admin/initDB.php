@@ -15,6 +15,7 @@ $result=$conn->query("
         nick VARCHAR (255) NOT NULL,
         coin int(32) NOT NULL,
         price double NOT NULL,
+        pay_method VARCHAR (255) NOT NULL,
         maxNum double NOT NULL DEFAULT 100,
         minNum double NOT NULL DEFAULT 0,
         time VARCHAR (255) NOT NULL,
@@ -49,6 +50,7 @@ $result=$conn->query("
         nick VARCHAR (255) NOT NULL,
         coin int(32) NOT NULL,
         price double NOT NULL,
+        pay_method VARCHAR (255) NOT NULL,
         maxNum double NOT NULL DEFAULT 100,
         minNum double NOT NULL DEFAULT 0,
         time VARCHAR (255) NOT NULL,
@@ -83,11 +85,12 @@ if ($result){
 
 //msgs
 /**
- * state取值0[未读],1[已读],2[正在阅读]
+ * state取值0[未读],1[已读],2[预览]
  */
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS msgs(
         id int(32) UNIQUE NOT NULL,
+        vid int(32) NOT NULL,
         title VARCHAR (255) NOT NULL,
         countent double NOT NULL,
         time VARCHAR (255) NOT NULL,
@@ -102,15 +105,10 @@ if ($result){
 }
 
 //notices
-/**
- * state取值0[未读],1[已读],2[正在阅读]
- * page命名规则:[年月日_时].html
- */
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS  notices(
         id int(32) UNIQUE NOT NULL,
         page VARCHAR (255) UNIQUE NOT NULL,
-        state int(32) NOT NULL DEFAULT 0,
         PRIMARY KEY(id)
     )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ");

@@ -1,5 +1,5 @@
 <?php
-require_once("../../../global/global.php");
+require_once("../../global/global.php");
 
 /**
  *  成功返回:{ok:"ok",data:data}
@@ -16,6 +16,12 @@ $vid=$_REQUEST["vid"];
 $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
 $conn->set_charset("utf8");
 //查询
-die_json(["ok"=>"ok","data"=>["msgNum"=>2,"noticeNum"=>4]]);
+$stmt=$conn->prepare("select count(*) as count from msgs where vid=? and state=0");
+$stmt->bind_param("i",$vid);
+$stmt->execute();
+$result=$stmt->get_result();
+$data=$result->fetch_all(MYSQLI_ASSOC);
+$stmt->close();
+die_json(["ok"=>"ok","data"=>["msgNum"=>$data[0]->count]]);
 
 

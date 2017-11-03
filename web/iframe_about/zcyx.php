@@ -12,7 +12,7 @@
     </style>
 </head>
 <body>
-<?php include("../top.php") ?>
+<?php include("../layout/top.php") ?>
 <div class="layout">
     <div class="main">
         <p class="h1">关于</p>
