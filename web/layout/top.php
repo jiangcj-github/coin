@@ -11,9 +11,9 @@
         </div>
         <div class="pinfo">
             <?php if(!$isLogin){ ?>
-                <a href="#">登录</a>
+                <a href="/web/login/signin.php">登录</a>
                 <a class="seq"></a>
-                <a href="#">注册</a>
+                <a href="/web/login/signup.php">注册</a>
             <?php }else{ ?>
                 <div class="pi-item drop">
                     <a href="/web/iframe_userhome/msg.php"><i class="icon notice"></i><span class="badge">2</span></a>

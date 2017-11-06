@@ -1,5 +1,5 @@
 <?php
-    include("../action/loginCheck.php");
+    include("../../action/loginCheck.php");
 
 
 ?>

@@ -16,7 +16,7 @@ $vid=$_REQUEST["vid"];
 $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
 $conn->set_charset("utf8");
 //查询
-$stmt=$conn->prepare("select * from msgs where vid=? and state=0");
+$stmt=$conn->prepare("select * from msgs where vid=?");
 $stmt->bind_param("i",$vid);
 $stmt->execute();
 $result=$stmt->get_result();
