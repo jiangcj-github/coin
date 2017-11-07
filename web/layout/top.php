@@ -4,7 +4,7 @@
 ?>
 <div class="header-wrap">
     <div class="header">
-        <a href="/web/index.php" class="brand">coinbee</a>
+        <a href="/web/index.php" class="brand">淘币客<small>.site</small></a>
         <div class="menu">
             <a href="#">买入</a>
             <a href="#">卖出</a>

@@ -10,8 +10,9 @@ a{text-decoration:none;color:#444;}
 .header-wrap{height:50px;background:#3c404d;}
 .header{height:100%;width:1080px;margin:0 auto;display:flex;align-items:center;font-size:16px;}
 .header a{color:#ddd;}
-.header  .brand{font-size:20px;display:inline-table;line-height:50px;padding:0 20px;margin-right:20px;}
-
+.header .brand{font-size:28px;display:inline-table;line-height:50px;padding:0 10px 0 32px;margin-right:20px;color:#990000;font-weight:bold;
+    background-image:url(/web/common/img/logo.png);background-color:#fff;background-repeat:no-repeat;background-position:0 center;background-size:32px 50px;}
+.header .brand>small{font-size:18px;font-family: "Adobe Arabic";}
 .header .menu{flex-grow:1;}
 .header .menu>a{display:inline-table;line-height:50px;padding:0 10px;}
 .header .menu>a:hover{color:#fff;}
@@ -55,7 +56,8 @@ a{text-decoration:none;color:#444;}
 /*footer.php*/
  .footer-wrap{background:#f4f4f4;margin-top:50px;}
 .footer-wrap .footer{width:1080px;margin:0 auto;padding:30px 0;display:flex;color:#666;}
-.footer .fl{width:200px;background:red;}
+.footer .fl{width:240px;height:90px;padding-top:54px;line-height:30px;font-size: 16px;text-indent: 20px;
+    background-image:url(/web/common/img/logoko.png);background-size:240px 95px;background-repeat:no-repeat;background-position:center -20px;}
 .footer .ct{flex-grow:1;display:flex;justify-content:space-around;align-items:flex-start;padding-left:50px;font-size:12px;}
 .footer .ct ul{margin:0;padding:0;list-style:none;}
 .footer .ct ul li:first-child{font-weight:bold;margin-bottom:4px;color:#444;}

@@ -1,6 +1,6 @@
 <div class="footer-wrap">
     <div class="footer">
-        <div class="fl"></div>
+        <div class="fl">自由方便的线下交易市场</div>
         <div class="ct">
             <ul>
                 <li>关于</li>
