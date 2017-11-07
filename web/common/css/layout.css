@@ -12,7 +12,7 @@ a{text-decoration:none;color:#444;}
 .header a{color:#ddd;}
 .header .brand{font-size:28px;display:inline-table;line-height:50px;padding:0 10px 0 32px;margin-right:20px;color:#990000;font-weight:bold;
     background-image:url(/web/common/img/logo.png);background-color:#fff;background-repeat:no-repeat;background-position:0 center;background-size:32px 50px;}
-.header .brand>small{font-size:18px;font-family: "Adobe Arabic";}
+.header .brand>small{font-size:18px;}
 .header .menu{flex-grow:1;}
 .header .menu>a{display:inline-table;line-height:50px;padding:0 10px;}
 .header .menu>a:hover{color:#fff;}
