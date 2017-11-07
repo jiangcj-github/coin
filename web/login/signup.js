@@ -49,10 +49,18 @@ signup.init=function(){
             _this.inputs.pass1_err.text(null);
         }
     });
+    _this.inputs.check_send.click(function(){
+        _this.sendCheckCode();
+    });
 
 };
 signup.log=function(msg){
     alert(msg);
+};
+signup.sendCheckCode=function(){
+    ajaxForm.action(null,{
+        
+    });
 };
 
 signup.init();

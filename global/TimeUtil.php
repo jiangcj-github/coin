@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mathew
- * Date: 2017/7/24
- * Time: 15:45
- */
+
 function time_tran($the_time){
     $now_time = date("Y-m-d H:i:s",time());
     $now_time = strtotime($now_time);
@@ -31,4 +26,12 @@ function time_tran($the_time){
     else {
         return floor($dur / 31104000) . '年前';
     }
+}
+
+function generate_checkcode(){
+    $code="";
+    for ($i=0;$i<6;$i++ ){
+        $code.=mt_rand(0,9);
+    }
+    return $code;
 }

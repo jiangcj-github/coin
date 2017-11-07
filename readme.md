@@ -1,0 +1,1 @@
+php需开启php_openssl.dll和php_sockets.dll扩展
