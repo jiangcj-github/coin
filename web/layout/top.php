@@ -30,7 +30,7 @@
                     <i class="icon user"></i>lindakai<span class="icon-down"></span>
                     <div class="panel c2">
                         <a href="/web/iframe_userhome/home.php" class="c2-li"><i class="icon userhome"></i>用户中心</a>
-                        <a href="#" class="c2-li"><i class="icon logout"></i>注销</a>
+                        <a href="/web/login/signout.php" class="c2-li"><i class="icon logout"></i>注销</a>
                     </div>
                 </div>
             <?php } ?>
