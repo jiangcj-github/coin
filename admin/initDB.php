@@ -67,8 +67,8 @@ if ($result){
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS  users(
         id int(32) UNIQUE NOT NULL,
-        nick VARCHAR (255) NOT NULL,
-        email VARCHAR (255),
+        nick VARCHAR (255) UNIQUE NOT NULL,
+        email VARCHAR (255) UNIQUE NOT NULL,
         phone VARCHAR (255),
         password VARCHAR (255) NOT NULL,
         vip int(32) NOT NULL DEFAULT 0,
@@ -116,4 +116,18 @@ if ($result){
     echo "notices created"."<br>";
 }else{
     echo "notices created failed"."<br>";
+}
+
+//checkCode_strict
+$result=$conn->query("
+    CREATE TABLE IF NOT EXISTS checkCode_strict(
+        email VARCHAR(255) NOT NULL,
+        sendCode VARCHAR(255),
+        PRIMARY KEY(email)
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+");
+if ($result){
+    echo "checkCode_strict created"."<br>";
+}else{
+    echo "checkCode_strict created failed"."<br>";
 }

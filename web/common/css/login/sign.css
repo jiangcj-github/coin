@@ -1,14 +1,14 @@
 .main{display:flex;align-items:center;padding:20px 0;}
 .loginBox{width:400px;margin:20px auto;padding:30px 40px;border:1px solid #e3e3e3;border-radius:5px;}
 .loginBox .h3{font-size:24px;line-height:30px;}
-.loginBox .input{display: block;outline: none;padding: 8px 10px;line-height: 20px;font-size: 14px;margin: 20px 0;width:100%;}
+.loginBox .input{display: block;outline: none;padding: 8px 10px;line-height: 20px;font-size: 14px;margin-top:20px;width:100%;}
 .loginBox .text{border: 1px solid #ccc;}
-.loginBox .btn{background:#cc9900;border:none;color:#fff;cursor:pointer;}
+.loginBox .btn{background:#cc9900;border:none;color:#fff;cursor:pointer;margin-top:0;}
 .loginBox .btn:hover{background:#669900;}
-.loginBox .link{display:flex;justify-content:space-between;}
+.loginBox .link{display:flex;justify-content:space-between;margin-top:20px;}
 .loginBox .link a{color:#ff3300;}
 .loginBox .link a:hover{color:#663300;}
-.loginBox .err{color:#ff0000;margin:-10px 0;line-height:20px;height:20px;}
+.loginBox .err{color:#ff0000;line-height:20px;min-height:1px;margin:10px 0;}
 
 input[type=checkbox]{vertical-align:-2px;}
 .loginBox2{width:500px;margin:20px auto;padding:30px 40px;border:1px solid #e3e3e3;border-radius:5px;}
@@ -24,4 +24,3 @@ input[type=checkbox]{vertical-align:-2px;}
 .loginBox2 .checkcode input{flex-shrink:1;border-right:none;margin:0;}
 .loginBox2 .checkcode button{margin:0;padding:8px 0;width:100px;flex-shrink:0;cursor:pointer;background:#ff8844;}
 .loginBox2 .checkcode button[disabled]{cursor:default;background:#ff8844 !important;}
-.loginBox2 .err{color:#ff0000;line-height:22px;}
