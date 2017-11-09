@@ -29,7 +29,7 @@
                 <div class="pi-item drop">
                     <i class="icon user"></i>lindakai<span class="icon-down"></span>
                     <div class="panel c2">
-                        <a href="/web/iframe_userhome/home.php" class="c2-li"><i class="icon userhome"></i>用户中心</a>
+                        <a href="/web/iframe_userhome/usered.php" class="c2-li"><i class="icon userhome"></i>用户中心</a>
                         <a href="/web/login/signout.php" class="c2-li"><i class="icon logout"></i>注销</a>
                     </div>
                 </div>
@@ -37,6 +37,7 @@
         </div>
     </div>
 </div>
+<script>var isLogin=<?php echo $isLogin?1:0 ?>;</script>
 <script src="/web/common/jquery-3.2.1.js"></script>
 <script src="/web/common/common.js"></script>
 

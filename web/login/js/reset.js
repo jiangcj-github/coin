@@ -33,6 +33,8 @@ reset.sendCheckCode=function(){
         success:function(data){
             if(data.ok){
                 setTimeout(scTimeout,0,60);
+            }else if(data.msg){
+                _this.log(data.msg);
             }else{
                 _this.log("发送失败");
             }
@@ -46,7 +48,7 @@ var scTimeout=function(sec){
     if(sec==0){
         $(reset.inputs.checkBtn).attr("disabled",false).text("获取验证码");
     }else{
-        $(reset.inputs.checkBtn).attr("disabled",true).text(sec);
+        $(reset.inputs.checkBtn).attr("disabled",true).text("发送成功("+sec+")");
         setTimeout(scTimeout,1000,sec-1);
     }
 };
@@ -83,3 +85,5 @@ reset.send=function(){
         }
     })
 };
+
+reset.init();

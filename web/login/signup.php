@@ -9,7 +9,8 @@ $conn->set_charset("utf8");
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>coin</title>
+    <title>注册-淘币客</title>
+    <link href="/web/common/img/logo.png" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="/web/common/css/layout.css" />
     <link rel="stylesheet" type="text/css" href="/web/common/css/index.css" />
     <link rel="stylesheet" type="text/css" href="/web/common/css/login/sign.css" />

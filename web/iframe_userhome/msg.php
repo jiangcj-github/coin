@@ -1,8 +1,3 @@
-<?php
-    include("../../action/loginCheck.php");
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

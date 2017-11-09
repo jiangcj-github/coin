@@ -35,6 +35,8 @@ signup.sendCheckCode=function(){
         success:function(data){
             if(data.ok){
                 setTimeout(scTimeout,0,60);
+            }else if(data.msg){
+                _this.log(data.msg);
             }else{
                 _this.log("发送失败");
             }
@@ -48,7 +50,7 @@ var scTimeout=function(sec){
     if(sec==0){
         $(signup.inputs.checkBtn).attr("disabled",false).text("获取验证码");
     }else{
-        $(signup.inputs.checkBtn).attr("disabled",true).text(sec);
+        $(signup.inputs.checkBtn).attr("disabled",true).text("发送成功("+sec+")");
         setTimeout(scTimeout,1000,sec-1);
     }
 };

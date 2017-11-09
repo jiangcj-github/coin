@@ -48,15 +48,14 @@ $mail->addAddress($addr);
 $mail->Subject = "邮箱验证";
 $mail->Body = "<p>本次登录的验证码是:&nbsp;".$code."</p><p>为了确保您的帐号安全，该验证码仅1小时内使用有效，请勿直接回复该邮件。</p>";
 $status = $mail->send();
-if(!$status){
-    //記錄操作時間
-    $stmt=$conn->prepare("insert into checkCode_strict(email,sendCode) values(?,?) ON DUPLICATE KEY update sendCode=?");
-    $stri_time=(new DateTime())->format("Y-m-d H:i:s");
-    $stmt->bind_param("ss",$addr,$stri_time,$stri_time);
-    $stmt->execute();
-    $stmt->close();
-    //
-    $_SESSION["checkCode"]=$addr.$code;
-    die_json(["ok"=>"ok"]);
-}
+//記錄操作時間
+$stmt=$conn->prepare("insert into checkCode_strict(email,sendCode) values(?,?) ON DUPLICATE KEY update sendCode=?");
+$stri_time=(new DateTime())->format("Y-m-d H:i:s");
+$stmt->bind_param("sss",$addr,$stri_time,$stri_time);
+$stmt->execute();
+$stmt->close();
+//
+$_SESSION["checkCode"]=$addr.$code;
+die_json(["ok"=>"ok"]);
+
 
