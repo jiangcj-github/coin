@@ -11,7 +11,7 @@ $conn->set_charset("utf8");
 //sells
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS  sells(
-        id int(32) UNIQUE NOT NULL,
+        id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
         nick VARCHAR (255) NOT NULL,
         coin int(32) NOT NULL,
         price double NOT NULL,
@@ -20,7 +20,7 @@ $result=$conn->query("
         minNum double NOT NULL DEFAULT 0,
         time VARCHAR (255) NOT NULL,
         PRIMARY KEY(id)
-    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;                                                                                                                                         
 ");
 if ($result){
     echo "sells created"."<br>";
@@ -31,11 +31,11 @@ if ($result){
 //coins
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS  coins(
-        id int(32) UNIQUE NOT NULL,
+        id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
         name VARCHAR (255) NOT NULL,
         abbr VARCHAR (255) NOT NULL,
         PRIMARY KEY(id)
-    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
 ");
 if ($result){
     echo "coins created"."<br>";
@@ -46,7 +46,7 @@ if ($result){
 //buys
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS  buys(
-        id int(32) UNIQUE NOT NULL,
+        id int(32) UNIQUE NOT NULL AUTO_INCREMENT ,
         nick VARCHAR (255) NOT NULL,
         coin int(32) NOT NULL,
         price double NOT NULL,
@@ -55,7 +55,7 @@ $result=$conn->query("
         minNum double NOT NULL DEFAULT 0,
         time VARCHAR (255) NOT NULL,
         PRIMARY KEY(id)
-    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
 ");
 if ($result){
     echo "buys created"."<br>";
@@ -66,21 +66,36 @@ if ($result){
 //users
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS  users(
-        id int(32) UNIQUE NOT NULL,
+        id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
         nick VARCHAR (255) UNIQUE NOT NULL,
         email VARCHAR (255) UNIQUE NOT NULL,
-        phone VARCHAR (255),
         password VARCHAR (255) NOT NULL,
-        vip int(32) NOT NULL DEFAULT 0,
-        viptime VARCHAR (255),
         time VARCHAR (255) NOT NULL,
         PRIMARY KEY(id)
-    )ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8;
+    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
 ");
 if ($result){
     echo "users created"."<br>";
 }else{
     echo "users created failed"."<br>";
+}
+
+//user_infos
+$result=$conn->query("
+    CREATE TABLE IF NOT EXISTS user_infos(
+        vid int(32) UNIQUE NOT NULL,
+        phone VARCHAR (255),
+        vip int(32) NOT NULL DEFAULT 0,
+        viptime VARCHAR (255),
+        idcard VARCHAR (255),
+        fullname VARCHAR (255),
+        PRIMARY KEY(vid)
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+");
+if ($result){
+    echo "user_infos created"."<br>";
+}else{
+    echo "user_infos created failed"."<br>";
 }
 
 //msgs
@@ -89,14 +104,14 @@ if ($result){
  */
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS msgs(
-        id int(32) UNIQUE NOT NULL,
+        id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
         vid int(32) NOT NULL,
         title VARCHAR (255) NOT NULL,
         countent double NOT NULL,
         time VARCHAR (255) NOT NULL,
         state int(32) NOT NULL DEFAULT 0,
         PRIMARY KEY(id)
-    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
 ");
 if ($result){
     echo "msgs created"."<br>";
@@ -107,10 +122,10 @@ if ($result){
 //notices
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS  notices(
-        id int(32) UNIQUE NOT NULL,
+        id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
         page VARCHAR (255) UNIQUE NOT NULL,
         PRIMARY KEY(id)
-    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
 ");
 if ($result){
     echo "notices created"."<br>";

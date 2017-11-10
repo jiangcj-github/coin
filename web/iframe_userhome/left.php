@@ -8,8 +8,8 @@
         <a href="javascript:void(0);" ><i class="icon buy"></i>我的买单</a>
         <a href="javascript:void(0);" ><i class="icon sell"></i>我的卖单</a>
         <a href="msg.php" ><i class="icon msg"></i>消息</a>
-        <a href="javascript:void(0);"><i class="icon notice"></i>公告<label>3</label></a>
+        <a href="javascript:void(0);"><i class="icon notice"></i>公告</a>
     </div>
 </div>
 <script> var login=<?php echo json_encode($_SESSION["login"]) ?>;</script>
-<script src="js/left.js"></script>
+<script src="/web/iframe_userhome/js/left.js"></script>

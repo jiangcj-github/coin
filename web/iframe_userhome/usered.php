@@ -22,14 +22,15 @@
                            <circle r="40" cx="45" cy="45" stroke-dasharray="<?php echo 314*(1-0.7) ?> 1000"></circle>
                         </svg>
                         <span class="f2">90%</span>
-                        <a class="f3" href="#">完善信息</a>
+                        <a class="f3" href="usered/u1.php">完善信息</a>
                     </div>
                     <table class="c2">
                         <tr>
                             <td>邮箱：398017990@qq.com</td>
                             <td style="margin-left:20px;">
-                                <span class="img-group x20" style="color:#ff9900"><img src="/web/common/img/userhome/usered/zan.png" title="好感">(3434)</span>
-                                <span class="img-group x20" style="margin-left:10px;color:#ff3300"><img src="/web/common/img/userhome/usered/jubao.png" title="举报">(53)</span>
+                                <span class="img-group x16" style="color:#ff9900"><img src="/web/common/img/userhome/usered/zan.png" title="好感">(3434)</span>
+                                <span class="img-group x16" style="margin-left:10px;color:#ff3300"><img src="/web/common/img/userhome/usered/jubao.png" title="举报">(53)</span>
+                                <span class="img-group x16" style="margin-left:10px;color:#ff3300"><img src="/web/common/img/userhome/usered/comment.png" title="评价"><a href="#">(34)</a></span>
                             </td>
                         </tr>
                         <tr>
@@ -37,7 +38,7 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                会员等级：0 (还有3天过期)
+                                会员等级：0 (剩余3天)
                                 <a href="#" style="margin-left:10px;color:red;" class="img-group x26">
                                     <img src="/web/common/img/userhome/usered/vip_gift.png" style="margin-right:-1px;">升级会员</a>
                             </td>
@@ -47,10 +48,26 @@
                 <div class="h3">快速通道</div>
                 <div class="s2">
                     <div class="ul">
-                        <div class="li">修改密码</div>
-                        <div class="li">绑定手机</div>
-                        <div class="li"></div>
-                        <div class="li"></div>
+                        <div class="li">
+                            修改密码
+                            <span class="f1">修改登录密码，能有效保护您的账户。</span>
+                            <a href="#">修改</a>
+                        </div>
+                        <div class="li">
+                            邮箱验证
+                            <span class="f1">验证您的邮箱，提高信息完善度。</span>
+                            <span class="f2">已验证</span>
+                        </div>
+                        <div class="li">
+                            手机验证
+                            <span class="f1">验证您的手机号码，提高信息完善度。</span>
+                            <a href="#">验证</a>
+                        </div>
+                        <div class="li">
+                            实名认证
+                            <span class="f1">验证您的身份信息，进行实名认证会提高您的信誉等级。</span>
+                            <a href="#">认证</a>
+                        </div>
                     </div>
                 </div>
 

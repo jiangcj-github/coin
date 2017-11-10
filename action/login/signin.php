@@ -15,7 +15,7 @@ $pass=$_REQUEST["pass"];
 $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
 $conn->set_charset("utf8");
 //登录确认
-$stmt=$conn->prepare("select id,nick,email,phone,vip,viptime,time from users where email=? and md5(password)=?");
+$stmt=$conn->prepare("select id,nick,email,time from users where email=? and md5(password)=?");
 $stmt->bind_param("ss",$email,$pass);
 $stmt->execute();
 $result=$stmt->get_result();
