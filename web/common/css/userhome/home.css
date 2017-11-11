@@ -29,6 +29,32 @@
 .nav>.f1{margin-bottom:-5px;}
 .nav>.f1>a{color:#428bca;}
 
+.right .s3{}
+.s3{margin-top:20px;}
+.s3>.input-group{display:flex;align-items:center;padding:8px 20px;}
+.s3>.input-group>label{line-height:26px;height:26px;width:70px;text-align:right;padding-right:10px;}
+.s3>.input-group>select{outline:none;padding:2px 5px;height:26px;font-size:12px;width:200px;border:1px solid #ccc;}
+.s3>.input-group>input{outline:none;padding:2px 5px;height:26px;font-size:12px;width:200px;border:1px solid #ccc;}
+.s3>.addr>select{margin-right:10px;}
+.s3>.f1{margin-top:20px;padding:15px 0 0 20px;border-top:1px solid #e4e4e4;}
+
+.right .s4{}
+.s4{margin-top:20px;}
+.s4>.input-group{display:flex;align-items:center;padding:8px 20px;}
+.s4>.input-group>label{line-height:26px;height:26px;width:100px;text-align:right;padding-right:10px;}
+.s4>.input-group>input{outline:none;padding:2px 5px;height:26px;font-size:12px;width:220px;border:1px solid #ccc;}
+.s4>.f1{margin-top:20px;padding:15px 0 0 20px;border-top:1px solid #e4e4e4;}
+
+.right .s5{}
+.s5{margin-top:20px;}
+.s5>.input-group{display:flex;align-items:center;padding:8px 20px;}
+.s5>.input-group>label{line-height:26px;height:26px;width:100px;text-align:right;padding-right:10px;}
+.s5>.input-group>input{outline:none;padding:2px 5px;height:26px;font-size:12px;width:220px;border:1px solid #ccc;}
+.s5>.check>input{width:100px;margin-right:10px;}
+.s5>.check>a{display:block;line-height:26px;height:26px;padding:0 15px;background:#ff9900;color:#fff;}
+.s5>.check>a:hover{text-decoration:none;background:#999900;}
+.s5>.f1{margin-top:20px;padding:15px 0 0 20px;border-top:1px solid #e4e4e4;}
+
 /**/
 .img-group{display:inline-flex;justify-content:center;align-items:center;}
 .img-group>img{margin-right:3px;}
@@ -36,5 +62,9 @@
 .img-group.x20>img{width:20px;height:20px;}
 .img-group.x24>img{width:24px;height:24px;}
 .img-group.x26>img{width:26px;height:26px;}
+
+.btn{text-align:center;width:80px;cursor:pointer;background:#2e7fd8;border:none;outline:none;color:#fff;font-size:12px;padding:6px 15px;border-radius:3px;}
+.btn:hover{background:#3385ff;}
+
 
 

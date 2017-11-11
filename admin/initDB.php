@@ -84,6 +84,12 @@ if ($result){
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS user_infos(
         vid int(32) UNIQUE NOT NULL,
+        sex VARCHAR (255),
+        age int(32),
+        province VARCHAR (255),
+        city VARCHAR (255),
+        qq VARCHAR (255),
+        wx VARCHAR (255),
         phone VARCHAR (255),
         vip int(32) NOT NULL DEFAULT 0,
         viptime VARCHAR (255),

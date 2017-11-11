@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>用户主页-淘币客</title>
+    <title>用户中心-淘币客</title>
     <link href="/web/common/img/logo.png" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="/web/common/css/layout.css">
     <link rel="stylesheet" type="text/css" href="/web/common/css/userhome/left.css">
@@ -30,7 +30,7 @@
                             <td style="margin-left:20px;">
                                 <span class="img-group x16" style="color:#ff9900"><img src="/web/common/img/userhome/usered/zan.png" title="好感">(3434)</span>
                                 <span class="img-group x16" style="margin-left:10px;color:#ff3300"><img src="/web/common/img/userhome/usered/jubao.png" title="举报">(53)</span>
-                                <span class="img-group x16" style="margin-left:10px;color:#ff3300"><img src="/web/common/img/userhome/usered/comment.png" title="评价"><a href="#">(34)</a></span>
+                                <span class="img-group x16" style="margin-left:10px;"><img src="/web/common/img/userhome/usered/comment.png" title="评价"><a href="#">(34)</a></span>
                             </td>
                         </tr>
                         <tr>
@@ -51,7 +51,7 @@
                         <div class="li">
                             修改密码
                             <span class="f1">修改登录密码，能有效保护您的账户。</span>
-                            <a href="#">修改</a>
+                            <a href="/web/iframe_userhome/usered/u2.php">修改</a>
                         </div>
                         <div class="li">
                             邮箱验证
@@ -61,20 +61,20 @@
                         <div class="li">
                             手机验证
                             <span class="f1">验证您的手机号码，提高信息完善度。</span>
-                            <a href="#">验证</a>
+                            <a href="/web/iframe_userhome/usered/u3.php">去验证</a>
                         </div>
                         <div class="li">
                             实名认证
                             <span class="f1">验证您的身份信息，进行实名认证会提高您的信誉等级。</span>
-                            <a href="#">认证</a>
+                            <a href="#">立即认证</a>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <?php include("../layout/footer.php") ?>
     </div>
     <script>left.activeItem("usered");</script>
+    <script src="/web/iframe_userhome/js/usered.js"></script>
 </body>
 </html>

@@ -1,0 +1,67 @@
+<?php
+require_once("../../global/global.php");
+
+//登录检查
+session_start();
+if(!isset($_SESSION["login"])){
+    die_json(["msg"=>"用户未登录"]);
+}
+$vid=$_SESSION["login"]["id"];
+//sex
+if(!isset($_REQUEST["sex"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$sex=$_REQUEST["sex"];
+if($sex&&$sex!="男"&&$sex!="女"){
+    die_json(["msg"=>"性别不正确"]);
+}
+//age
+if(!isset($_REQUEST["age"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$age=(int)$_REQUEST["age"];
+if($age&&($age<0||$age>100)){
+    die_json(["msg"=>"年龄不正确"]);
+}
+//province
+if(!isset($_REQUEST["province"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$province=$_REQUEST["province"];
+if($province&&preg_match("/^\S+$/",$province)<=0){
+    die_json(["msg"=>"省份不正确"]);
+}
+//city
+if(!isset($_REQUEST["city"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$city=$_REQUEST["city"];
+if($city&&preg_match("/^\S+$/",$city)<=0){
+    die_json(["msg"=>"城市不正确"]);
+}
+//qq
+if(!isset($_REQUEST["qq"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$qq=$_REQUEST["qq"];
+if($qq&&preg_match("/^[1-9][0-9]{4,14}$/",$qq)<=0){
+    die_json(["msg"=>"QQ号不正确"]);
+}
+//wx
+if(!isset($_REQUEST["wx"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$wx=$_REQUEST["wx"];
+if($wx&&preg_match("/^[a-zA-Z][a-zA-Z0-9-_]{5,19}$/",$wx)<=0){
+    die_json(["msg"=>"微信号不正确"]);
+}
+
+//数据库操作
+$conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
+$conn->set_charset("utf8");
+//更新记录
+$stmt=$conn->prepare("update user_infos set sex=?,age=?,province=?,city=?,qq=?,wx=? where vid=?");
+$stmt->bind_param("sissssi",$sex,$age,$province,$city,$qq,$wx,$vid);
+$stmt->execute();
+$stmt->close();
+die_json(["ok"=>"ok","data"=>""]);

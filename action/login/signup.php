@@ -59,10 +59,16 @@ if(count($data)>0){
     die_json(["msg"=>"昵称已注册"]);
 }
 $stmt->close();
-//插入记录
+//插入记录users
 $stmt=$conn->prepare("insert into users(nick,email,password,time) values(?,?,?,?)");
 $time=(new DateTime())->format("Y-m-d H:i:s");
 $stmt->bind_param("ssss",$nick,$email,$pass,$time);
+$stmt->execute();
+$vid=$stmt->insert_id;
+$stmt->close();
+//插入记录user_infos
+$stmt=$conn->prepare("insert into user_infos(vid) values(?)");
+$stmt->bind_param("i",$vid);
 $stmt->execute();
 $stmt->close();
 //
