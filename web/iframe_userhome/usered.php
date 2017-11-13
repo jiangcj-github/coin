@@ -38,7 +38,7 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                会员等级：0 (剩余3天)
+                                会员等级：0
                                 <a href="#" style="margin-left:10px;color:red;" class="img-group x26">
                                     <img src="/web/common/img/userhome/usered/vip_gift.png" style="margin-right:-1px;">升级会员</a>
                             </td>

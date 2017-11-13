@@ -27,18 +27,18 @@
             <div class="s4">
                 <div class="input-group">
                     <label for="pass">当前密码：</label>
-                    <input type="password" id="pass">
+                    <input type="password" id="pass1">
                 </div>
                 <div class="input-group">
                     <label for="pass">新密码：</label>
-                    <input type="password" id="pass" placeholder="密码 (6-15个字符，仅限0-9a-zA-Z._-)">
+                    <input type="password" id="pass2" placeholder="密码 (6-15个字符，仅限0-9a-zA-Z._-)">
                 </div>
                 <div class="input-group">
                     <label for="pass">确认新密码：</label>
-                    <input type="password" id="pass">
+                    <input type="password" id="pass3">
                 </div>
                 <div class="f1">
-                    <button class="btn">保存</button>
+                    <button class="btn" id="submit">保存</button>
                 </div>
             </div>
 
@@ -48,5 +48,6 @@
 </div>
 <script>left.activeItem("usered");</script>
 <script src="/web/iframe_userhome/js/usered.js"></script>
+<script src="/web/iframe_userhome/usered/js/u2.js"></script>
 </body>
 </html>
