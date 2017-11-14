@@ -26,7 +26,7 @@
             </div>
             <div class="s4">
                 <div class="input-group">
-                    <label for="pass">当前密码：</label>
+                    <label for="pass1">当前密码：</label>
                     <input type="password" id="pass1">
                 </div>
                 <div class="input-group">
@@ -34,7 +34,7 @@
                     <input type="password" id="pass2" placeholder="密码 (6-15个字符，仅限0-9a-zA-Z._-)">
                 </div>
                 <div class="input-group">
-                    <label for="pass">确认新密码：</label>
+                    <label for="pass3">确认新密码：</label>
                     <input type="password" id="pass3">
                 </div>
                 <div class="f1">
@@ -47,7 +47,6 @@
     <?php include("../../layout/footer.php") ?>
 </div>
 <script>left.activeItem("usered");</script>
-<script src="/web/iframe_userhome/js/usered.js"></script>
 <script src="/web/iframe_userhome/usered/js/u2.js"></script>
 </body>
 </html>

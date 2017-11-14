@@ -8,6 +8,77 @@ if($conn->connect_error){
 }
 $conn->set_charset("utf8");
 
+//users
+$result=$conn->query("
+    CREATE TABLE IF NOT EXISTS  users(
+        id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
+        nick VARCHAR (255) UNIQUE NOT NULL,
+        email VARCHAR (255) UNIQUE NOT NULL,
+        password VARCHAR (255) NOT NULL,
+        time VARCHAR (255) NOT NULL,
+        PRIMARY KEY(id)
+    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
+");
+if ($result){
+    echo "users created"."<br>";
+}else{
+    echo "users created failed"."<br>";
+}
+
+//user_infos
+$result=$conn->query("
+    CREATE TABLE IF NOT EXISTS user_infos(
+        vid int(32) UNIQUE NOT NULL,
+        sex VARCHAR (255),
+        age int(32),
+        province VARCHAR (255),
+        city VARCHAR (255),
+        qq VARCHAR (255),
+        wx VARCHAR (255),
+        phone VARCHAR (255),
+        vip int(32) NOT NULL DEFAULT 0,
+        viptime VARCHAR (255),
+        idcard VARCHAR (255),
+        fullname VARCHAR (255),
+        PRIMARY KEY(vid)
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+");
+if ($result){
+    echo "user_infos created"."<br>";
+}else{
+    echo "user_infos created failed"."<br>";
+}
+
+//checkCode_strict
+$result=$conn->query("
+    CREATE TABLE IF NOT EXISTS checkCode_strict(
+        email VARCHAR(255) NOT NULL,
+        sendCode VARCHAR(255) NOT NULL,
+        PRIMARY KEY(email)
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+");
+if ($result){
+    echo "checkCode_strict created"."<br>";
+}else{
+    echo "checkCode_strict created failed"."<br>";
+}
+
+//checkCode_strict2
+$result=$conn->query("
+    CREATE TABLE IF NOT EXISTS checkCode_strict2(
+        vid int(32) NOT NULL,
+        sendCode VARCHAR(255) NOT NULL,
+        num int(32) NOT NULL DEFAULT 0,
+        PRIMARY KEY(vid)
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+");
+if ($result){
+    echo "checkCode_strict2 created"."<br>";
+}else{
+    echo "checkCode_strict2 created failed"."<br>";
+}
+
+
 //sells
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS  sells(
@@ -63,46 +134,6 @@ if ($result){
     echo "buys created failed"."<br>";
 }
 
-//users
-$result=$conn->query("
-    CREATE TABLE IF NOT EXISTS  users(
-        id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
-        nick VARCHAR (255) UNIQUE NOT NULL,
-        email VARCHAR (255) UNIQUE NOT NULL,
-        password VARCHAR (255) NOT NULL,
-        time VARCHAR (255) NOT NULL,
-        PRIMARY KEY(id)
-    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
-");
-if ($result){
-    echo "users created"."<br>";
-}else{
-    echo "users created failed"."<br>";
-}
-
-//user_infos
-$result=$conn->query("
-    CREATE TABLE IF NOT EXISTS user_infos(
-        vid int(32) UNIQUE NOT NULL,
-        sex VARCHAR (255),
-        age int(32),
-        province VARCHAR (255),
-        city VARCHAR (255),
-        qq VARCHAR (255),
-        wx VARCHAR (255),
-        phone VARCHAR (255),
-        vip int(32) NOT NULL DEFAULT 0,
-        viptime VARCHAR (255),
-        idcard VARCHAR (255),
-        fullname VARCHAR (255),
-        PRIMARY KEY(vid)
-    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-");
-if ($result){
-    echo "user_infos created"."<br>";
-}else{
-    echo "user_infos created failed"."<br>";
-}
 
 //msgs
 /**
@@ -139,16 +170,3 @@ if ($result){
     echo "notices created failed"."<br>";
 }
 
-//checkCode_strict
-$result=$conn->query("
-    CREATE TABLE IF NOT EXISTS checkCode_strict(
-        email VARCHAR(255) NOT NULL,
-        sendCode VARCHAR(255),
-        PRIMARY KEY(email)
-    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-");
-if ($result){
-    echo "checkCode_strict created"."<br>";
-}else{
-    echo "checkCode_strict created failed"."<br>";
-}
