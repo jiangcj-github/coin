@@ -27,7 +27,17 @@ if(!checkIdentity($idcard)){
 //数据库操作
 $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
 $conn->set_charset("utf8");
-//更新密码
+//不允许重复验证
+$stmt=$conn->prepare("select vid from user_infos where idcard is not null and fullname is not null and vid=?");
+$stmt->bind_param("i",$vid);
+$stmt->execute();
+$result=$stmt->get_result();
+$data=$result->fetch_all(MYSQLI_ASSOC);
+if(count($data)>0){
+    die_json(["msg"=>"不允许重复验证"]);
+}
+$stmt->close();
+//更新实名信息
 $stmt=$conn->prepare("update user_infos set fullname=?,idcard=? where vid=?");
 $stmt->bind_param("ssi",$fullname,$idcard,$vid);
 $stmt->execute();

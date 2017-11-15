@@ -1,3 +1,19 @@
+<?php
+require_once("../../../global/global.php");
+include("../../../global/checkLogin.php");
+
+$vid=$_SESSION["login"]["id"];
+//数据库操作
+$conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
+$conn->set_charset("utf8");
+//查询infos
+$stmt=$conn->prepare("select phone from user_infos where vid=?");
+$stmt->bind_param("i",$vid);
+$stmt->execute();
+$result=$stmt->get_result();
+$infos=$result->fetch_all(MYSQLI_ASSOC)[0];
+$stmt->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,20 +41,29 @@
                 </div>
             </div>
             <div class="s5">
-                <div class="input-group">
-                    <label for="phone">手机号码：</label>
-                    <input type="text" id="phone">
-                </div>
-                <div class="input-group check">
-                    <label for="check">验证码：</label>
-                    <input type="text" id="check">
-                    <button id="check_send">发送验证码</button>
-                </div>
-                <div class="f1">
-                    <button class="btn" id="submit">提交</button>
-                </div>
+                <?php if($infos["phone"]){ ?>
+                    <div class="input-group">
+                        <label for="phone">手机号码：</label>
+                        <span><?php echo $infos["phone"] ?></span>
+                    </div>
+                    <div class="f1">
+                        <span>手机验证已完成</span>
+                    </div>
+                <?php }else{ ?>
+                    <div class="input-group">
+                        <label for="phone">手机号码：</label>
+                        <input type="text" id="phone">
+                    </div>
+                    <div class="input-group check">
+                        <label for="check">验证码：</label>
+                        <input type="text" id="check">
+                        <button id="check_send">发送验证码</button>
+                    </div>
+                    <div class="f1">
+                        <button class="btn" id="submit">提交</button>
+                    </div>
+                <?php } ?>
             </div>
-
         </div>
     </div>
     <?php include("../../layout/footer.php") ?>

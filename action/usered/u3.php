@@ -27,6 +27,16 @@ if(!isset($_SESSION["checkPhone"])||$phone.$code!=$_SESSION["checkPhone"]){
 //数据库操作
 $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
 $conn->set_charset("utf8");
+//不允许重复验证
+$stmt=$conn->prepare("select vid from user_infos where phone is not null and vid=?");
+$stmt->bind_param("i",$vid);
+$stmt->execute();
+$result=$stmt->get_result();
+$data=$result->fetch_all(MYSQLI_ASSOC);
+if(count($data)>0){
+    die_json(["msg"=>"不允许重复验证"]);
+}
+$stmt->close();
 //手机号是否验证
 $stmt=$conn->prepare("select vid from user_infos where phone=?");
 $stmt->bind_param("s",$phone);

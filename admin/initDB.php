@@ -78,6 +78,29 @@ if ($result){
     echo "checkCode_strict2 created failed"."<br>";
 }
 
+//ads
+//flag取值[0:买入，1:卖出]
+$result=$conn->query("
+    CREATE TABLE IF NOT EXISTS ads(
+        id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
+        vid int(32) NOT NULL,
+        nick VARCHAR(255) NOT NULL,
+        flag int(32) NOT NULL,
+        coin VARCHAR(255) NOT NULL,
+        price double NOT NULL,
+        method VARCHAR(255) NOT NULL,
+        maxNum double NOT NULL DEFAULT 100,
+        minNum double NOT NULL DEFAULT 0,
+        remake VARCHAR(255),
+        time VARCHAR(255) NOT NULL,
+        PRIMARY KEY(id)
+    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;                                                                                                                                         
+");
+if ($result){
+    echo "ads created"."<br>";
+}else{
+    echo "ads created failed"."<br>";
+}
 
 //sells
 $result=$conn->query("
@@ -112,26 +135,6 @@ if ($result){
     echo "coins created"."<br>";
 }else{
     echo "coins created failed"."<br>";
-}
-
-//buys
-$result=$conn->query("
-    CREATE TABLE IF NOT EXISTS  buys(
-        id int(32) UNIQUE NOT NULL AUTO_INCREMENT ,
-        nick VARCHAR (255) NOT NULL,
-        coin int(32) NOT NULL,
-        price double NOT NULL,
-        pay_method VARCHAR (255) NOT NULL,
-        maxNum double NOT NULL DEFAULT 100,
-        minNum double NOT NULL DEFAULT 0,
-        time VARCHAR (255) NOT NULL,
-        PRIMARY KEY(id)
-    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
-");
-if ($result){
-    echo "buys created"."<br>";
-}else{
-    echo "buys created failed"."<br>";
 }
 
 
