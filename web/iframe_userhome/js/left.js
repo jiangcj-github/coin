@@ -2,8 +2,7 @@ var left={};
 left.items={
     usered:$(".left i.usered").parent("a"),
     member:$(".left i.member").parent("a"),
-    id:$(".left i.id").parent("a"),
-    buy:$(".left i.buy").parent("a"),
+    ad:$(".left i.ad").parent("a"),
     sell:$(".left i.sell").parent("a"),
     msg:$(".left i.msg").parent("a"),
     notice:$(".left i.notice").parent("a")
@@ -34,11 +33,8 @@ left.activeItem=function(iname){
         case "member":
             _this.items.member.addClass("active");
             break;
-        case "id":
-            _this.items.id.addClass("active");
-            break;
-        case "buy":
-            _this.items.buy.addClass("active");
+        case "ad":
+            _this.items.ad.addClass("active");
             break;
         case "sell":
             _this.items.sell.addClass("active");

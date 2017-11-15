@@ -4,7 +4,7 @@
     <div class="ul">
         <a href="/web/iframe_userhome/usered.php" ><i class="icon usered"></i>个人中心</a>
         <a href="javascript:void(0);" ><i class="icon member"></i>会员中心</a>
-        <a href="javascript:void(0);" ><i class="icon ad"></i>发布广告</a>
+        <a href="/web/iframe_userhome/ads.php" ><i class="icon ad"></i>我的广告</a>
         <a href="javascript:void(0);" ><i class="icon sell"></i>我的卖单</a>
         <a href="msg.php" ><i class="icon msg"></i>消息</a>
         <a href="javascript:void(0);"><i class="icon notice"></i>公告</a>

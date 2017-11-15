@@ -6,7 +6,7 @@
     <link href="/web/common/img/logo.png" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="/web/common/css/layout.css">
     <link rel="stylesheet" type="text/css" href="/web/common/css/userhome/left.css">
-    <link rel="stylesheet" type="text/css" href="/web/common/css/userhome/home.css">
+    <link rel="stylesheet" type="text/css" href="/web/common/css/userhome/usered.css">
 </head>
 <body>
 <?php include("../../layout/top.php") ?>
