@@ -12,7 +12,7 @@
 .s1>.c1>.f2{display:block;font-size:20px;font-weight:bold;color:#ff9900;line-height:70px;}
 .s1>.c1>.f3{display:block;margin-top:13px;color:#0066ff;}
 .s1>.c2{margin-left:20px;padding:15px;}
-.s1>.c2 tr{line-height:26px;display:flex;align-items:center;height:26px;}
+.s1>.c2 tr{line-height:30px;display:flex;align-items:center;height:30px;}
 .s1>.c2 td{white-space:nowrap;padding:0 10px;display:inline-flex;align-items:center;}
 
 .right .s2{}
@@ -23,18 +23,18 @@
 .s2>.ul>.li>.f3{color:#666;margin-right:5px;}
 .s2>.ul>.li>a{color:#0066ff;}
 
-/*u1*/
 .right .nav{padding-bottom:10px;border-bottom:1px solid #e3e3e3;display:flex;align-items:center;}
 .nav .h3{border-bottom:none;margin:0;padding:0;flex-grow:1;}
 .nav>.f1{margin-bottom:-5px;}
 .nav>.f1>a{color:#428bca;}
 
+/*u1*/
 .right .s3{}
 .s3{margin-top:20px;}
 .s3>.input-group{display:flex;align-items:center;padding:8px 20px;}
-.s3>.input-group>label{line-height:26px;height:26px;width:70px;text-align:right;padding-right:10px;}
-.s3>.input-group>select{outline:none;padding:2px 5px;height:26px;font-size:12px;width:200px;border:1px solid #ccc;}
-.s3>.input-group>input{outline:none;padding:2px 5px;height:26px;font-size:12px;width:200px;border:1px solid #ccc;}
+.s3>.input-group>label{line-height:30px;height:30px;width:70px;text-align:right;padding-right:10px;}
+.s3>.input-group>select{outline:none;padding:2px 5px;height:30px;font-size:12px;width:250px;border:1px solid #ccc;}
+.s3>.input-group>input{outline:none;padding:2px 5px;height:30px;font-size:12px;width:250px;border:1px solid #ccc;}
 .s3>.addr>select{margin-right:10px;}
 .s3>.f1{margin-top:20px;padding:15px 0 0 20px;border-top:1px solid #e4e4e4;}
 
@@ -42,18 +42,18 @@
 .right .s4{}
 .s4{margin-top:20px;}
 .s4>.input-group{display:flex;align-items:center;padding:8px 20px;}
-.s4>.input-group>label{line-height:26px;height:26px;width:100px;text-align:right;padding-right:10px;}
-.s4>.input-group>input{outline:none;padding:2px 5px;height:26px;font-size:12px;width:220px;border:1px solid #ccc;}
+.s4>.input-group>label{line-height:30px;height:30px;width:100px;text-align:right;padding-right:10px;}
+.s4>.input-group>input{outline:none;padding:2px 5px;height:30px;font-size:12px;width:250px;border:1px solid #ccc;}
 .s4>.f1{margin-top:20px;padding:15px 0 0 20px;border-top:1px solid #e4e4e4;}
 
 /*u3*/
 .right .s5{}
 .s5{margin-top:20px;}
 .s5>.input-group{display:flex;align-items:center;padding:8px 20px;}
-.s5>.input-group>label{line-height:26px;height:26px;width:100px;text-align:right;padding-right:10px;}
-.s5>.input-group>input{outline:none;padding:2px 5px;height:26px;font-size:12px;width:220px;border:1px solid #ccc;}
+.s5>.input-group>label{line-height:30px;height:30px;width:100px;text-align:right;padding-right:10px;}
+.s5>.input-group>input{outline:none;padding:2px 5px;height:30px;font-size:12px;width:250px;border:1px solid #ccc;}
 .s5>.check>input{width:100px;margin-right:10px;}
-.s5>.check>button{height:26px;padding:0 15px;background:#ff9900;color:#fff;border:none;outline:none;cursor:pointer;font-size:12px;}
+.s5>.check>button{height:30px;padding:0 15px;background:#ff9900;color:#fff;border:none;outline:none;cursor:pointer;font-size:12px;}
 .s5>.check>button:hover{background:#999900;}
 .s5>.check>button[disabled]{cursor:default;background:#eaba75;}
 .s5>.f1{margin-top:20px;padding:15px 0 0 20px;border-top:1px solid #e4e4e4;}
@@ -62,8 +62,8 @@
 .right .s6{}
 .s6{margin-top:20px;}
 .s6>.input-group{display:flex;align-items:center;padding:8px 20px;}
-.s6>.input-group>label{line-height:26px;height:26px;width:100px;text-align:right;padding-right:10px;}
-.s6>.input-group>input{outline:none;padding:2px 5px;height:26px;font-size:12px;width:220px;border:1px solid #ccc;}
+.s6>.input-group>label{line-height:30px;height:30px;width:100px;text-align:right;padding-right:10px;}
+.s6>.input-group>input{outline:none;padding:2px 5px;height:30px;font-size:12px;width:250px;border:1px solid #ccc;}
 .s6>.f1{margin-top:20px;padding:15px 0 0 20px;border-top:1px solid #e4e4e4;}
 
 /**/

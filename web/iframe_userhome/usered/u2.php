@@ -18,7 +18,7 @@
             <div class="nav">
                 <div class="h3">修改登录密码</div>
                 <div class="f1 img-group x16">
-                    <img src="/web/common/img/userhome/usered.svg">
+                    <img src="/web/common/img/userhome/left/usered.svg">
                     <a href="/web/iframe_userhome/usered.php">个人中心</a>
                     <span style="margin:0 5px;">&gt;</span>
                     <span style="color:#999;">修改密码</span>

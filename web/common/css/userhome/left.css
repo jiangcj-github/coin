@@ -8,18 +8,18 @@
 
 .left .ul a i.icon{display:block;width:30px;height:30px;margin-right:10px;
     background-repeat:no-repeat;background-position:center center;background-size:18px auto;}
-.left .ul a i.notice{background-image:url(/web/common/img/userhome/notice.svg);}
-.left .ul a.active i.notice{background-image:url(/web/common/img/userhome/notice1.svg);}
-.left .ul a i.msg{background-image:url(/web/common/img/userhome/msg.svg);}
-.left .ul a.active i.msg{background-image:url(/web/common/img/userhome/msg1.svg);}
-.left .ul a i.ad{background-image:url(/web/common/img/userhome/ad.svg);}
-.left .ul a.active i.ad{background-image:url(/web/common/img/userhome/ad1.svg);}
-.left .ul a i.sell{background-image:url(/web/common/img/userhome/sell.svg);}
-.left .ul a.active i.sell{background-image:url(/web/common/img/userhome/sell1.svg);}
-.left .ul a i.usered{background-image:url(/web/common/img/userhome/usered.svg);}
-.left .ul a.active i.usered{background-image:url(/web/common/img/userhome/usered1.svg);}
-.left .ul a i.member{background-image:url(/web/common/img/userhome/member.svg);}
-.left .ul a.active i.member{background-image:url(/web/common/img/userhome/member1.svg);}
+.left .ul a i.notice{background-image:url(/web/common/img/userhome/left/notice.svg);}
+.left .ul a.active i.notice{background-image:url(/web/common/img/userhome/left/notice1.svg);}
+.left .ul a i.msg{background-image:url(/web/common/img/userhome/left/msg.svg);}
+.left .ul a.active i.msg{background-image:url(/web/common/img/userhome/left/msg1.svg);}
+.left .ul a i.ad{background-image:url(/web/common/img/userhome/left/ad.svg);}
+.left .ul a.active i.ad{background-image:url(/web/common/img/userhome/left/ad1.svg);}
+.left .ul a i.sell{background-image:url(/web/common/img/userhome/left/sell.svg);}
+.left .ul a.active i.sell{background-image:url(/web/common/img/userhome/left/sell1.svg);}
+.left .ul a i.usered{background-image:url(/web/common/img/userhome/left/usered.svg);}
+.left .ul a.active i.usered{background-image:url(/web/common/img/userhome/left/usered1.svg);}
+.left .ul a i.member{background-image:url(/web/common/img/userhome/left/member.svg);}
+.left .ul a.active i.member{background-image:url(/web/common/img/userhome/left/member1.svg);}
 
 .left .ul a label{position:absolute;right:20px;top:12px;display:block;padding:0 5px;background:green;
     font-size:12px;line-height:16px;border-radius:8px;margin-left:40px;color:#fff;font-weight:bold;}
