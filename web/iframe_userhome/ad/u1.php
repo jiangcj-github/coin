@@ -26,22 +26,23 @@
                 <div class="s3">
                     <div class="input-group">
                         <label for="flag">广告类型：</label>
-                        <div class="ratio-group">
-                            <i class="ratio on">买入</i>
-                            <i class="ratio">卖出</i>
+                        <div class="ratio-group" id="flag">
+                            <i class="ratio on" data-val="0">买入</i>
+                            <i class="ratio" data-val="1">卖出</i>
                         </div>
                     </div>
                     <div class="input-group">
                         <label for="coin">虚拟货币：</label>
-                        <select id="coin" class="opt-sel">
-                            <option value="BTC">BTC</option>
-                            <option value="BCC">BCC</option>
-                            <option value="LTC">LTC</option>
-                            <option value="ETH">ETH</option>
-                            <option value="ETC">ETC</option>
-                            <option value="0">其他</option>
-                        </select>
                         <input type="text" class="opt" placeholder="货币简称,如BTC">
+                        <a href="javascript:void(0);" class="opt-btn" id="coin">
+                            <div class="select">
+                                <div class="option">BTC</div>
+                                <div class="option">BCC</div>
+                                <div class="option">LTC</div>
+                                <div class="option">ETH</div>
+                                <div class="option">ETC</div>
+                            </div>
+                        </a>
                         <span class="info">选择货币类型</span>
                     </div>
                     <div class="input-group">
@@ -52,29 +53,30 @@
                     </div>
                     <div class="input-group">
                         <label for="minNum">最小交易量：</label>
-                        <input type="text" id="minNum">
+                        <input type="text" id="minNum" value="0">
                         <span class="info">每一笔交易的最小数量，默认为&nbsp;0</span>
                     </div>
                     <div class="input-group">
                         <label for="maxNum">最大交易量：</label>
-                        <input type="text" id="maxNum">
+                        <input type="text" id="maxNum" value="100">
                         <span class="info">每一笔交易的最大数量</span>
                     </div>
                     <div class="input-group">
                         <label for="method">交易方式：</label>
-                        <select id="method" class="opt-sel">
-                            <option value="当面交易">当面交易</option>
-                            <option value="电话交易">电话交易</option>
-                            <option value="QQ交易">QQ交易</option>
-                            <option value="微信交易">微信交易</option>
-                            <option value="0">其他</option>
-                        </select>
-                        <input type="text" class="opt" placeholder="不超过5个字符">
+                        <input type="text" class="opt" placeholder="不超过5个字符" id="method">
+                        <a href="javascript:void(0);" class="opt-btn">
+                            <div class="select">
+                                <div class="option">当面交易</div>
+                                <div class="option">电话交易</div>
+                                <div class="option">QQ交易</div>
+                                <div class="option">微信交易</div>
+                            </div>
+                        </a>
                         <span class="info">您期望的交易方式</span>
                     </div>
                     <div class="input-group">
                         <label for="remake">备注：</label>
-                        <textarea id="remake"></textarea>
+                        <textarea id="remake" placeholder="不超过100个字符"></textarea>
                         <span class="info">添加备注</span>
                     </div>
                     <div class="f1">
