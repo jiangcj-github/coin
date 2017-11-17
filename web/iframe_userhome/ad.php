@@ -8,7 +8,7 @@
     $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
     $conn->set_charset("utf8");
     //查询ads
-    $stmt=$conn->prepare("select * from ads where vid=?");
+    $stmt=$conn->prepare("select id,flag,coin,price,method,minNum,maxNum,time from ads where vid=?");
     $stmt->bind_param("i",$vid);
     $stmt->execute();
     $result=$stmt->get_result();
@@ -60,8 +60,8 @@
                                 <td><?php echo $v["minNum"] ?></td>
                                 <td><?php echo $v["maxNum"] ?></td>
                                 <td>
-                                    <a href="/web/iframe_userhome/ad/u1.php?id=<?php echo $v["id"] ?>" title="编辑" class="edit"></a>
-                                    <a href="/action/ad/remove.php?id=<?php echo $v["id"] ?>" title="删除" class="del"></a>
+                                    <a href="/web/iframe_userhome/ad/u1.php?id=<?php echo $v["id"] ?>" title="设置" class="edit"></a>
+                                    <a href="javascript:void(0);" title="删除" class="del" onclick="remove('<?php echo $v["id"] ?>');"></a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -82,5 +82,27 @@
     <?php include("../layout/footer.php") ?>
 </div>
 <script>left.activeItem("ad");</script>
+<script>
+    var remove=function(id){
+        if(!confirm("该操作不可恢复，确定要删除吗？")){
+            return 0;
+        }
+        ajaxForm.action(null,{
+           type:"post",
+            url:"/action/ad/remove.php",
+            data:{id:id},
+            success:function(data){
+                if(data.ok){
+                    location.reload();
+                }else if(data.msg){
+                    alert(data.msg);
+                }
+            },
+            error:function(){
+                alert("服务器错误");
+            }
+        });
+    };
+</script>
 </body>
 </html>

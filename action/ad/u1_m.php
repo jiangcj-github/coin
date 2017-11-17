@@ -8,6 +8,11 @@ if(!isset($_SESSION["login"])){
 }
 $vid=$_SESSION["login"]["id"];
 $nick=$_SESSION["login"]["nick"];
+//id
+if(!isset($_REQUEST["id"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$id=$_REQUEST["id"];
 //flag
 if(!isset($_REQUEST["flag"])){
     die_json(["msg"=>"缺少参数"]);
@@ -68,23 +73,9 @@ if(strlen($remake)>100){
 //数据库操作
 $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
 $conn->set_charset("utf8");
-//检查是否实名认证，及手机验证
-$stmt=$conn->prepare("select vid from user_infos where phone is not null and idcard is not null and fullname is not null and vid=?");
-$stmt->bind_param("i",$vid);
-$stmt->execute();
-$resutl=$stmt->get_result();
-$data=$resutl->fetch_all(MYSQLI_ASSOC);
-$stmt->close();
-if(count($data)<=0){
-    die_json(["msg"=>"未完成手机验证或实名认证"]);
-}
-//检查vip等级
-
-
-//发布广告
-$stmt=$conn->prepare("insert into ads(vid,nick,flag,coin,price,method,minNum,maxNum,remake,time) values(?,?,?,?,?,?,?,?,?,?)");
-$time=(new DateTime())->format("Y-m-d H:i:s");
-$stmt->bind_param("isisdsddss",$vid,$nick,$flag,$coin,$price,$method,$minNum,$maxNum,$remake,$time);
+//修改广告
+$stmt=$conn->prepare("update ads set flag=?,coin=?,price=?,minNum=?,maxNum=?,method=?,remake=? where id=? and vid=?");
+$stmt->bind_param("isdddssii",$flag,$coin,$price,$minNum,$maxNum,$method,$remake,$id,$vid);
 $stmt->execute();
 $stmt->close();
 //
