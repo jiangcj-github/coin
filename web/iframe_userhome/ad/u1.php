@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,8 +36,8 @@
                     </div>
                     <div class="input-group">
                         <label for="coin">虚拟货币：</label>
-                        <input type="text" class="opt" placeholder="货币简称,如BTC">
-                        <a href="javascript:void(0);" class="opt-btn" id="coin">
+                        <input type="text" class="opt" placeholder="货币简称,如BTC" id="coin">
+                        <a href="javascript:void(0);" class="opt-btn">
                             <div class="select">
                                 <div class="option">BTC</div>
                                 <div class="option">BCC</div>
@@ -63,7 +66,7 @@
                     </div>
                     <div class="input-group">
                         <label for="method">交易方式：</label>
-                        <input type="text" class="opt" placeholder="不超过5个字符" id="method">
+                        <input type="text" class="opt" placeholder="不超过6个字符" id="method">
                         <a href="javascript:void(0);" class="opt-btn">
                             <div class="select">
                                 <div class="option">当面交易</div>

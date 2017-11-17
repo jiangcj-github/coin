@@ -47,21 +47,21 @@
                         <col style="width:110px">
                     </colgroup>
                     <thead>
-                        <tr> <th>发布时间</th><th>类型</th><th>虚拟货币</th><th>期望价格</th><th>交易方式</th><th>最小限额</th><th>最大限额</th><th></th></tr>
+                        <tr> <th>发布时间</th><th>类型</th><th>虚拟货币</th><th>期望价格(CNY)</th><th>交易方式</th><th>最小限额</th><th>最大限额</th><th></th></tr>
                     </thead>
                     <tbody>
                         <?php foreach($ads as $k=>$v){ ?>
                             <tr>
                                 <td><?php echo time_tran($v["time"]) ?></td>
-                                <td>买入</td>
-                                <td>BTC</td>
-                                <td class="price">33212.2 CNY</td>
-                                <td>qq</td>
-                                <td>0</td>
-                                <td>3</td>
+                                <td><?php echo $v["flag"]?"卖出":"买入" ?></td>
+                                <td><?php echo $v["coin"] ?></td>
+                                <td><?php echo $v["price"] ?></td>
+                                <td><?php echo $v["method"] ?></td>
+                                <td><?php echo $v["minNum"] ?></td>
+                                <td><?php echo $v["maxNum"] ?></td>
                                 <td>
-                                    <a href="#" title="编辑" class="edit"></a>
-                                    <a href="#" title="删除" class="del"></a>
+                                    <a href="/web/iframe_userhome/ad/u1.php?id=<?php echo $v["id"] ?>" title="编辑" class="edit"></a>
+                                    <a href="/action/ad/remove.php?id=<?php echo $v["id"] ?>" title="删除" class="del"></a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -73,7 +73,7 @@
             </div>
             <div class="s2">
                 <div class="para">关于广告：</div>
-                <div class="para">1.&nbsp;您必须先完成<a href="/web/iframe_userhome/usered/u4.php">实名认证</a>，才能发布广告。</div>
+                <div class="para">1.&nbsp;您必须先<a href="/web/iframe_userhome/usered/u3.php">验证手机</a>，并且完成<a href="/web/iframe_userhome/usered/u4.php">实名认证</a>，才能发布广告。</div>
                 <div class="para">2.&nbsp;发布广告时您可以选择更多币种，广告的交易流程不会经过平台，平台无法保证您的资金安全，请谨慎交易。<a href="#">详细</a></div>
                 <div class="para">3.&nbsp;注册用户每个月有100次免费发布广告的机会，<a href="#">升级会员</a>会获得更多的次数。</div>
             </div>
