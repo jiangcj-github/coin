@@ -40,7 +40,7 @@
                     </div>
                     <div id="lis">
                         <?php if($totalMsg<=0){ ?>
-                            <div class="no-record">暂无记录</div>
+                            <div class="no-record">暂无数据</div>
                         <?php } ?>
                     </div>
                     <div class="pg-ctrl">
