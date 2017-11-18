@@ -102,6 +102,27 @@ if ($result){
     echo "ads created failed"."<br>";
 }
 
+//msgs
+/**
+ * state取值0[未读],1[已读]
+ */
+$result=$conn->query("
+    CREATE TABLE IF NOT EXISTS msgs(
+        id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
+        vid int(32) NOT NULL,
+        title VARCHAR (255) NOT NULL,
+        countent double NOT NULL,
+        time VARCHAR (255) NOT NULL,
+        state int(32) NOT NULL DEFAULT 0,
+        PRIMARY KEY(id)
+    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
+");
+if ($result){
+    echo "msgs created"."<br>";
+}else{
+    echo "msgs created failed"."<br>";
+}
+
 //sells
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS  sells(
@@ -137,27 +158,6 @@ if ($result){
     echo "coins created failed"."<br>";
 }
 
-
-//msgs
-/**
- * state取值0[未读],1[已读],2[预览]
- */
-$result=$conn->query("
-    CREATE TABLE IF NOT EXISTS msgs(
-        id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
-        vid int(32) NOT NULL,
-        title VARCHAR (255) NOT NULL,
-        countent double NOT NULL,
-        time VARCHAR (255) NOT NULL,
-        state int(32) NOT NULL DEFAULT 0,
-        PRIMARY KEY(id)
-    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
-");
-if ($result){
-    echo "msgs created"."<br>";
-}else{
-    echo "msgs created failed"."<br>";
-}
 
 //notices
 $result=$conn->query("
