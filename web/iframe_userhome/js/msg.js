@@ -55,7 +55,7 @@ msg.nextPage=function(n){
         return;
     }
     ajaxForm.action(_this.widges.pgNext,{
-        
+
     });
 };
 msg.init();
