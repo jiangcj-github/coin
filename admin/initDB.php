@@ -111,7 +111,7 @@ $result=$conn->query("
         id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
         vid int(32) NOT NULL,
         title VARCHAR (255) NOT NULL,
-        countent double NOT NULL,
+        content VARCHAR (255) NOT NULL,
         time VARCHAR (255) NOT NULL,
         state int(32) NOT NULL DEFAULT 0,
         PRIMARY KEY(id)
@@ -122,6 +122,8 @@ if ($result){
 }else{
     echo "msgs created failed"."<br>";
 }
+
+
 
 //sells
 $result=$conn->query("
