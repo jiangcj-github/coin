@@ -28,6 +28,9 @@ msg.init=function(){
         _this.remove();
     });
     _this.pageNext();
+    top.msgUpdate(function(data){
+        _this.msgUpdate(data);
+    })
 };
 msg.checkli=function(li){
     var _this=this;
@@ -107,7 +110,7 @@ msg.drawLi=function(n){
         var li=template("tpl-li",{
             data:_this.dataBuffer[i],
             check:$.inArray(_this.dataBuffer[i].id,_this.checkArr)>=0?"check":"",
-            unread:_this.dataBuffer[i].state?"":"unread"
+            unread:_this.dataBuffer[i].state<=1?"unread":""
         });
         li=$(li);
         li.click(function(){
@@ -152,7 +155,11 @@ msg.remove=function(){
         }
     })
 };
-
+msg.msgUpdate=function(data){
+    if(data.length>0){
+        location.reload();
+    }
+};
 msg.init();
 
 //扩展Array

@@ -5,22 +5,15 @@ left.items={
     ad:$(".left i.ad").parent("a"),
     sell:$(".left i.sell").parent("a"),
     msg:$(".left i.msg").parent("a"),
-    notice:$(".left i.notice").parent("a")
+    notice:$(".left i.notice").parent("a"),
+    msgLabel:$("#left_msgL")
 };
 left.init=function(){
     var _this=this;
-    ajaxForm.action(null,{
-        type:"get",
-        url:"/action/msg/queryUnreadCount.php",
-        success:function(data){
-            if(data.ok){
-                var msgNum=data.data.msgNum;
-                if(msgNum>0){
-                    _this.items.msg.append("<label>"+msgNum+"</label>");
-                }
-            }
-        }
+    top.msgUpdate(function(data){
+        _this.msgUpdate(data);
     });
+
 };
 left.activeItem=function(iname){
     var ul=$(".left .ul");
@@ -47,6 +40,15 @@ left.activeItem=function(iname){
             break;
         default:
             break;
+    }
+};
+left.msgUpdate=function(data){
+    var _this=this;
+    _this.items.msgLabel.text(data.length);
+    if(data.length<=0){
+        _this.items.msgLabel.addClass("hide");
+    }else{
+        _this.items.msgLabel.removeClass("hide");
     }
 };
 left.init();

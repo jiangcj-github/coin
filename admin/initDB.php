@@ -104,7 +104,7 @@ if ($result){
 
 //msgs
 /**
- * state取值0[未读],1[已读]
+ * state取值0[未读],1[预览],2[已读]
  */
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS msgs(

@@ -6,7 +6,7 @@
         <a href="javascript:void(0);" ><i class="icon member"></i>会员中心</a>
         <a href="/web/iframe_userhome/ad.php" ><i class="icon ad"></i>我的广告</a>
         <a href="javascript:void(0);" ><i class="icon sell"></i>我的卖单</a>
-        <a href="/web/iframe_userhome/msg.php" ><i class="icon msg"></i>消息<label>4</label></a>
+        <a href="/web/iframe_userhome/msg.php" ><i class="icon msg"></i>消息<label id="left_msgL">0</label></a>
         <a href="javascript:void(0);"><i class="icon notice"></i>公告</a>
     </div>
 </div>

@@ -8,7 +8,7 @@
     $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
     $conn->set_charset("utf8");
     //查询ads
-    $stmt=$conn->prepare("select id,flag,coin,price,method,minNum,maxNum,time from ads where vid=?");
+    $stmt=$conn->prepare("select id,flag,coin,price,method,minNum,maxNum,time from ads where vid=? order by time desc");
     $stmt->bind_param("i",$vid);
     $stmt->execute();
     $result=$stmt->get_result();

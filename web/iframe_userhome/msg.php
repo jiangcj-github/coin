@@ -14,6 +14,11 @@
     $data=$result->fetch_all(MYSQLI_ASSOC);
     $stmt->close();
     $totalMsg=$data[0]["count"];
+    //标记为预览
+    $stmt=$conn->prepare("update msgs set state=1 where vid=? and state=0");
+    $stmt->bind_param("i",$vid);
+    $stmt->execute();
+    $stmt->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,7 +68,6 @@
     </script>
     <script>left.activeItem("msg");</script>
     <script>var totalMsg=<?php echo $totalMsg ?>;</script>
-    <script src="/web/common/template-web.js"></script>
     <script src="/web/iframe_userhome/js/msg.js"></script>
 </body>
 </html>
