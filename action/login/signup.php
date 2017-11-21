@@ -1,5 +1,6 @@
 <?php
 require_once("../../global/global.php");
+require_once("../../global/wallet/btc.php");
 session_start();
 
 //参数检查
@@ -69,6 +70,13 @@ $stmt->close();
 //插入记录user_infos
 $stmt=$conn->prepare("insert into user_infos(vid) values(?)");
 $stmt->bind_param("i",$vid);
+$stmt->execute();
+$stmt->close();
+//创建钱包
+$btc=new btc();
+$stmt=$conn->prepare("insert into user_wallets(vid,btcAddr) values(?,?)");
+$btcAddr=$btc->gererateAddr($nick);
+$stmt->bind_param("ii",$vid,$btcAddr);
 $stmt->execute();
 $stmt->close();
 //

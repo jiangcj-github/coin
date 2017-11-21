@@ -49,6 +49,21 @@ if ($result){
     echo "user_infos created failed"."<br>";
 }
 
+//user_wallets
+$result=$conn->query("
+    CREATE TABLE IF NOT EXISTS user_wallets(
+        vid int(32) UNIQUE NOT NULL,
+        btcAddr VARCHAR(255) NOT NULL,
+        btcLock double NOT NULL DEFAULT 0,
+        PRIMARY KEY(vid)
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+");
+if ($result){
+    echo "user_wallets created"."<br>";
+}else{
+    echo "user_wallets created failed"."<br>";
+}
+
 //checkCode_strict
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS checkCode_strict(
