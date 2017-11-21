@@ -1,5 +1,5 @@
 <?php
-require_once("../../global/global.php");
+require_once("../../global/config.php");
 require_once("../../global/TimeUtil.php");
 //数据库连接
 $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
@@ -10,10 +10,10 @@ $conn->set_charset("utf8");
 <head>
     <meta charset="UTF-8">
     <title>重置密码-淘币客</title>
-    <link href="/web/common/img/logo.png" rel="icon" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" href="/web/common/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="/web/common/css/index.css" />
-    <link rel="stylesheet" type="text/css" href="/web/common/css/login/sign.css" />
+    <link href="/web/layout/img/logo.png" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="/web/layout/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="/web/main/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="/web/login/css/sign.css" />
 </head>
 <body>
     <?php include("../layout/top.php") ?>
@@ -33,6 +33,6 @@ $conn->set_charset("utf8");
         </div>
         <?php include("../layout/footer.php") ?>
     </div>
-    <script src="js/reset.js"></script>
+    <script src="/web/login/js/reset.js"></script>
 </body>
 </html>

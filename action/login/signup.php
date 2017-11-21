@@ -1,5 +1,5 @@
 <?php
-require_once("../../global/global.php");
+require_once("../../global/config.php");
 require_once("../../global/wallet/btc.php");
 session_start();
 
@@ -76,7 +76,7 @@ $stmt->close();
 $btc=new btc();
 $stmt=$conn->prepare("insert into user_wallets(vid,btcAddr) values(?,?)");
 $btcAddr=$btc->gererateAddr($nick);
-$stmt->bind_param("ii",$vid,$btcAddr);
+$stmt->bind_param("is",$vid,$btcAddr);
 $stmt->execute();
 $stmt->close();
 //

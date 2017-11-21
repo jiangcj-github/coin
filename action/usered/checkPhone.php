@@ -1,5 +1,5 @@
 <?php
-require_once("../../global/global.php");
+require_once("../../global/config.php");
 require_once("../../global/AliyunSMS.php");
 session_start();
 
@@ -35,7 +35,7 @@ $stmt=$conn->prepare("select sendCode,num from checkCode_strict2 where vid=?");
 $stmt->bind_param("i",$vid);
 $stmt->execute();
 $stmt->bind_result($stri_sec,$num);
-if($stmt->fetch()){
+if($stmt->fetch()&& $stri_sec){
     $cur_sec=(new DateTime())->getTimestamp();
     $stri_sec=DateTime::createFromFormat("Y-m-d H:i:s",$stri_sec)->getTimestamp();
     if($num<2&&$cur_sec-$stri_sec<120){

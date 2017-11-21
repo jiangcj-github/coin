@@ -24,7 +24,7 @@ signin.send=function(){
         data:{email:email,pass:md5(pass)},
         success:function(data){
             if(data.ok){
-                location.href="/web/index.php";
+                location.href="/web/main/index.php";
             }else if(data.msg){
                 _this.inputs.err.text(data.msg);
             }else{

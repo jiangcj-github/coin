@@ -1,5 +1,5 @@
 <?php
-require_once("../../global/global.php");
+require_once("../../global/config.php");
 require_once("../../global/TimeUtil.php");
 
 //登录检查

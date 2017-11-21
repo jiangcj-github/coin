@@ -1,5 +1,5 @@
 <?php
-require_once("../../global/global.php");
+require_once("../../global/config.php");
 require_once("../../global/phpmailer/class.phpmailer.php");
 session_start();
 
@@ -29,7 +29,7 @@ $stmt=$conn->prepare("select sendCode from checkCode_strict where email=?");
 $stmt->bind_param("s",$addr);
 $stmt->execute();
 $stmt->bind_result($stri_sec);
-if( $stmt->fetch()){
+if($stmt->fetch() && $stri_sec){
     $cur_sec=(new DateTime())->getTimestamp();
     $stri_sec=DateTime::createFromFormat("Y-m-d H:i:s",$stri_sec)->getTimestamp();
     if($cur_sec-$stri_sec<60){
