@@ -60,7 +60,7 @@
                                 <td><?php echo $v["minNum"] ?></td>
                                 <td><?php echo $v["maxNum"] ?></td>
                                 <td>
-                                    <a href="/web/userhome/iframe/ad/u1.php?id=<?php echo $v["id"] ?> title="设置" class="edit"></a>
+                                    <a href="/web/userhome/iframe/ad/u1.php?id=<?php echo $v["id"] ?>" title="设置" class="edit"></a>
                                     <a href="javascript:void(0);" title="删除" class="del" onclick="remove('<?php echo $v["id"] ?>');"></a>
                                 </td>
                             </tr>

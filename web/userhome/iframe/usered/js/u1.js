@@ -71,7 +71,7 @@ u1.send=function(){
         data:{sex:sex,age:age,province:province,city:city,qq:qq,wx:wx},
         success:function(data){
             if(data.ok){
-                location.href="/web/iframe_userhome/iframe/usered/usered.php";
+                location.href="/web/userhome/iframe/usered/usered.php";
             }else if(data.msg){
                 _this.log(data.msg);
             }

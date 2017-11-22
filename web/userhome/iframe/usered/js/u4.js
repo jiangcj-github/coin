@@ -31,7 +31,7 @@ u4.send=function(){
         data:{fullname:fullname,idcard:idcard},
         success:function(data){
             if(data.ok){
-                location.href="/web/iframe_userhome/iframe/usered/usered.php";
+                location.href="/web/userhome/iframe/usered/usered.php";
             }else if(data.msg){
                 _this.log(data.msg);
             }

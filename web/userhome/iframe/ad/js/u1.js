@@ -90,7 +90,7 @@ u1.add=function(){
         data:{flag:flag,coin:coin,price:price,minNum:minNum,maxNum:maxNum,method:method,remake:remake},
         success:function(data){
             if(data.ok){
-                location.href="/web/iframe_userhome/iframe/ad/ad.php";
+                location.href="/web/userhome/iframe/ad/ad.php";
             }else if(data.msg){
                 _this.log(data.msg);
             }
@@ -144,7 +144,7 @@ u1.modify=function(){
         data:{id:id,flag:flag,coin:coin,price:price,minNum:minNum,maxNum:maxNum,method:method,remake:remake},
         success:function(data){
             if(data.ok){
-                location.href="/web/iframe_userhome/iframe/ad/ad.php";
+                location.href="/web/userhome/iframe/ad/ad.php";
             }else if(data.msg){
                 _this.log(data.msg);
             }

@@ -50,27 +50,35 @@ $conn->set_charset("utf8");
                 </div>
             </div>
             <div class="s3">
-                <div>
+                <div class="input-group">
                     <label for="addr">转出至：</label>
-                    <input type="text" id="addr">
+                    <input type="text" id="addr" style="width:400px;">
+                    <span class="info">比特币转出地址</span>
                 </div>
-                <div>
+                <div class="input-group">
                     <label for="num">数量：</label>
-                    <input type="text" id="num"><a href="#">全部</a>
+                    <input type="text" id="num" value="0">
+                    <span class="info">转出数量</span>
                 </div>
-                <div>
-                    <label for="num">交易密码：</label>
-                    <input type="text" id="num"><a href="#">全部</a>
+                <div class="input-group">
+                    <label for="pass">交易密码：</label>
+                    <input type="password" id="pass">
+                    <span class="info">输入您的资产密码</span>
                 </div>
-                <div>
-                    <label for="num">手机验证码：</label>
-                    <input type="text" id="num"><a href="#">全部</a>
+                <div class="input-group">
+                    <label for="check">手机验证码：</label>
+                    <input type="text" id="check"><a href="javascript:void(0);" class="addon">获取验证码</a>
                 </div>
-                <div>
-                    <input type="checkbox">
-                    <span>我已仔细阅读并同意转出协议,并确认转出</span>
+                <div class="f1">
+                    <label>
+                        <input type="checkbox">
+                        <span>我已仔细阅读并同意<a href="#">《转出协议》</a></span>
+                    </label>
                 </div>
-                <button id="submit">确认转出</button>
+                <div class="f2">
+                    <button id="submit">确认转出</button>
+                    <span class="info"></span>
+                </div>
             </div>
             <div class="s22">
                 <div class="para">转出说明</div>
