@@ -67,6 +67,7 @@ $conn->set_charset("utf8");
         </div>
     </div>
     <?php include("../../../layout/footer.php") ?>
+    
 </div>
 <script>left.activeItem("account");</script>
 </body>
