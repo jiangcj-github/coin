@@ -41,24 +41,18 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>BTC</td>
+                            <td><div class="img-g"><img src="/web/userhome/iframe/account/img/btc.png">BTC</div></td>
                             <td>1HKdWCuKn9YPGXZFKevTTHojUFx8ztct5d</td>
                             <td>0</td>
                             <td>0</td>
                             <td>0</td>
                             <td>
-                                <a href="">转入</a>
-                                <a href="">转出</a>
+                                <a href="/web/userhome/iframe/account/btc_in.php">转入</a>
+                                <a href="/web/userhome/iframe/account/btc_out.php">转出</a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-            <div class="s2">
-                <div class="para">使用须知：</div>
-                <div class="para">1.&nbsp;您必须先<a href="/web/userhome/iframe/usered/u3.php">验证手机</a>，并且完成<a href="/web/userhome/iframe/usered/u4.php">实名认证</a>，才能发布广告。</div>
-                <div class="para">2.&nbsp;发布广告时您可以选择更多币种，广告的交易流程不会经过平台，平台无法保证您的资金安全，请谨慎交易。<a href="#">详细</a></div>
-                <div class="para">3.&nbsp;注册用户每个月有100次免费发布广告的机会，<a href="#">升级会员</a>会获得更多的次数。</div>
             </div>
         </div>
     </div>
