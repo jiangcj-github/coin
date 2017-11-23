@@ -54,6 +54,9 @@
                     </tbody>
                 </table>
             </div>
+            <div class="s12">
+                <a href="/web/userhome/iframe/account/history.php">查看账户记录</a>
+            </div>
         </div>
     </div>
     <?php include("../../../layout/footer.php") ?>
