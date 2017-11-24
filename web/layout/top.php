@@ -12,6 +12,9 @@
             <a href="#">买入</a>
             <a href="#">卖出</a>
         </div>
+        <div class="rmenu">
+            <a href="/web/sys/notice/notice.php"><i class="icon notice"></i>公告</a>
+        </div>
         <div class="pinfo">
             <?php if(!$isLogin){ ?>
                 <a href="/web/login/signin.php">登录</a>
@@ -19,7 +22,7 @@
                 <a href="/web/login/signup.php">注册</a>
             <?php }else{ ?>
                 <div class="pi-item drop">
-                    <a href="/web/userhome/iframe/msg/msg.php"><i class="icon notice"></i><span class="badge hide" id="top_msgBadge">0</span></a>
+                    <a href="/web/userhome/iframe/msg/msg.php"><i class="icon msg"></i><span class="badge hide" id="top_msgBadge">0</span></a>
                     <div class="panel c1 hide" id="msg_drop">
                         <h4 class="c1-h">有 <span id="top_msgNum">0</span> 条新消息</h4>
                         <div id="msg-ul"></div>

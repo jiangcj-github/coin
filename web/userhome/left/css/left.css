@@ -1,15 +1,17 @@
 .main .left{width:200px;float:left;font-size:14px;}
 .left .ul{border-radius:3px;border:1px solid #e4e4e4;width:180px;}
+
 .left .ul a:first-child{border-radius:3px 3px 0 0;}
 .left .ul a:last-child{border-radius:0 0 3px 3px;}
-.left .ul a{display:flex;line-height:40px;padding-left:20px;align-items:center;position:relative;border-bottom:1px solid #f4f4f4;}
+.left .ul a{display:flex;padding-left:20px;align-items:center;position:relative;border-bottom:1px solid #f4f4f4;height:38px;}
 .left .ul a.active{background:#3385ff !important;color:#fff !important;}
 .left .ul a:hover{background:#f4f4f4;transition:background 0.3s;}
 
+
 .left .ul a i.icon{display:block;width:30px;height:30px;margin-right:10px;
     background-repeat:no-repeat;background-position:center center;background-size:18px auto;}
-.left .ul a i.notice{background-image:url(/web/userhome/left/img/notice.svg);}
-.left .ul a.active i.notice{background-image:url(/web/userhome/left/img/notice1.svg);}
+.left .ul a i.notice{background-image:url(/web/sys/notice/img/notice.svg);}
+.left .ul a.active i.notice{background-image:url(/web/sys/notice/img/notice1.svg);}
 .left .ul a i.msg{background-image:url(/web/userhome/left/img/msg.svg);}
 .left .ul a.active i.msg{background-image:url(/web/userhome/left/img/msg1.svg);}
 .left .ul a i.ad{background-image:url(/web/userhome/left/img/ad.svg);}

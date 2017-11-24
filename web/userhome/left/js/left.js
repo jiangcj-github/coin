@@ -6,7 +6,6 @@ left.items={
     ad:$(".left i.ad").parent("a"),
     sell:$(".left i.sell").parent("a"),
     msg:$(".left i.msg").parent("a"),
-    notice:$(".left i.notice").parent("a"),
     msgLabel:$("#left_msgL")
 };
 left.init=function(){
@@ -38,9 +37,6 @@ left.activeItem=function(iname){
             break;
         case "msg":
             _this.items.msg.addClass("active");
-            break;
-        case "notice":
-            _this.items.notice.addClass("active");
             break;
         default:
             break;

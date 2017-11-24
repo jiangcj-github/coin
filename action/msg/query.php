@@ -18,7 +18,7 @@ $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["d
 $conn->set_charset("utf8");
 
 //查询
-$stmt=$conn->prepare("select id,title,content,time,state from msgs where vid=? limit 10 offset ? order by time desc");
+$stmt=$conn->prepare("select id,title,content,time,state from msgs where vid=? order by time desc limit 10 offset ?");
 $stmt->bind_param("ii",$vid,$offset);
 $stmt->execute();
 $result=$stmt->get_result();

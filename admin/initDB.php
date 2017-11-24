@@ -138,6 +138,25 @@ if ($result){
     echo "msgs created failed"."<br>";
 }
 
+//notices
+$result=$conn->query("
+    CREATE TABLE IF NOT EXISTS  notices(
+        id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
+        author VARCHAR (255) NOT NULL,
+        time VARCHAR (255) NOT NULL,
+        title VARCHAR (255) NOT NULL,
+        href VARCHAR (255) NOT NULL,
+        PRIMARY KEY(id)
+    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
+");
+if ($result){
+    echo "notices created"."<br>";
+}else{
+    echo "notices created failed"."<br>";
+}
+
+
+
 
 
 //sells
@@ -176,17 +195,4 @@ if ($result){
 }
 
 
-//notices
-$result=$conn->query("
-    CREATE TABLE IF NOT EXISTS  notices(
-        id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
-        page VARCHAR (255) UNIQUE NOT NULL,
-        PRIMARY KEY(id)
-    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
-");
-if ($result){
-    echo "notices created"."<br>";
-}else{
-    echo "notices created failed"."<br>";
-}
 

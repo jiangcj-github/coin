@@ -27,6 +27,11 @@ $mysql=array(
 date_default_timezone_set("PRC");
 
 /**
+ * btc主地址
+ */
+$btcAdminAddr="1H1fSv3Dk9dz23XLTtFnBJTn1A5BWrdzJc";
+
+/**
  * 返回json
  */
 function die_json($data){
