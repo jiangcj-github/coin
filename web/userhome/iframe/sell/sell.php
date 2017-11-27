@@ -1,14 +1,19 @@
 <?php
-require_once("../../../../global/config.php");
-require_once("../../../../global/TimeUtil.php");
-include("../../../../global/checkLogin.php");
+    require_once("../../../../global/config.php");
+    require_once("../../../../global/TimeUtil.php");
+    include("../../../../global/checkLogin.php");
 
-$vid=$_SESSION["login"]["id"];
-//数据库操作
-$conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
-$conn->set_charset("utf8");
-//查询ads
-$ads=[];
+    $vid=$_SESSION["login"]["id"];
+    //数据库操作
+    $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
+    $conn->set_charset("utf8");
+    //查询sells
+    $stmt=$conn->prepare("select id,coin,price,pay_method,num,time,state from sells where vid=? order by time desc");
+    $stmt->bind_param("i",$vid);
+    $stmt->execute();
+    $result=$stmt->get_result();
+    $sells=$result->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,33 +37,51 @@ $ads=[];
             <div class="s1">
                 <table>
                     <colgroup>
-                        <col style="width:110px">
-                        <col style="width:80px">
+                        <col style="width:120px">
                         <col style="width:100px">
-                        <col style="width:150px">
-                        <col style="width:90px">
+                        <col style="width:140px">
+                        <col style="width:140px">
                         <col style="width:100px">
-                        <col style="width:100px">
-                        <col style="width:110px">
+                        <col style="width:120px">
+                        <col style="width:120px">
                     </colgroup>
                     <thead>
-                    <tr> <th>发布时间</th><th>虚拟货币</th><th>出售价格(CNY)</th><th>付款方式</th><th>数量</th><th></th></tr>
+                    <tr> <th>发布时间</th><th>虚拟货币</th><th>出售价格(CNY)</th><th>付款方式</th><th>数量</th><th>状态</th><th></th></tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>6天前</td>
-                            <td>BTC</td>
-                            <td>55000</td>
-                            <td>银行卡</td>
-                            <td>5</td>
-                            <td>
-                                <a href="" title="设置" class="edit"></a>
-                                <a href="javascript:void(0);" title="删除" class="del" onclick="remove(0);"></a>
-                            </td>
-                        </tr>
+                        <?php foreach($sells as $v){ ?>
+                            <tr>
+                                <td><?php echo time_tran($v["time"]) ?></td>
+                                <td><?php echo $v["coin"] ?></td>
+                                <td><?php echo $v["price"] ?></td>
+                                <td><?php echo $v["pay_method"] ?></td>
+                                <td><?php echo $v["num"] ?></td>
+                                <td>
+                                    <?php
+                                        switch($v["state"]){
+                                            case 0: echo "正常挂单"; break;
+                                            case 1: echo "买家已接单"; break;
+                                            case 2: echo "等待买家付款"; break;
+                                            case 3: echo "等待卖家发货"; break;
+                                            case 4: echo "等待买家发货"; break;
+                                            default:break;
+                                        }
+                                    ?>
+                                </td>
+                                <td>
+                                    <?php if($v["state"]<=0){ ?>
+                                        <a href="/web/userhome/iframe/sell/u1.php?id=<?php echo $v["id"] ?>" title="设置" class="edit"></a>
+                                        <a href="javascript:void(0);" title="删除" class="del" onclick="remove('<?php echo $v["id"] ?>')"></a>
+                                    <?php }else if($v["state"]<=2){ ?>
+                                        <a href="javascript:void(0);" title="取消交易" class="del" onclick="remove('<?php echo $v["id"] ?>')"></a>
+                                        <a href="javascript:void(0);" title="拉黑" class="del" onclick="remove('<?php echo $v["id"] ?>')"></a>
+                                    <?php } ?>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
-                <?php if(count($ads)<=0){ ?>
+                <?php if(count($sells)<=0){ ?>
                     <div class="no-record">暂无数据</div>
                 <?php } ?>
             </div>

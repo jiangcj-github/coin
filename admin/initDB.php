@@ -119,7 +119,7 @@ if ($result){
 
 //msgs
 /**
- * state取值0[未读],1[预览],2[已读]
+ * state取值【0-未读,1-预览,2-已读】
  */
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS msgs(
@@ -155,21 +155,28 @@ if ($result){
     echo "notices created failed"."<br>";
 }
 
-
-
-
-
 //sells
+/*
+ * state取值-成功交易【0-挂单,1-买家已接单,2-等待买家付款,3-等待卖家发货,4-等待收货,5-交易完成】
+ * state取值-退款【0-挂单,1-买家已接单,2-等待买家付款,3-等待卖家发货,6-等待卖家退款,7-交易取消】
+ * state取值-纠纷1【0-挂单,1-买家已接单,2-等待买家付款,8-交易纠纷】
+ * state取值-纠纷2【0-挂单,1-买家已接单,2-等待买家付款,3-等待卖家发货,8-交易纠纷】
+ * state取值-纠纷3【0-挂单,1-买家已接单,2-等待买家付款,3-等待卖家发货,6-等待卖家退款,8-交易纠纷】
+ * state取值-纠纷处理1【8-交易纠纷,...,5-交易完成】
+ * state取值-纠纷处理2【8-交易纠纷,...,7-交易取消】
+ */
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS  sells(
         id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
+        vid int(32) NOT NULL,
         nick VARCHAR (255) NOT NULL,
-        coin int(32) NOT NULL,
+        coin VARCHAR (255) NOT NULL,
         price double NOT NULL,
         pay_method VARCHAR (255) NOT NULL,
-        maxNum double NOT NULL DEFAULT 100,
-        minNum double NOT NULL DEFAULT 0,
+        num double NOT NULL DEFAULT 100,
         time VARCHAR (255) NOT NULL,
+        state int(32) NOT NULL DEFAULT 0,
+        remake VARCHAR (255),
         PRIMARY KEY(id)
     )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;                                                                                                                                         
 ");
@@ -179,19 +186,80 @@ if ($result){
     echo "sells created failed"."<br>";
 }
 
-//coins
+//交易过程1
+/*
+ * 0-卖家挂单
+ * 1-买家接单
+ * 2-卖家接单，提供付款地址    --写入交易记录
+ * 3-买家确认付款         --30分钟未标记，自动取消交易
+ * 4-卖家确认收款         --确认则继续，失败则进入交易过程2
+ * 5-卖家确认发货
+ * 6-买家确认收货
+ * 7-买家评价
+ */
+
+//交易记录
+//从买家付款开始写入交易记录
+/*
+ * state取值-成功交易【0-卖家接单,2-等待买家付款,3-等待卖家发货,4-等待收货,5-交易完成】
+ * state取值-退款【0-挂单,1-买家已接单,2-等待买家付款,3-等待卖家发货,6-等待卖家退款,7-交易取消】
+ * state取值-纠纷1【0-挂单,1-买家已接单,2-等待买家付款,8-交易纠纷】
+ * state取值-纠纷2【0-挂单,1-买家已接单,2-等待买家付款,3-等待卖家发货,8-交易纠纷】
+ * state取值-纠纷3【0-挂单,1-买家已接单,2-等待买家付款,3-等待卖家发货,6-等待卖家退款,8-交易纠纷】
+ * state取值-纠纷处理1【8-交易纠纷,...,5-交易完成】
+ * state取值-纠纷处理2【8-交易纠纷,...,7-交易取消】
+ */
 $result=$conn->query("
-    CREATE TABLE IF NOT EXISTS  coins(
+    CREATE TABLE IF NOT EXISTS  txs(
         id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
-        name VARCHAR (255) NOT NULL,
-        abbr VARCHAR (255) NOT NULL,
+        sell_vid int(32) NOT NULL,
+        buy_vid int (32) NOT NULL,
+        coin VARCHAR (255) NOT NULL,
+        price double NOT NULL,
+        pay_method VARCHAR (255) NOT NULL,
+        pay_info VARCHAR (255) NOT NULL,
+        num double NOT NULL,
+        time VARCHAR (255) NOT NULL,
+        info VARCHAR (255),
+        state VARCHAR (255) NOT NULL,
         PRIMARY KEY(id)
-    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
+    )ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8;                                                                                                                                         
 ");
 if ($result){
-    echo "coins created"."<br>";
+    echo "txs created"."<br>";
 }else{
-    echo "coins created failed"."<br>";
+    echo "txs created failed"."<br>";
+}
+
+//纠纷记录
+$result=$conn->query("
+    CREATE TABLE IF NOT EXISTS  issues(
+        id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
+        vid int(32) NOT NULL,
+        num int(32) NOT NULL DEFAULT 0,
+        PRIMARY KEY(id)
+    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;                                                                                                                                         
+");
+if ($result){
+    echo "issues created"."<br>";
+}else{
+    echo "issues created failed"."<br>";
+}
+
+//用户评价
+//每次结束一个交易都会产生一次评价
+$result=$conn->query("
+    CREATE TABLE IF NOT EXISTS  issues(
+        id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
+        vid int(32) NOT NULL,
+        num int(32) NOT NULL DEFAULT 0,
+        PRIMARY KEY(id)
+    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;                                                                                                                                         
+");
+if ($result){
+    echo "issues created"."<br>";
+}else{
+    echo "issues created failed"."<br>";
 }
 
 

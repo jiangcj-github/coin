@@ -9,7 +9,7 @@
 .s1>.head{border-bottom:1px solid #e4e4e4;padding:10px;font-size:10px;}
 .s1>.head a{margin:0 3px;background:#ff9900;padding:3px 10px;color:#fff;border-radius:3px;}
 .s1>.head a:hover{background:#ff7519;}
-.s1 .li{padding:15px 10px;border-bottom:1px solid #e4e4e4;position:relative;display:flex;color:#666;}
+.s1 .li{padding:15px 10px;border-bottom:1px solid #e4e4e4;position:relative;display:flex;color:#666;cursor:default;}
 .s1 .li:hover{background:#f4f4f4;transition:background 0.3s;}
 .s1 .li.unread{color:#000;}
 .s1 .li>.d1{width:46px;flex-shrink:0;background-image:url(/web/userhome/iframe/msg/img/uncheck.png);

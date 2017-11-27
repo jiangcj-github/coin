@@ -1,6 +1,6 @@
 *{box-sizing:border-box;}
 html,body{height:100%;}
-body{margin:0;padding:0;font-size:12px;color:#444;font-family: "Microsoft YaHei", 微软雅黑, arial, Tahoma, SimSun, sans-serif;}
+body{margin:0;padding:0;font-size:14px;color:#444;font-family: "Microsoft YaHei", 微软雅黑, arial, Tahoma, SimSun, sans-serif;}
 a{text-decoration:none;color:#444;}
 
 .layout{min-height:100%;padding-top:60px;margin-top:-50px;display:flex;flex-direction:column;}
@@ -24,11 +24,11 @@ a{text-decoration:none;color:#444;}
 .header .rmenu a>i.notice{background-image:url(/web/sys/notice/img/sys.svg);background-size:18px auto;}
 
 .header .pinfo{height:100%;}
-.header .pinfo>a{display:inline-flex;justify-content:center;align-items:center;font-size:12px;line-height:50px;padding:0 10px;position:relative;}
+.header .pinfo>a{display:inline-flex;justify-content:center;align-items:center;font-size:14px;line-height:50px;padding:0 10px;position:relative;}
 .header .pinfo>a.seq{padding:0;margin:0 -5px;}
 .header .pinfo>a.seq:before{content:"|";}
 
-.header .pinfo .pi-item{color:#fff;line-height:50px;font-size:12px;position:relative;padding:0 10px;cursor:pointer;
+.header .pinfo .pi-item{color:#fff;line-height:50px;font-size:14px;position:relative;padding:0 10px;cursor:pointer;
     display:inline-flex;justify-content:center;align-items:center;}
 .header .pi-item .icon{background-repeat:no-repeat;background-position:center center;
     display:block;width:30px;height:50px;margin-right:2px;}

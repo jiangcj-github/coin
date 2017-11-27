@@ -3,6 +3,6 @@
 
 .left .ul a:first-child{border-radius:3px 3px 0 0;}
 .left .ul a:last-child{border-radius:0 0 3px 3px;}
-.left .ul a{display:flex;padding-left:20px;align-items:center;position:relative;border-bottom:1px solid #f4f4f4;height:38px;}
+.left .ul a{display:flex;padding-left:20px;align-items:center;position:relative;border-bottom:1px solid #f4f4f4;height:44px;}
 .left .ul a.active{background:#3385ff !important;color:#fff !important;}
 .left .ul a:hover{background:#f4f4f4;transition:background 0.3s;}
