@@ -90,6 +90,11 @@ $stmt->close();
                     <textarea id="remake" placeholder=""></textarea>
                     <span class="info">添加备注信息，不超过100个字符</span>
                 </div>
+                <div class="input-group">
+                    <label for="ac_pass">交易密码：</label>
+                    <input type="password" id="ac_pass">
+                    <span class="info">为了您的账户安全，请输入交易密码</span>
+                </div>
                 <div class="f1">
                     <?php if(!$info["phone"]){ ?>
                         <button class="btn" id="submit" disabled="disabled">挂单</button>
@@ -108,6 +113,7 @@ $stmt->close();
     <?php include("../../../layout/footer.php") ?>
 </div>
 <script>left.activeItem("sell");</script>
+<script src="/web/login/js/md5.min.js"></script>
 <script src="/web/userhome/iframe/sell/js/u1.js"></script>
 </body>
 </html>

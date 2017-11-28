@@ -5,6 +5,7 @@ u1.inputs={
     num:$("#num"),
     pay_method:$("#pay_method"),
     remake:$("#remake"),
+    ac_pass:$("#ac_pass"),
     submitBtn:$("#submit")
 };
 u1.widges={
@@ -97,6 +98,7 @@ u1.sendBtc=function(){
     var pay_method=_this.inputs.pay_method.val();
     var num=parseFloat(_this.inputs.num.val());
     var remake=_this.inputs.remake.val();
+    var ac_pass=md5(_this.inputs.ac_pass.val());
     if(coin!="BTC"){
         _this.log("不支持此货币");
         return;
@@ -124,7 +126,7 @@ u1.sendBtc=function(){
     ajaxForm.action(_this.inputs.submitBtn,{
         type:"post",
         url:"/action/sell/u1.php",
-        data:{coin:coin,price:price,num:num,pay_method:pay_method,remake:remake},
+        data:{coin:coin,price:price,num:num,pay_method:pay_method,remake:remake,ac_pass:ac_pass},
         success:function(data){
             if(data.ok){
                 location.href="/web/userhome/iframe/sell/sell.php";
