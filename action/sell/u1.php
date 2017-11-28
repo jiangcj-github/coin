@@ -1,5 +1,6 @@
 <?php
 require_once("../../global/config.php");
+require_once("../../global/wallet/btc.php");
 
 //登录检查
 session_start();
@@ -8,21 +9,13 @@ if(!isset($_SESSION["login"])){
 }
 $vid=$_SESSION["login"]["id"];
 $nick=$_SESSION["login"]["nick"];
-//flag
-if(!isset($_REQUEST["flag"])){
-    die_json(["msg"=>"缺少参数"]);
-}
-$flag=$_REQUEST["flag"];
-if($flag!="0"&&$flag!="1"){
-    die_json(["msg"=>"请选择广告类型"]);
-}
 //coin
 if(!isset($_REQUEST["coin"])){
     die_json(["msg"=>"缺少参数"]);
 }
 $coin=$_REQUEST["coin"];
-if(!preg_match("/^[a-zA-Z]{2,15}$/",$coin)) {
-    die_json(["msg" => "货币类型不正确"]);
+if($coin!="BTC") {
+    die_json(["msg" => "暂时不支持此货币"]);
 }
 //price
 if(!isset($_REQUEST["price"])){
@@ -32,29 +25,21 @@ $price=$_REQUEST["price"];
 if(!is_numeric($price)||$price<=0){
     die_json(["msg"=>"价格不正确"]);
 }
-//minNum
-if(!isset($_REQUEST["minNum"])){
+//num
+if(!isset($_REQUEST["num"])){
     die_json(["msg"=>"缺少参数"]);
 }
-$minNum=$_REQUEST["minNum"];
-if(!is_numeric($minNum)||$minNum<0){
-    die_json(["msg"=>"最小交易量不正确"]);
+$num=$_REQUEST["num"];
+if(!is_numeric($num)||$num<=0){
+    die_json(["msg"=>"数量不正确"]);
 }
-//maxNum
-if(!isset($_REQUEST["maxNum"])){
+//pay_method
+if(!isset($_REQUEST["pay_method"])){
     die_json(["msg"=>"缺少参数"]);
 }
-$maxNum=$_REQUEST["maxNum"];
-if(!is_numeric($maxNum)||$maxNum<$minNum||$maxNum<=0){
-    die_json(["msg"=>"最大交易量不正确"]);
-}
-//method
-if(!isset($_REQUEST["method"])){
-    die_json(["msg"=>"缺少参数"]);
-}
-$method=$_REQUEST["method"];
-if(!preg_match("/^\S+$/",$method) || mb_strlen($method)>15 || mb_strlen($method)<2) {
-    die_json(["msg" => "交易方式不正确"]);
+$pay_method=$_REQUEST["pay_method"];
+if(!preg_match("/^\S+$/",$pay_method) || mb_strlen($pay_method)>15 || mb_strlen($pay_method)<2) {
+    die_json(["msg" => "付款方式不合法"]);
 }
 //remake
 if(!isset($_REQUEST["remake"])){
@@ -78,10 +63,33 @@ $stmt->close();
 if(count($data)<=0){
     die_json(["msg"=>"未完成手机验证或实名认证"]);
 }
-//发布广告
-$stmt=$conn->prepare("insert into ads(vid,nick,flag,coin,price,method,minNum,maxNum,remake,time) values(?,?,?,?,?,?,?,?,?,?)");
+//余额是否足够
+$stmt=$conn->prepare("select btcAddr,btcLock from user_wallets where vid=?");
+$stmt->bind_param("i",$vid);
+$stmt->execute();
+$result=$stmt->get_result();
+$wallet=$result->fetch_all(MYSQLI_ASSOC)[0];
+$stmt->close();
+//btc
+$btc=new btc();
+$btcNum=$btc->checkAddr($wallet["btcAddr"]);
+$btcLock=$wallet["btcLock"];
+//核对账户
+if($btcLock<0||$btcLock>$btcNum){
+    die_json(["msg"=>"账户异常"]);
+}
+if($num>$btcNum-$btcLock){
+    die_json(["msg"=>"您的可用货币不足"]);
+}
+//挂单
+$stmt=$conn->prepare("insert into sells(vid,nick,coin,price,pay_method,num,remake,time) values(?,?,?,?,?,?,?,?)");
 $time=(new DateTime())->format("Y-m-d H:i:s");
-$stmt->bind_param("isisdsddss",$vid,$nick,$flag,$coin,$price,$method,$minNum,$maxNum,$remake,$time);
+$stmt->bind_param("issdsdss",$vid,$nick,$coin,$price,$pay_method,$num,$remake,$time);
+$stmt->execute();
+$stmt->close();
+//锁定账户
+$stmt=$conn->prepare("update user_wallets set btcLock=btcLock+? where vid=?");
+$stmt->bind_param("di",$num,$vid);
 $stmt->execute();
 $stmt->close();
 //

@@ -51,7 +51,7 @@
     <body>
     <?php include("../../../layout/top.php") ?>
     <div class="layout">
-        <div class="main">
+        <div class="main u">
             <?php include("../../left/left.php") ?>
             <div class="right">
                 <div class="nav">
@@ -81,7 +81,7 @@
                     </div>
                     <div class="input-group">
                         <label for="coin">虚拟货币：</label>
-                        <input type="text" class="opt" placeholder="货币简称,如BTC" id="coin" value="<?php echo $ad["coin"] ?>">
+                        <input type="text" class="opt" id="coin" value="<?php echo $ad["coin"] ?>">
                         <a href="javascript:void(0);" class="opt-btn">
                             <div class="select">
                                 <div class="option">BTC</div>
@@ -91,7 +91,7 @@
                                 <div class="option">ETC</div>
                             </div>
                         </a>
-                        <span class="info">选择货币类型</span>
+                        <span class="info">选择货币类型，货币简称(如BTC)，2-15个字符不包含空格</span>
                     </div>
                     <div class="input-group">
                         <label for="price">价格：</label>
@@ -111,7 +111,7 @@
                     </div>
                     <div class="input-group">
                         <label for="method">交易方式：</label>
-                        <input type="text" class="opt" placeholder="不超过6个字符" id="method" value="<?php echo $ad["method"] ?>">
+                        <input type="text" class="opt" id="method" value="<?php echo $ad["method"] ?>">
                         <a href="javascript:void(0);" class="opt-btn">
                             <div class="select">
                                 <div class="option">当面交易</div>
@@ -120,12 +120,12 @@
                                 <div class="option">微信交易</div>
                             </div>
                         </a>
-                        <span class="info">您期望的交易方式</span>
+                        <span class="info">您期望的交易方式，2-15个字符不包含空格</span>
                     </div>
                     <div class="input-group">
                         <label for="remake">备注：</label>
-                        <textarea id="remake" placeholder="不超过100个字符"><?php echo $ad["remake"] ?></textarea>
-                        <span class="info">为该条广告添加备注信息</span>
+                        <textarea id="remake"><?php echo $ad["remake"] ?></textarea>
+                        <span class="info">为该条广告添加备注信息，不超过100个字符</span>
                     </div>
                     <div class="f1">
                         <?php if(!$info["phone"]){ ?>

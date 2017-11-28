@@ -33,6 +33,7 @@
         <div class="right">
             <div class="head">
                 <a href="/web/userhome/iframe/sell/u1.php">出售虚拟货币</a>
+                <a href="/web/userhome/iframe/sell/u1.php" class="info">交易记录></a>
             </div>
             <div class="s1">
                 <table>
@@ -56,25 +57,12 @@
                                 <td><?php echo $v["price"] ?></td>
                                 <td><?php echo $v["pay_method"] ?></td>
                                 <td><?php echo $v["num"] ?></td>
+                                <td><?php echo $v["state"]?"交易中":"正常挂单" ?></td>
                                 <td>
-                                    <?php
-                                        switch($v["state"]){
-                                            case 0: echo "正常挂单"; break;
-                                            case 1: echo "买家已接单"; break;
-                                            case 2: echo "等待买家付款"; break;
-                                            case 3: echo "等待卖家发货"; break;
-                                            case 4: echo "等待买家发货"; break;
-                                            default:break;
-                                        }
-                                    ?>
-                                </td>
-                                <td>
-                                    <?php if($v["state"]<=0){ ?>
-                                        <a href="/web/userhome/iframe/sell/u1.php?id=<?php echo $v["id"] ?>" title="设置" class="edit"></a>
-                                        <a href="javascript:void(0);" title="删除" class="del" onclick="remove('<?php echo $v["id"] ?>')"></a>
-                                    <?php }else if($v["state"]<=2){ ?>
-                                        <a href="javascript:void(0);" title="取消交易" class="del" onclick="remove('<?php echo $v["id"] ?>')"></a>
-                                        <a href="javascript:void(0);" title="拉黑" class="del" onclick="remove('<?php echo $v["id"] ?>')"></a>
+                                    <?php if($v["state"]==0){ ?>
+                                        <a href="javascript:void(0);" title="撤销" class="del" onclick="remove('<?php echo $v["id"] ?>')"></a>
+                                    <?php }else{ ?>
+                                        <a class="lock"></a>
                                     <?php } ?>
                                 </td>
                             </tr>
@@ -96,5 +84,27 @@
     <?php include("../../../layout/footer.php") ?>
 </div>
 <script>left.activeItem("sell");</script>
+<script>
+    var remove=function(id){
+        if(!confirm("该操作不可恢复，确定要删除吗？")){
+            return 0;
+        }
+        ajaxForm.action(null,{
+            type:"post",
+            url:"/action/sell/remove.php",
+            data:{id:id},
+            success:function(data){
+                if(data.ok){
+                    location.reload();
+                }else if(data.msg){
+                    alert(data.msg);
+                }
+            },
+            error:function(){
+                alert("服务器错误");
+            }
+        });
+    };
+</script>
 </body>
 </html>

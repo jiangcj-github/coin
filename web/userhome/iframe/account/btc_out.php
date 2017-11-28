@@ -22,7 +22,7 @@ $conn->set_charset("utf8");
 <body>
 <?php include("../../../layout/top.php") ?>
 <div class="layout">
-    <div class="main">
+    <div class="main u">
         <?php include("../../left/left.php") ?>
         <div class="right">
             <div class="nav">

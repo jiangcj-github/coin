@@ -51,9 +51,9 @@ u1.add=function(){
     var _this=this;
     var flag=_this.inputs.flag.find(".on").data("val");
     var coin=_this.inputs.coin.val();
-    var price=_this.inputs.price.val();
-    var minNum=_this.inputs.minNum.val();
-    var maxNum=_this.inputs.maxNum.val();
+    var price=parseFloat(_this.inputs.price.val());
+    var minNum=parseFloat(_this.inputs.minNum.val());
+    var maxNum=parseFloat(_this.inputs.maxNum.val());
     var method=_this.inputs.method.val();
     var remake=_this.inputs.remake.val();
     if(flag!="0"&&flag!="1"){
@@ -64,19 +64,19 @@ u1.add=function(){
         _this.log("货币类型不正确");
         return;
     }
-    if(!price||isNaN(price)){
+    if(isNaN(price)||price<=0){
         _this.log("价格不正确");
         return;
     }
-    if(!minNum||isNaN(minNum)){
+    if(isNaN(minNum)||minNum<0){
         _this.log("最小交易量不正确");
         return;
     }
-    if(!maxNum||isNaN(maxNum)){
+    if(isNaN(maxNum)||maxNum<minNum||maxNum<=0){
         _this.log("最大交易量不正确");
         return;
     }
-    if(!/^\S{2,6}$/.test(method)){
+    if(!/^\S{2,15}$/.test(method)){
         _this.log("交易方式不正确");
         return;
     }
@@ -105,9 +105,9 @@ u1.modify=function(){
     var id=aid;
     var flag=_this.inputs.flag.find(".on").data("val");
     var coin=_this.inputs.coin.val();
-    var price=_this.inputs.price.val();
-    var minNum=_this.inputs.minNum.val();
-    var maxNum=_this.inputs.maxNum.val();
+    var price=parseFloat(_this.inputs.price.val());
+    var minNum=parseFloat(_this.inputs.minNum.val());
+    var maxNum=parseFloat(_this.inputs.maxNum.val());
     var method=_this.inputs.method.val();
     var remake=_this.inputs.remake.val();
     if(flag!="0"&&flag!="1"){
@@ -118,15 +118,15 @@ u1.modify=function(){
         _this.log("货币类型不正确");
         return;
     }
-    if(!price||isNaN(price)){
+    if(isNaN(price)||price<=0){
         _this.log("价格不正确");
         return;
     }
-    if(!minNum||isNaN(minNum)){
+    if(isNaN(minNum)||minNum<0){
         _this.log("最小交易量不正确");
         return;
     }
-    if(!maxNum||isNaN(maxNum)){
+    if(isNaN(maxNum)||maxNum<minNum||maxNum<=0){
         _this.log("最大交易量不正确");
         return;
     }

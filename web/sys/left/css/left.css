@@ -1,5 +1,5 @@
 .main .left{width:200px;float:left;font-size:14px;}
-.left .ul{border-radius:3px;border:1px solid #e4e4e4;width:180px;}
+.left .ul{border-radius:3px;border:1px solid #e4e4e4;width:200px;}
 
 .left .ul a:first-child{border-radius:3px 3px 0 0;}
 .left .ul a:last-child{border-radius:0 0 3px 3px;}

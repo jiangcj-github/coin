@@ -157,13 +157,7 @@ if ($result){
 
 //sells
 /*
- * state取值-成功交易【0-挂单,1-买家已接单,2-等待买家付款,3-等待卖家发货,4-等待收货,5-交易完成】
- * state取值-退款【0-挂单,1-买家已接单,2-等待买家付款,3-等待卖家发货,6-等待卖家退款,7-交易取消】
- * state取值-纠纷1【0-挂单,1-买家已接单,2-等待买家付款,8-交易纠纷】
- * state取值-纠纷2【0-挂单,1-买家已接单,2-等待买家付款,3-等待卖家发货,8-交易纠纷】
- * state取值-纠纷3【0-挂单,1-买家已接单,2-等待买家付款,3-等待卖家发货,6-等待卖家退款,8-交易纠纷】
- * state取值-纠纷处理1【8-交易纠纷,...,5-交易完成】
- * state取值-纠纷处理2【8-交易纠纷,...,7-交易取消】
+ * state取值-成功交易【0-挂单,1-交易中】
  */
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS  sells(
@@ -186,28 +180,11 @@ if ($result){
     echo "sells created failed"."<br>";
 }
 
-//交易过程1
-/*
- * 0-卖家挂单
- * 1-买家接单
- * 2-卖家接单，提供付款地址    --写入交易记录
- * 3-买家确认付款         --30分钟未标记，自动取消交易
- * 4-卖家确认收款         --确认则继续，失败则进入交易过程2
- * 5-卖家确认发货
- * 6-买家确认收货
- * 7-买家评价
- */
-
 //交易记录
 //从买家付款开始写入交易记录
 /*
- * state取值-成功交易【0-卖家接单,2-等待买家付款,3-等待卖家发货,4-等待收货,5-交易完成】
- * state取值-退款【0-挂单,1-买家已接单,2-等待买家付款,3-等待卖家发货,6-等待卖家退款,7-交易取消】
- * state取值-纠纷1【0-挂单,1-买家已接单,2-等待买家付款,8-交易纠纷】
- * state取值-纠纷2【0-挂单,1-买家已接单,2-等待买家付款,3-等待卖家发货,8-交易纠纷】
- * state取值-纠纷3【0-挂单,1-买家已接单,2-等待买家付款,3-等待卖家发货,6-等待卖家退款,8-交易纠纷】
- * state取值-纠纷处理1【8-交易纠纷,...,5-交易完成】
- * state取值-纠纷处理2【8-交易纠纷,...,7-交易取消】
+ * step取值【0-买家付款,1-卖家收款,2-买家申诉,3-已发货】
+ * state取值【0-交易开始,1-交易挂起,2-交易成功,3-交易失败】
  */
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS  txs(
@@ -219,9 +196,11 @@ $result=$conn->query("
         pay_method VARCHAR (255) NOT NULL,
         pay_info VARCHAR (255) NOT NULL,
         num double NOT NULL,
-        time VARCHAR (255) NOT NULL,
-        info VARCHAR (255),
-        state VARCHAR (255) NOT NULL,
+        start_time VARCHAR (255) NOT NULL,
+        end_time VARCHAR (255) NOT NULL,
+        remake VARCHAR (255),
+        step int(32) NOT NULL DEFAULT 0,
+        state int(32) NOT NULL DEFAULT 0,
         PRIMARY KEY(id)
     )ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8;                                                                                                                                         
 ");
@@ -231,35 +210,20 @@ if ($result){
     echo "txs created failed"."<br>";
 }
 
-//纠纷记录
+//违规记录
 $result=$conn->query("
-    CREATE TABLE IF NOT EXISTS  issues(
-        id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
+    CREATE TABLE IF NOT EXISTS  user_tx(
         vid int(32) NOT NULL,
-        num int(32) NOT NULL DEFAULT 0,
-        PRIMARY KEY(id)
+        wg int(32) NOT NULL DEFAULT 0,
+        zan int(32) NOT NULL DEFAULT 0,
+        lahei int(32) NOT NULL DEFAULT 0,
+        PRIMARY KEY(vid)
     )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;                                                                                                                                         
 ");
 if ($result){
-    echo "issues created"."<br>";
+    echo "user_tx created"."<br>";
 }else{
-    echo "issues created failed"."<br>";
-}
-
-//用户评价
-//每次结束一个交易都会产生一次评价
-$result=$conn->query("
-    CREATE TABLE IF NOT EXISTS  issues(
-        id int(32) UNIQUE NOT NULL AUTO_INCREMENT,
-        vid int(32) NOT NULL,
-        num int(32) NOT NULL DEFAULT 0,
-        PRIMARY KEY(id)
-    )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;                                                                                                                                         
-");
-if ($result){
-    echo "issues created"."<br>";
-}else{
-    echo "issues created failed"."<br>";
+    echo "user_tx created failed"."<br>";
 }
 
 

@@ -13,7 +13,7 @@
             <a href="#">卖出</a>
         </div>
         <div class="rmenu">
-            <a href="/web/sys/notice/notice.php"><i class="icon notice"></i>公告</a>
+            <a href="/web/sys/notice/notice.php"><i class="icon notice"></i>系统</a>
         </div>
         <div class="pinfo">
             <?php if(!$isLogin){ ?>

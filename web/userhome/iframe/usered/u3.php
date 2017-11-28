@@ -27,7 +27,7 @@ $stmt->close();
 <body>
 <?php include("../../../layout/top.php") ?>
 <div class="layout">
-    <div class="main">
+    <div class="main u">
         <?php include("../../left/left.php") ?>
         <div class="right">
             <!--手机验证-->

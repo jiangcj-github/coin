@@ -7,53 +7,19 @@ $vid=$_SESSION["login"]["id"];
 //数据库操作
 $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
 $conn->set_charset("utf8");
-//修改
-$isModify=false;
-$sell=["id"=>0,"coin"=>"BTC","price"=>"","pay_method"=>"","num"=>0,"remake"=>""];
-if(isset($_REQUEST["id"])){
-    $id=$_REQUEST["id"];
-    //查询sells
-    $stmt=$conn->prepare("select id,coin,price,pay_method,num,remake from sells where id=?");
-    $stmt->bind_param("i",$id);
-    $stmt->execute();
-    $result=$stmt->get_result();
-    $data=$result->fetch_all(MYSQLI_ASSOC);
-    $stmt->close();
-    if(count($data)>0){
-        $sell=$data[0];
-        $isModify=true;
-    }
-}
 //查询infos
-$info=["phone"=>true,"idcard"=>true,"fullname"=>true];
-if(!$isModify){
-    $stmt=$conn->prepare("select phone,idcard,fullname from user_infos where vid=?");
-    $stmt->bind_param("i",$vid);
-    $stmt->execute();
-    $result=$stmt->get_result();
-    $info=$result->fetch_all(MYSQLI_ASSOC)[0];
-    $stmt->close();
-}
-//查询账户信息
-$stmt=$conn->prepare("select * from user_wallets where vid=?");
+$stmt=$conn->prepare("select phone,idcard,fullname from user_infos where vid=?");
 $stmt->bind_param("i",$vid);
 $stmt->execute();
 $result=$stmt->get_result();
-$wallet=$result->fetch_all(MYSQLI_ASSOC)[0];
+$info=$result->fetch_all(MYSQLI_ASSOC)[0];
 $stmt->close();
-//
-$btc=new btc();
-$btcNum=$btc->checkAddr($wallet["btcAddr"]);
-//页面参数
-$page=[];
-$page["title"]=$isModify?"设置出售信息":"出售虚拟货币";
-$page["submitBtn"]=$isModify?"设置":"出售";
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $page["title"] ?>-淘币客</title>
+    <title>出售虚拟货币-淘币客</title>
     <link href="/web/layout/img/logo.png" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="/web/layout/css/layout.css">
     <link rel="stylesheet" type="text/css" href="/web/userhome/left/css/left.css">
@@ -62,16 +28,16 @@ $page["submitBtn"]=$isModify?"设置":"出售";
 <body>
 <?php include("../../../layout/top.php") ?>
 <div class="layout">
-    <div class="main">
+    <div class="main u">
         <?php include("../../left/left.php") ?>
         <div class="right">
             <div class="nav">
-                <div class="h3"><?php echo $page["title"] ?></div>
+                <div class="h3">出售虚拟货币</div>
                 <div class="f1 img-group x16">
                     <img src="/web/userhome/left/img/sell.svg">
                     <a href="/web/userhome/iframe/sell/sell.php">我的卖单</a>
                     <span style="margin:0 5px;">&gt;</span>
-                    <span style="color:#999;"><?php echo $page["title"] ?></span>
+                    <span style="color:#999;">出售虚拟货币</span>
                 </div>
             </div>
             <div class="s3">
@@ -80,13 +46,13 @@ $page["submitBtn"]=$isModify?"设置":"出售";
                     <div class="ct">
                         <div class="ri coin BTC"><span id="wd-coin">BTC</span></div>
                         <div class="ri2">
-                            <div class="unit"><div class="up">可用</div><span id="wd-availNum" class="down"><?php echo $btcNum-$wallet["btcLock"]; ?></span></div>
-                            <div class="unit"><div class="up">数量</div><span id="wd-num" class="down"><?php echo $btcNum; ?></span></div>
-                            <div class="unit"><div class="up">锁定</div><span id="wd-lockNum" class="down"><?php echo $wallet["btcLock"]; ?> </span></div>
+                            <div class="unit"><div class="up">可用</div><span id="wd-availNum" class="down">0</span></div>
+                            <div class="unit"><div class="up">数量</div><span id="wd-num" class="down">0</span></div>
+                            <div class="unit"><div class="up">锁定</div><span id="wd-lockNum" class="down">0</span></div>
                         </div>
-                        <div class="ri"><label>当前价格：</label><span id="wd-15m-price"></span>&nbsp;<span>CNY</span></div>
-                        <div class="ri"><label>卖出价格：</label><span id="wd-sell-price"></span>&nbsp;<span>CNY</span></div>
-                        <div class="ri"><label>购买价格：</label><span id="wd-buy-price"></span>&nbsp;<span>CNY</span></div>
+                        <div class="ri"><label>当前价格：</label><span id="wd-15m-price">0</span>&nbsp<span>CNY</span></div>
+                        <div class="ri"><label>卖出价格：</label><span id="wd-sell-price">0</span>&nbsp;<span>CNY</span></div>
+                        <div class="ri"><label>购买价格：</label><span id="wd-buy-price">0</span>&nbsp;<span>CNY</span></div>
                     </div>
                 </div>
                 <div class="input-group">
@@ -94,47 +60,45 @@ $page["submitBtn"]=$isModify?"设置":"出售";
                     <select id="coin">
                         <option value="BTC" selected="selected">BTC</option>
                     </select>
-                    <script>$("#coin").val("<?php echo $sell["coin"]; ?>");</script>
                     <span class="info">选择货币类型</span>
                 </div>
                 <div class="input-group">
                     <label for="price">价格：</label>
-                    <input type="text" id="price" class="addon" value="<?php echo $sell["price"]; ?>">
+                    <input type="text" id="price" class="addon">
                     <span class="input-addon cny"></span>
                     <span class="info">您的出售价格，单位(元)</span>
                 </div>
                 <div class="input-group">
                     <label for="num">出售数量：</label>
-                    <input type="text" id="num" value="<?php echo $sell["num"]; ?>">
+                    <input type="text" id="num">
                     <span class="info">出售的货币数量</span>
                 </div>
                 <div class="input-group">
                     <label for="pay_method">付款方式：</label>
-                    <input type="text" class="opt" id="pay_method" value="<?php echo $sell["pay_method"] ?>">
+                    <input type="text" class="opt" id="pay_method">
                     <a href="javascript:void(0);" class="opt-btn">
                         <div class="select">
-                            <div class="option">BTC</div>
-                            <div class="option">BCC</div>
-                            <div class="option">LTC</div>
-                            <div class="option">ETH</div>
-                            <div class="option">ETC</div>
+                            <div class="option">微信转账</div>
+                            <div class="option">支付宝转账</div>
+                            <div class="option">银行卡转账</div>
                         </div>
                     </a>
-                    <span class="info">您预期的付款方式</span>
+                    <span class="info">您预期的付款方式，2-15个字符不包含空格</span>
                 </div>
                 <div class="input-group">
                     <label for="remake">备注：</label>
-                    <textarea id="remake" placeholder="添加备注信息，不超过100个字符"><?php echo $sell["remake"]; ?></textarea>
+                    <textarea id="remake" placeholder=""></textarea>
+                    <span class="info">添加备注信息，不超过100个字符</span>
                 </div>
                 <div class="f1">
                     <?php if(!$info["phone"]){ ?>
-                        <button class="btn" id="submit" disabled="disabled"><?php echo $page["submitBtn"] ?></button>
+                        <button class="btn" id="submit" disabled="disabled">挂单</button>
                         <span class="info">您还未验证手机，不允许出售货币。</span>
                     <?php }else if(!$info["idcard"]||!$info["fullname"]){ ?>
-                        <button class="btn" id="submit" disabled="disabled"><?php echo $page["submitBtn"] ?></button>
+                        <button class="btn" id="submit" disabled="disabled">挂单</button>
                         <span class="info">您还未实名认证，不允许出售货币。</span>
                     <?php }else{ ?>
-                        <button class="btn" id="submit"><?php echo $page["submitBtn"] ?></button>
+                        <button class="btn" id="submit">挂单</button>
                     <?php } ?>
                 </div>
             </div>
@@ -144,13 +108,6 @@ $page["submitBtn"]=$isModify?"设置":"出售";
     <?php include("../../../layout/footer.php") ?>
 </div>
 <script>left.activeItem("sell");</script>
-<script>
-    var isModify=<?php echo $isModify?"true":"false" ?>;
-    var sid=<?php echo $sell["id"] ?>;
-    var wallet={
-        btc:<?php echo $btcNum; ?>
-    };
-</script>
 <script src="/web/userhome/iframe/sell/js/u1.js"></script>
 </body>
 </html>
