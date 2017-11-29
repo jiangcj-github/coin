@@ -62,7 +62,7 @@ $conn->set_charset("utf8");
                 </div>
                 <div class="input-group">
                     <label for="pass">交易密码：</label>
-                    <input type="password" id="pass">
+                    <input type="text" id="pass" class="password">
                     <span class="info">输入您的资产密码</span>
                 </div>
                 <div class="input-group">
@@ -91,5 +91,10 @@ $conn->set_charset("utf8");
     <?php include("../../../layout/footer.php") ?>
 </div>
 <script>left.activeItem("account");</script>
+<script>
+    $(".password").focus(function(){
+        $(this).prop("type","password");
+    });
+</script>
 </body>
 </html>

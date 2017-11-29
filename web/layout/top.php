@@ -9,8 +9,8 @@
             <span class="h1">淘币客</span>
         </a>
         <div class="menu">
-            <a href="#">买入</a>
-            <a href="#">卖出</a>
+            <a href="/web/userhome/iframe/ad/u1.php">发布广告</a>
+            <a href="/web/userhome/iframe/sell/u1_btc.php">出售货币</a>
         </div>
         <div class="rmenu">
             <a href="/web/sys/notice/notice.php"><i class="icon notice"></i>系统</a>
@@ -32,6 +32,7 @@
                     <i class="icon user"></i><?php echo $_SESSION["login"]["nick"] ?><span class="icon-down"></span>
                     <div class="panel c2">
                         <a href="/web/userhome/iframe/usered/usered.php" class="c2-li"><i class="icon userhome"></i>用户中心</a>
+                        <a href="/web/userhome/iframe/account/account.php" class="c2-li"><i class="icon account"></i>我的账户</a>
                         <a href="/web/login/signout.php" class="c2-li"><i class="icon logout"></i>注销</a>
                     </div>
                 </div>

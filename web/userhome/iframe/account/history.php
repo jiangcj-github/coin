@@ -31,7 +31,7 @@
                         <div class="value">数量</div>
                         <div class="hash">Hash值</div>
                     </div>
-                    <div class="loading">数据加载中...</div>
+                    <div class="loading"></div>
                 </div>
             </div>
         </div>

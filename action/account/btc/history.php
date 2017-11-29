@@ -1,6 +1,6 @@
 <?php
-require_once("../../global/config.php");
-require_once("../../global/wallet/btc.php");
+require_once("../../../global/config.php");
+require_once("../../../global/wallet/btc.php");
 
 //登录检查
 session_start();
@@ -8,22 +8,23 @@ if(!isset($_SESSION["login"])){
     die_json(["msg"=>"用户未登录"]);
 }
 $vid=$_SESSION["login"]["id"];
-
 //数据库操作
 $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
 $conn->set_charset("utf8");
-//获取所有钱包地址
-$stmt=$conn->prepare("select btcAddr from user_wallets where vid=?");
+//获取钱包地址
+$stmt=$conn->prepare("select btcAddr from user_wallets_btc where vid=?");
 $stmt->bind_param("i",$vid);
 $stmt->execute();
 $resutl=$stmt->get_result();
-$data=$resutl->fetch_all(MYSQLI_ASSOC);
+$wallet=$resutl->fetch_all(MYSQLI_ASSOC)[0];
 $stmt->close();
 //
 $history=[];
 //btc交易记录
-$btcAddr=$data[0]["btcAddr"];
-$bd=json_decode(file_get_contents("https://blockchain.info/rawaddr/$btcAddr"));
+$btcAddr=$wallet["btcAddr"];
+$req=file_get_contents("https://blockchain.info/rawaddr/$btcAddr");
+if(!$req) die(["msg"=>"查询失败"]);
+$bd=json_decode($req);
 foreach($bd->txs as $v){
     foreach($v->inputs as $v1){
         if($v1->prev_out->addr==$btcAddr){

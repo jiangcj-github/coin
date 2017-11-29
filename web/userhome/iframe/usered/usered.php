@@ -108,13 +108,8 @@
                             <a href="/web/userhome/iframe/usered/u2.php">修改</a>
                         </div>
                         <div class="li">
-                            邮箱验证
-                            <span class="f1">验证您的邮箱，提高信息完善度。</span>
-                            <span class="f2">已验证</span>
-                        </div>
-                        <div class="li">
                             手机验证
-                            <span class="f1">验证您的手机号码，提高信息完善度。</span>
+                            <span class="f1">验证您的手机号码，提高账户安全性。</span>
                             <?php if($user_infos["phone"]==null){ ?>
                                 <a href="/web/userhome/iframe/usered/u3.php">去验证</a>
                             <?php }else{ ?>
@@ -123,11 +118,20 @@
                         </div>
                         <div class="li">
                             实名认证
-                            <span class="f1">验证您的身份信息，进行实名认证会提高您的信誉等级。</span>
+                            <span class="f1">验证您的身份信息，提高信息完善度。</span>
                             <?php if($user_infos["idcard"]==null){ ?>
                                 <a href="/web/userhome/iframe/usered/u4.php">立即认证</a>
                             <?php }else{ ?>
                                 <span class="f2">已认证</span>
+                            <?php } ?>
+                        </div>
+                        <div class="li">
+                            资金密码
+                            <span class="f1">为了您的账户安全，请设置资金密码。</span>
+                            <?php if($user_infos["ac_pass"]==null){ ?>
+                                <a href="/web/userhome/iframe/usered/u5.php">立即设置</a>
+                            <?php }else{ ?>
+                                <a href="/web/userhome/iframe/usered/u5_m.php">修改</a>
                             <?php } ?>
                         </div>
                     </div>

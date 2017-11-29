@@ -49,19 +49,28 @@ $remake=$_REQUEST["remake"];
 if(mb_strlen($remake)>100){
     die_json(["msg"=>"备注不超过100个字符"]);
 }
+//ac_pass
+if(!isset($_REQUEST["ac_pass"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$ac_pass=$_REQUEST["ac_pass"];
 
 //数据库操作
 $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
 $conn->set_charset("utf8");
 //检查是否实名认证，及手机验证
-$stmt=$conn->prepare("select vid from user_infos where phone is not null and idcard is not null and fullname is not null and vid=?");
+$stmt=$conn->prepare("select phone,idcard,fullname,ac_pass from user_infos where vid=?");
 $stmt->bind_param("i",$vid);
 $stmt->execute();
-$resutl=$stmt->get_result();
-$data=$resutl->fetch_all(MYSQLI_ASSOC);
+$result=$stmt->get_result();
+$info=$result->fetch_all(MYSQLI_ASSOC)[0];
 $stmt->close();
-if(count($data)<=0){
-    die_json(["msg"=>"未完成手机验证或实名认证"]);
+if(!$info["phone"]){
+    die_json(["msg"=>"手机未验证"]);
+}else if(!$info["idcard"]||!$info["fullname"]){
+    die_json(["msg"=>"未实名认证"]);
+}else if(!$info["ac_pass"]){
+    die_json(["msg"=>"未设置交易密码"]);
 }
 //余额是否足够
 $stmt=$conn->prepare("select btcAddr,btcLock from user_wallets where vid=?");

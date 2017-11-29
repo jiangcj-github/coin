@@ -53,12 +53,13 @@ a{text-decoration:none;color:#444;}
 .header .drop .c1 .c1-li .time{display:block;text-align:right;line-height:16px;font-size:10px;color:#666;}
 .header .drop .c1 .c1-li:hover{background:#f4f4f4;transition:background 0.3s;}
 .header .drop .c1 .c1-li:last-child{border-radius:0 0 3px 3px;}
-.header .drop .c2{width:140px;padding:2px 0;}
+.header .drop .c2{width:160px;padding:2px 0;}
 .header .drop .c2:before{border-bottom-color:#fff !important;}
-.header .drop .c2 .c2-li{display:flex;align-items:center;height:34px;padding:0 10px;border-bottom:1px solid #f6f6f6;color:#444;}
+.header .drop .c2 .c2-li{display:flex;align-items:center;height:36px;padding:0 10px;border-bottom:1px solid #f6f6f6;color:#444;}
 .header .drop .c2 .c2-li:hover{background:#f4f4f4;transition:background 0.3s;}
 .header .drop .c2 .c2-li .icon{background-size:16px 16px;height:30px;}
 .header .drop .c2 .userhome{background-image:url(/web/layout/img/userhome.svg);}
+.header .drop .c2 .account{background-image:url(/web/layout/img/account.svg);}
 .header .drop .c2 .logout{background-image:url(/web/layout/img/logout.svg);}
 
 /*footer.php*/

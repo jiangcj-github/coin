@@ -55,15 +55,18 @@ u1.drawWidgesBtc=function(){
     }else{
         ajaxForm.action(null,{
             type:"get",
-            url:"https://blockchain.info/ticker",
+            url:"/action/account/btc/ticker.php",
             success:function(data){
-                _this.buffer.btc.flag2=1;
-                _this.buffer.btc.price=data["CNY"]["15m"];
-                _this.buffer.btc.sellPrice=data["CNY"]["sell"];
-                _this.buffer.btc.buyPrice=data["CNY"]["buy"];
-                _this.widges.cur_price.text(_this.buffer.btc.price);
-                _this.widges.sell_price.text(_this.buffer.btc.sellPrice);
-                _this.widges.buy_price.text(_this.buffer.btc.buyPrice);
+                if(data.ok){
+                    data=data.data;
+                    _this.buffer.btc.flag2=1;
+                    _this.buffer.btc.price=data["CNY"]["15m"];
+                    _this.buffer.btc.sellPrice=data["CNY"]["sell"];
+                    _this.buffer.btc.buyPrice=data["CNY"]["buy"];
+                    _this.widges.cur_price.text(_this.buffer.btc.price);
+                    _this.widges.sell_price.text(_this.buffer.btc.sellPrice);
+                    _this.widges.buy_price.text(_this.buffer.btc.buyPrice);
+                }
             }
         });
     }
@@ -75,7 +78,7 @@ u1.drawWidgesBtc=function(){
     }else{
         ajaxForm.action(null,{
             type:"get",
-            url:"/action/account/checkWallet.php",
+            url:"/action/account/btc/check.php",
             success:function(data){
                 if(data.ok){
                     _this.buffer.btc.flag1=1;

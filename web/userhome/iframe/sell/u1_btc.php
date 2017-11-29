@@ -8,7 +8,7 @@ $vid=$_SESSION["login"]["id"];
 $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
 $conn->set_charset("utf8");
 //查询infos
-$stmt=$conn->prepare("select phone,idcard,fullname from user_infos where vid=?");
+$stmt=$conn->prepare("select phone,idcard,fullname,ac_pass from user_infos where vid=?");
 $stmt->bind_param("i",$vid);
 $stmt->execute();
 $result=$stmt->get_result();
@@ -91,8 +91,8 @@ $stmt->close();
                     <span class="info">添加备注信息，不超过100个字符</span>
                 </div>
                 <div class="input-group">
-                    <label for="ac_pass">交易密码：</label>
-                    <input type="password" id="ac_pass">
+                    <label for="ac_pass">资金密码：</label>
+                    <input type="text" id="ac_pass" autocomplete="new" class="password">
                     <span class="info">为了您的账户安全，请输入交易密码</span>
                 </div>
                 <div class="f1">
@@ -102,6 +102,9 @@ $stmt->close();
                     <?php }else if(!$info["idcard"]||!$info["fullname"]){ ?>
                         <button class="btn" id="submit" disabled="disabled">挂单</button>
                         <span class="info">您还未实名认证，不允许出售货币。</span>
+                    <?php }else if(!$info["ac_pass"]){ ?>
+                        <button class="btn" id="submit" disabled="disabled">挂单</button>
+                        <span class="info">您还未设置资金密码，请先设置资金密码。</span>
                     <?php }else{ ?>
                         <button class="btn" id="submit">挂单</button>
                     <?php } ?>
@@ -113,7 +116,12 @@ $stmt->close();
     <?php include("../../../layout/footer.php") ?>
 </div>
 <script>left.activeItem("sell");</script>
+<script>
+    $(".password").focus(function(){
+        $(this).prop("type","password");
+    });
+</script>
 <script src="/web/login/js/md5.min.js"></script>
-<script src="/web/userhome/iframe/sell/js/u1.js"></script>
+<script src="/web/userhome/iframe/sell/js/u1_btc.js"></script>
 </body>
 </html>

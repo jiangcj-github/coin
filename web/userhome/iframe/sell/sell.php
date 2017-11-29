@@ -32,8 +32,8 @@
         <?php include("../../left/left.php") ?>
         <div class="right">
             <div class="head">
-                <a href="/web/userhome/iframe/sell/u1.php">出售虚拟货币</a>
-                <a href="/web/userhome/iframe/sell/u1.php" class="info">交易记录></a>
+                <a href="/web/userhome/iframe/sell/u1_btc.php">出售虚拟货币</a>
+                <a href="/web/userhome/iframe/sell/u1_btc.php" class="info">交易记录></a>
             </div>
             <div class="s1">
                 <table>

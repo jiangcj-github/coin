@@ -40,6 +40,7 @@ $result=$conn->query("
         viptime VARCHAR (255),
         idcard VARCHAR (255),
         fullname VARCHAR (255),
+        ac_pass VARCHAR (255),
         PRIMARY KEY(vid)
     )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ");
@@ -49,9 +50,9 @@ if ($result){
     echo "user_infos created failed"."<br>";
 }
 
-//user_wallets
+//user_wallets_btc
 $result=$conn->query("
-    CREATE TABLE IF NOT EXISTS user_wallets(
+    CREATE TABLE IF NOT EXISTS user_wallets_btc(
         vid int(32) UNIQUE NOT NULL,
         btcAddr VARCHAR(255) NOT NULL,
         btcLock double NOT NULL DEFAULT 0,
@@ -59,9 +60,9 @@ $result=$conn->query("
     )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ");
 if ($result){
-    echo "user_wallets created"."<br>";
+    echo "user_wallets_btc created"."<br>";
 }else{
-    echo "user_wallets created failed"."<br>";
+    echo "user_wallets_btc created failed"."<br>";
 }
 
 //checkCode_strict
