@@ -1,14 +1,3 @@
-<?php
-    require_once("../../../../global/config.php");
-    require_once("../../../../global/TimeUtil.php");
-    include("../../../../global/checkLogin.php");
-
-    $vid=$_SESSION["login"]["id"];
-    //数据库操作
-    $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
-    $conn->set_charset("utf8");
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,10 +31,10 @@
                     <tbody>
                         <tr>
                             <td><div class="img-g"><img src="/web/userhome/iframe/account/img/btc.png">BTC</div></td>
-                            <td>1HKdWCuKn9YPGXZFKevTTHojUFx8ztct5d</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td id="btcAddr"></td>
+                            <td id="btcNum"></td>
+                            <td id="btcLock"></td>
+                            <td id="btcAvail"></td>
                             <td>
                                 <a href="/web/userhome/iframe/account/btc_in.php">转入</a>
                                 <a href="/web/userhome/iframe/account/btc_out.php">转出</a>
@@ -62,5 +51,6 @@
     <?php include("../../../layout/footer.php") ?>
 </div>
 <script>left.activeItem("account");</script>
+<script src="/web/userhome/iframe/account/js/account.js"></script>
 </body>
 </html>

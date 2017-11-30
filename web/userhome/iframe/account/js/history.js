@@ -1,26 +1,8 @@
 var history={};
-history.lock=2;
+history.lock=1;
 history.buffer=[];
 history.init=function(){
     var _this=this;
-    ajaxForm.action(null,{
-        type:"get",
-        url:"/action/account/btc/history.php",
-        success:function(data){
-            if(data.ok){
-                _this.buffer=_this.buffer.concat(data.data);
-                _this.lock--;
-                if(!_this.lock) _this.draw();
-            }else if(data.msg){
-                _this.log(data.msg)
-            }else{
-                _this.log("服务器出错");
-            }
-        },
-        error:function(){
-            _this.log("请求超时，刷新页面重试");
-        }
-    });
     ajaxForm.action(null,{
         type:"get",
         url:"/action/account/btc/history.php",

@@ -85,5 +85,5 @@
 .s4>.li-head{display:flex;text-align:center;padding:5px 10px;line-height:24px;background:#f4f4f4;}
 .s4>.loading{height:200px;text-align:center;padding-top:120px;color:#999;
     background-image:url(/web/userhome/iframe/account/img/loading.gif);background-repeat:no-repeat;
-    background-position:center 50px;background-size:auto 60px;}
-.s4>.loading.fail{background-image:url(/web/userhome/iframe/account/img/load_fail.svg);}
+    background-position:center 50px;background-size:auto 40px;}
+.s4>.loading.fail{background-image:url(/web/userhome/iframe/account/img/load_fail.svg);background-size:auto 60px;}

@@ -20,7 +20,13 @@ $wallet=$result->fetch_all(MYSQLI_ASSOC)[0];
 $stmt->close();
 //btc
 $btc=new btc();
-$btcNum=$btc->checkAddr($wallet["btcAddr"]);
+$btcAddr=$wallet["btcAddr"];
+$btcNum=$btc->checkAddr($btcAddr);
 $btcLock=$wallet["btcLock"];
 //
-die_json(["ok"=>"ok","data"=>["btcNum"=>$btcNum,"btcLock"=>$btcLock,"btcAvail"=>$btcNum-$btcLock]]);
+die_json(["ok"=>"ok","data"=>[
+    "btcAddr"=>$btcAddr,
+    "btcNum"=>$btcNum,
+    "btcLock"=>$btcLock,
+    "btcAvail"=>$btcNum-$btcLock]
+]);
