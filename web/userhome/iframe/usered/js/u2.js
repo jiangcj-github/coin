@@ -37,9 +37,6 @@ u2.send=function(){
             }else if(data.msg){
                 _this.log(data.msg);
             }
-        },
-        error:function(){
-            _this.log("服务器出错");
         }
     });
 };

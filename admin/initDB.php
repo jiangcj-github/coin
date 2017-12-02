@@ -36,11 +36,11 @@ $result=$conn->query("
         qq VARCHAR (255),
         wx VARCHAR (255),
         phone VARCHAR (255),
-        vip int(32) NOT NULL DEFAULT 0,
-        viptime VARCHAR (255),
         idcard VARCHAR (255),
         fullname VARCHAR (255),
         ac_pass VARCHAR (255),
+        ispub int(32) NOT NULL DEFAULT 1,
+        ispub2 int(32) NOT NULL DEFAULT 0,
         PRIMARY KEY(vid)
     )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ");
@@ -54,7 +54,9 @@ if ($result){
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS user_wallets_btc(
         vid int(32) UNIQUE NOT NULL,
+        xpub VARCHAR(255) NOT NULL,
         btcAddr VARCHAR(255) NOT NULL,
+        btcNum double NOT NULL DEFAULT 0,
         btcLock double NOT NULL DEFAULT 0,
         PRIMARY KEY(vid)
     )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -65,7 +67,7 @@ if ($result){
     echo "user_wallets_btc created failed"."<br>";
 }
 
-//checkCode_strict
+//checkCode_strict 注册邮箱验证
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS checkCode_strict(
         email VARCHAR(255) NOT NULL,
@@ -79,7 +81,7 @@ if ($result){
     echo "checkCode_strict created failed"."<br>";
 }
 
-//checkCode_strict2
+//checkCode_strict2 验证手机
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS checkCode_strict2(
         vid int(32) NOT NULL,
@@ -92,6 +94,21 @@ if ($result){
     echo "checkCode_strict2 created"."<br>";
 }else{
     echo "checkCode_strict2 created failed"."<br>";
+}
+
+//checkCode_strict3 转出验证手机
+$result=$conn->query("
+    CREATE TABLE IF NOT EXISTS checkCode_strict3(
+        vid int(32) NOT NULL,
+        sendCode VARCHAR(255) NOT NULL,
+        num int(32) NOT NULL DEFAULT 0,
+        PRIMARY KEY(vid)
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+");
+if ($result){
+    echo "checkCode_strict3 created"."<br>";
+}else{
+    echo "checkCode_strict3 created failed"."<br>";
 }
 
 //ads

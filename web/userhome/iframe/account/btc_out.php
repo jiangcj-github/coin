@@ -1,14 +1,3 @@
-<?php
-require_once("../../../../global/config.php");
-require_once("../../../../global/TimeUtil.php");
-include("../../../../global/checkLogin.php");
-
-$vid=$_SESSION["login"]["id"];
-//数据库操作
-$conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
-$conn->set_charset("utf8");
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,20 +29,20 @@ $conn->set_charset("utf8");
                     <span class="coin">BTC</span>
                 </div>
                 <div class="f2">
-                    <span class="label">总共</span><span class="ct">0</span>
+                    <span class="label">总共</span><span class="ct" id="btcNum">0</span>
                 </div>
                 <div class="f2">
-                    <span class="label">锁定</span><span class="ct">0.5</span>
+                    <span class="label">锁定</span><span class="ct" id="btcLock">0</span>
                 </div>
                 <div class="f2">
-                    <span class="label">可用</span><span class="ct">0.6</span>
+                    <span class="label">可用</span><span class="ct" id="btcAvail">0</span>
                 </div>
             </div>
             <div class="s3">
                 <div class="input-group">
                     <label for="addr">转出至：</label>
                     <input type="text" id="addr" style="width:400px;">
-                    <span class="info">比特币转出地址</span>
+                    <span class="info">比特币转出地址，转出前请仔细确认地址是否正确</span>
                 </div>
                 <div class="input-group">
                     <label for="num">数量：</label>
@@ -61,30 +50,41 @@ $conn->set_charset("utf8");
                     <span class="info">转出数量</span>
                 </div>
                 <div class="input-group">
-                    <label for="pass">交易密码：</label>
-                    <input type="text" id="pass" class="password">
-                    <span class="info">输入您的资产密码</span>
+                    <label for="ac_pass">交易密码：</label>
+                    <input type="text" id="ac_pass" class="password">
+                    <span class="info">您设置的资产密码</span>
                 </div>
                 <div class="input-group">
                     <label for="check">手机验证码：</label>
-                    <input type="text" id="check"><a href="javascript:void(0);" class="addon">获取验证码</a>
+                    <input type="text" id="check"><button class="addon" id="checkBtn">获取验证码</button>
+                    <span class="info">发送后15分钟内有效，请尽快输入</span>
                 </div>
                 <div class="f1">
                     <label>
-                        <input type="checkbox">
+                        <input type="checkbox" id="protocol">
                         <span>我已仔细阅读并同意<a href="#">《转出协议》</a></span>
                     </label>
                 </div>
                 <div class="f2">
-                    <button id="submit">确认转出</button>
-                    <span class="info"></span>
+                    <?php if(!$_SESSION["login"]["phone"]){ ?>
+                        <button id="submit" disabled="disabled">确认转出</button>
+                        <span class="info">您未设置手机号码</span>
+                    <?php }else if(!$_SESSION["login"]["idcard"]||!$_SESSION["login"]["fullname"]){ ?>
+                        <button id="submit" disabled="disabled">确认转出</button>
+                        <span class="info">您未进行实名认证</span>
+                    <?php }else if(!$_SESSION["login"]["ac_pass"]){ ?>
+                        <button id="submit" disabled="disabled">确认转出</button>
+                        <span class="info">您未设置资金密码</span>
+                    <?php }else{ ?>
+                        <button id="submit">确认转出</button>
+                    <?php } ?>
                 </div>
             </div>
             <div class="s22">
                 <div class="para">转出说明</div>
                 <div class="para">1.&nbsp;您必须先<a href="/web/userhome/iframe/usered/u3.php">验证手机</a>，并且完成<a href="/web/userhome/iframe/usered/u4.php">实名认证</a>，才能进行该操作。</div>
                 <div class="para">2.&nbsp;货币的转出是自动的，实际入账时间取决于区块链网络的确认速度。<a href="#">详细</a></div>
-                <div class="para">3.&nbsp;货币的转出是免费的，我们不会收取任何手续费。</div>
+                <div class="para">3.&nbsp;货币的转入转出是完全免费的，我们不会收取任何手续费。</div>
             </div>
         </div>
     </div>
@@ -96,5 +96,7 @@ $conn->set_charset("utf8");
         $(this).prop("type","password");
     });
 </script>
+<script src="/web/login/js/md5.min.js"></script>
+<script src="/web/userhome/iframe/account/js/btc_out.js"></script>
 </body>
 </html>

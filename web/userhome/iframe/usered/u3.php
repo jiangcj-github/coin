@@ -1,19 +1,3 @@
-<?php
-require_once("../../../../global/config.php");
-include("../../../../global/checkLogin.php");
-
-$vid=$_SESSION["login"]["id"];
-//数据库操作
-$conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
-$conn->set_charset("utf8");
-//查询infos
-$stmt=$conn->prepare("select phone from user_infos where vid=?");
-$stmt->bind_param("i",$vid);
-$stmt->execute();
-$result=$stmt->get_result();
-$infos=$result->fetch_all(MYSQLI_ASSOC)[0];
-$stmt->close();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,28 +25,33 @@ $stmt->close();
                 </div>
             </div>
             <div class="s5">
-                <?php if($infos["phone"]){ ?>
-                    <div class="input-group">
-                        <label for="phone">手机号码：</label>
-                        <span><?php echo $infos["phone"] ?></span>
-                    </div>
-                    <div class="f1">
-                        <span>手机验证已完成</span>
-                    </div>
-                <?php }else{ ?>
-                    <div class="input-group">
-                        <label for="phone">手机号码：</label>
-                        <input type="text" id="phone">
-                    </div>
-                    <div class="input-group check">
-                        <label for="check">验证码：</label>
-                        <input type="text" id="check">
-                        <button id="check_send">发送验证码</button>
-                    </div>
-                    <div class="f1">
-                        <button class="btn" id="submit">提交</button>
+                <?php if($_SESSION["login"]["phone"]){ ?>
+                    <div class="finish">
+                        <img src="/web/userhome/iframe/usered/img/finish.svg">
+                        <span>您已验证手机号&nbsp;<b><?php echo substr($_SESSION["login"]["phone"],0,3)."****".substr($_SESSION["login"]["phone"],-4) ?></b></span>
                     </div>
                 <?php } ?>
+                <div class="input-group">
+                    <label for="phone">手机号码：</label>
+                    <input type="text" id="phone">
+                    <span class="info">输入您的手机号码</span>
+                </div>
+                <div class="input-group check">
+                    <label for="check">验证码：</label>
+                    <input type="text" id="check">
+                    <button id="check_send">发送验证码</button>
+                    <span class="info">验证码15分钟内有效，请尽快输入</span>
+                </div>
+                <div class="check-group">
+                    <label>
+                        <input type="checkbox" id="ispub2" <?php if($_SESSION["login"]["ispub2"]) echo "checked=\"checked\""; ?>>
+                        <span>是否公开您的手机号码</span>
+                    </label>
+                    <span class="info">如果您选中此项，其他人在交易时可以看到您的手机号码。</span>
+                </div>
+                <div class="f1">
+                    <button class="btn" id="submit">提交</button>
+                </div>
             </div>
         </div>
     </div>

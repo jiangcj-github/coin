@@ -1,14 +1,3 @@
-<?php
-require_once("../../../../global/config.php");
-require_once("../../../../global/TimeUtil.php");
-include("../../../../global/checkLogin.php");
-
-$vid=$_SESSION["login"]["id"];
-//数据库操作
-$conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
-$conn->set_charset("utf8");
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,13 +29,13 @@ $conn->set_charset("utf8");
                     <span class="coin">BTC</span>
                 </div>
                 <div class="f2">
-                    <span class="label">总共</span><span class="ct">0</span>
+                    <span class="label">总共</span><span class="ct" id="btcNum">0</span>
                 </div>
                 <div class="f2">
-                    <span class="label">锁定</span><span class="ct">0.5</span>
+                    <span class="label">锁定</span><span class="ct" id="btnLock">0</span>
                 </div>
                 <div class="f2">
-                    <span class="label">可用</span><span class="ct">0.6</span>
+                    <span class="label">可用</span><span class="ct" id="btcAvail">0</span>
                 </div>
 
             </div>
@@ -55,8 +44,8 @@ $conn->set_charset("utf8");
                 <div class="f1">
                     <img src="/web/userhome/iframe/account/img/btc.png" class="c1">
                     <span class="c2">BTC</span>
-                    <span class="c3">1HKdWCuKn9YPGXZFKevTTHojUFx8ztct5d</span>
-                    <img class="c4" src="/action/account/qrcode.php?text=1HKdWCuKn9YPGXZFKevTTHojUFx8ztct5d">
+                    <span class="c3"><?php echo $_SESSION["login"]["btcAddr"] ?></span>
+                    <img class="c4" src="/action/account/qrcode.php?text=<?php echo $_SESSION["login"]["btcAddr"] ?>">
                 </div>
             </div>
             <div class="s22">
@@ -70,5 +59,6 @@ $conn->set_charset("utf8");
 
 </div>
 <script>left.activeItem("account");</script>
+<script src="/web/userhome/iframe/account/js/btc_in.js"></script>
 </body>
 </html>

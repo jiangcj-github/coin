@@ -72,7 +72,7 @@ $stmt=$conn->prepare("insert into user_infos(vid) values(?)");
 $stmt->bind_param("i",$vid);
 $stmt->execute();
 $stmt->close();
-//创建钱包
+//创建btc钱包
 $btc=new btc();
 $stmt=$conn->prepare("insert into user_wallets(vid,btcAddr) values(?,?)");
 $btcAddr=$btc->gererateAddr($nick);

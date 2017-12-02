@@ -25,27 +25,43 @@
                     </div>
                 </div>
                 <div class="s3">
+
                     <div class="input-group">
                         <label for="sex">性别：</label>
                         <select id="sex">
                             <option value="男">男</option>
                             <option value="女">女</option>
                         </select>
+                        <script>$("#sex").val("<?php echo $_SESSION["login"]["sex"] ?>");</script>
+                        <span class="info">选择性别</span>
                     </div>
                     <div class="input-group">
                         <label for="age">年龄：</label>
-                        <input type="text" id="age">
+                        <input type="text" id="age" value="<?php echo $_SESSION["login"]["age"] ?>">
+                        <span class="info">输入您的年龄</span>
                     </div>
-                    <div class="input-group addr">
+                    <div class="input-group x2">
                         <label for="province">所在地：</label>
                         <select id="province" class="province"></select>
                         <select id="city" class="city"></select>
+                        <span class="info">选择您所在的地区</span>
                     </div>
                     <div class="input-group">
-                        <label>QQ号：</label><input type="text" id="qq">
+                        <label>QQ号：</label>
+                        <input type="text" id="qq" value="<?php echo $_SESSION["login"]["qq"] ?>">
+                        <span class="info">您的QQ号码</span>
                     </div>
                     <div class="input-group">
-                        <label>微信号：</label><input type="text" id="wx">
+                        <label>微信号：</label>
+                        <input type="text" id="wx" value="<?php echo $_SESSION["login"]["wx"] ?>">
+                        <span class="info">您的微信号码</span>
+                    </div>
+                    <div class="check-group">
+                        <label>
+                            <input type="checkbox" id="ispub" <?php if($_SESSION["login"]["ispub"]) echo "checked=\"checked\""; ?>>
+                            <span>是否公开您的个人信息</span>
+                        </label>
+                        <span class="info">如果您选中此项，其他人在交易时可以看到这些信息。</span>
                     </div>
                     <div class="f1">
                         <button class="btn" id="submit">保存</button>
@@ -58,6 +74,10 @@
     </div>
     <script>left.activeItem("usered");</script>
     <script src="/web/userhome/iframe/usered/js/provinces.js"></script>
+    <script>
+        $("#province").val("<?php echo $_SESSION["login"]["province"] ?>").trigger("change");
+        $("#city").val("<?php echo $_SESSION["login"]["city"] ?>");
+    </script>
     <script src="/web/userhome/iframe/usered/js/u1.js"></script>
 </body>
 </html>

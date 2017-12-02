@@ -19,11 +19,11 @@
                 <table>
                     <colgroup>
                         <col style="width:100px">
-                        <col style="width:300px">
+                        <col style="width:330px">
                         <col style="width:100px">
                         <col style="width:100px">
                         <col style="width:100px">
-                        <col style="width:140px">
+                        <col style="width:110px">
                     </colgroup>
                     <thead>
                         <tr><th>虚拟货币</th><th>钱包地址</th><th>数量</th><th>锁定</th><th>可用</th><th></th></tr>
@@ -31,10 +31,10 @@
                     <tbody>
                         <tr>
                             <td><div class="img-g"><img src="/web/userhome/iframe/account/img/btc.png">BTC</div></td>
-                            <td id="btcAddr"></td>
-                            <td id="btcNum"></td>
-                            <td id="btcLock"></td>
-                            <td id="btcAvail"></td>
+                            <td id="btcAddr"><?php echo $_SESSION["login"]["btcAddr"] ?></td>
+                            <td id="btcNum">0</td>
+                            <td id="btcLock">0</td>
+                            <td id="btcAvail">0</td>
                             <td>
                                 <a href="/web/userhome/iframe/account/btc_in.php">转入</a>
                                 <a href="/web/userhome/iframe/account/btc_out.php">转出</a>

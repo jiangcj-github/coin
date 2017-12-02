@@ -35,7 +35,7 @@ if(count($data)<=0){
 }
 //更新密码
 $stmt=$conn->prepare("update users set password=? where id=?");
-$stmt->bind_param("si",$pass1,$vid);
+$stmt->bind_param("si",$pass2,$vid);
 $stmt->execute();
 $stmt->close();
 die_json(["ok"=>"ok","data"=>""]);

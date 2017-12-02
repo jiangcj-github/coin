@@ -27,15 +27,18 @@
             <div class="s4">
                 <div class="input-group">
                     <label for="pass1">当前密码：</label>
-                    <input type="password" id="pass1">
+                    <input type="text" id="pass1" class="password">
+                    <span class="info">您当前的登录密码</span>
                 </div>
                 <div class="input-group">
                     <label for="pass">新密码：</label>
-                    <input type="password" id="pass2" placeholder="密码 (6-15个字符，仅限0-9a-zA-Z._-)">
+                    <input type="text" id="pass2" class="password">
+                    <span class="info">输入新密码，6-15个字符，不能包含除0-9a-zA-Z._-之外的符号</span>
                 </div>
                 <div class="input-group">
                     <label for="pass3">确认新密码：</label>
-                    <input type="password" id="pass3">
+                    <input type="text" id="pass3" class="password">
+                    <span class="info">确认您的新密码</span>
                 </div>
                 <div class="f1">
                     <button class="btn" id="submit">保存</button>
@@ -48,5 +51,10 @@
 </div>
 <script>left.activeItem("usered");</script>
 <script src="/web/userhome/iframe/usered/js/u2.js"></script>
+<script>
+    $(".password").focus(function(){
+        $(this).prop("type","password");
+    });
+</script>
 </body>
 </html>

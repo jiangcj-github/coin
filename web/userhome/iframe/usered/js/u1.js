@@ -1,11 +1,12 @@
 var u1={};
 u1.inputs={
-    sexInput:$("#sex"),
-    ageInput:$("#age"),
-    provinceInput:$("#province"),
-    cityInput:$("#city"),
-    qqInput:$("#qq"),
-    wxInput:$("#wx"),
+    sex:$("#sex"),
+    age:$("#age"),
+    province:$("#province"),
+    city:$("#city"),
+    qq:$("#qq"),
+    wx:$("#wx"),
+    ispub:$("#ispub"),
     submitBtn:$("#submit")
 };
 u1.init=function(){
@@ -13,34 +14,19 @@ u1.init=function(){
     _this.inputs.submitBtn.click(function(){
        _this.send();
     });
-    //加载数据
-    ajaxForm.action(null,{
-        type:"get",
-        url:"/action/usered/getUserInfo.php",
-        success:function(data){
-            if(data.ok){
-                _this.inputs.sexInput.val(data.data.sex);
-                _this.inputs.ageInput.val(data.data.age);
-                _this.inputs.provinceInput.val(data.data.province).trigger("change");
-                _this.inputs.cityInput.val(data.data.city);
-                _this.inputs.qqInput.val(data.data.qq);
-                _this.inputs.wxInput.val(data.data.wx);
-            }
-        }
-    })
-
 };
 u1.log=function(msg){
     alert(msg);
 };
 u1.send=function(){
     var _this=this;
-    var sex=_this.inputs.sexInput.val();
-    var age=parseInt(_this.inputs.ageInput.val());
-    var province=_this.inputs.provinceInput.val();
-    var city=_this.inputs.cityInput.val();
-    var qq=_this.inputs.qqInput.val();
-    var wx=_this.inputs.wxInput.val();
+    var sex=_this.inputs.sex.val();
+    var age=parseInt(_this.inputs.age.val());
+    var province=_this.inputs.province.val();
+    var city=_this.inputs.city.val();
+    var qq=_this.inputs.qq.val();
+    var wx=_this.inputs.wx.val();
+    var ispub=_this.inputs.ispub.is(":checked")?1:0;
     if(sex&&sex!="男"&&sex!="女"){
         _this.log("性别不正确");
         return;
@@ -68,16 +54,13 @@ u1.send=function(){
     ajaxForm.action(_this.inputs.submitBtn,{
         type:"post",
         url:"/action/usered/u1.php",
-        data:{sex:sex,age:age,province:province,city:city,qq:qq,wx:wx},
+        data:{sex:sex,age:age,province:province,city:city,qq:qq,wx:wx,ispub:ispub},
         success:function(data){
             if(data.ok){
                 location.href="/web/userhome/iframe/usered/usered.php";
             }else if(data.msg){
                 _this.log(data.msg);
             }
-        },
-        error:function(){
-            _this.log("服务器出错");
         }
     });
 };

@@ -1,6 +1,6 @@
 <?php
 require_once("../../global/config.php");
-require_once("../../global/checkIdcard.php");
+require_once("checkIdcard.php");
 
 //登录检查
 session_start();
@@ -24,22 +24,19 @@ $idcard=$_REQUEST["idcard"];
 if(!checkIdentity($idcard)){
     die_json(["msg"=>"身份证号码验证不通过"]);
 }
-//数据库操作
+//是否实名认证
+if($_SESSION["login"]["idcard"]&&$_SESSION["login"]["fullname"]){
+    die_json(["msg"=>"实名认证已完成"]);
+}
 $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
 $conn->set_charset("utf8");
-//不允许重复验证
-$stmt=$conn->prepare("select vid from user_infos where idcard is not null and fullname is not null and vid=?");
-$stmt->bind_param("i",$vid);
-$stmt->execute();
-$result=$stmt->get_result();
-$data=$result->fetch_all(MYSQLI_ASSOC);
-if(count($data)>0){
-    die_json(["msg"=>"不允许重复验证"]);
-}
-$stmt->close();
 //更新实名信息
 $stmt=$conn->prepare("update user_infos set fullname=?,idcard=? where vid=?");
 $stmt->bind_param("ssi",$fullname,$idcard,$vid);
 $stmt->execute();
 $stmt->close();
+//更新session
+$_SESSION["login"]["idcard"]=$idcard;
+$_SESSION["login"]["fullname"]=$fullname;
+//结束
 die_json(["ok"=>"ok","data"=>""]);

@@ -1,54 +1,32 @@
 <?php
-    require_once("../../../../global/config.php");
     include("../../../../global/checkLogin.php");
-
-    $vid=$_SESSION["login"]["id"];
-    //数据库操作
-    $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
-    $conn->set_charset("utf8");
-    //查询infos
-    $stmt=$conn->prepare("select * from user_infos where vid=?");
-    $stmt->bind_param("i",$vid);
-    $stmt->execute();
-    $result=$stmt->get_result();
-    $data=$result->fetch_all(MYSQLI_ASSOC);
-    $stmt->close();
-    $user_infos=$data[0];
-    //查询users
-    $stmt=$conn->prepare("select id,nick,email,time from users where id=?");
-    $stmt->bind_param("i",$vid);
-    $stmt->execute();
-    $result=$stmt->get_result();
-    $data=$result->fetch_all(MYSQLI_ASSOC);
-    $stmt->close();
-    $users=$data[0];
     //计数信息完整度
     $fn_per=10;
-    if($user_infos["age"]!=null){
+    if($_SESSION["login"]["age"]){
         $fn_per+=10;
     }
-    if($user_infos["sex"]!=null){
+    if($_SESSION["login"]["sex"]){
         $fn_per+=10;
     }
-    if($user_infos["province"]!=null){
+    if($_SESSION["login"]["province"]){
         $fn_per+=10;
     }
-    if($user_infos["city"]!=null){
+    if($_SESSION["login"]["city"]){
         $fn_per+=10;
     }
-    if($user_infos["qq"]!=null){
+    if($_SESSION["login"]["qq"]){
         $fn_per+=10;
     }
-    if($user_infos["wx"]!=null){
+    if($_SESSION["login"]["wx"]){
         $fn_per+=10;
     }
-    if($user_infos["phone"]!=null){
+    if($_SESSION["login"]["phone"]){
         $fn_per+=10;
     }
-    if($user_infos["idcard"]!=null){
+    if($_SESSION["login"]["idcard"]){
         $fn_per+=10;
     }
-    if($user_infos["fullname"]!=null){
+    if($_SESSION["login"]["fullname"]){
         $fn_per+=10;
     }
 ?>
@@ -80,22 +58,24 @@
                     </div>
                     <table class="c2">
                         <tr>
-                            <td>邮箱：<?php echo $users["email"] ?></td>
-                            <td style="margin-left:20px;">
+                            <td style="width:250px;">邮箱：<?php echo $_SESSION["login"]["email"] ?></td>
+                            <td class="img-group x16">
+                                <img src="/web/userhome/iframe/usered/img/trade.svg" title="交易数">
+                                交易次数：3
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:250px;">昵称：<?php echo $_SESSION["login"]["nick"] ?></td>
+                            <td>
                                 <span class="img-group x16" style="color:#ff9900"><img src="/web/userhome/iframe/usered/img/zan.png" title="好感">(3434)</span>
                                 <span class="img-group x16" style="margin-left:10px;color:#ff3300"><img src="/web/userhome/iframe/usered/img/jubao.png" title="举报">(53)</span>
                                 <span class="img-group x16" style="margin-left:10px;"><img src="/web/userhome/iframe/usered/img/comment.png" title="评价"><a href="#">(34)</a></span>
                             </td>
                         </tr>
                         <tr>
-                            <td>昵称：<?php echo $users["nick"] ?></td>
+                            <td>注册时间：<?php echo $_SESSION["login"]["time"] ?></td>
                         </tr>
-                        <tr>
-                            <td colspan="2">
-                                会员等级：<?php echo $user_infos["vip"] ?>
-                                <a href="#" style="margin-left:10px;color:red;" class="img-group x26">
-                                    <img src="/web/userhome/iframe/usered/img/vip_gift.png" style="margin-right:-1px;">升级会员</a>
-                            </td>
+
                     </table>
                 </div>
                 <!--快速通道-->
@@ -110,28 +90,28 @@
                         <div class="li">
                             手机验证
                             <span class="f1">验证您的手机号码，提高账户安全性。</span>
-                            <?php if($user_infos["phone"]==null){ ?>
-                                <a href="/web/userhome/iframe/usered/u3.php">去验证</a>
+                            <?php if($_SESSION["login"]["phone"]){ ?>
+                                <a href="/web/userhome/iframe/usered/u3.php">重新验证</a>
                             <?php }else{ ?>
-                                <span class="f2">已验证</span>
+                                <a href="/web/userhome/iframe/usered/u3.php">去验证</a>
                             <?php } ?>
                         </div>
                         <div class="li">
                             实名认证
                             <span class="f1">验证您的身份信息，提高信息完善度。</span>
-                            <?php if($user_infos["idcard"]==null){ ?>
-                                <a href="/web/userhome/iframe/usered/u4.php">立即认证</a>
-                            <?php }else{ ?>
+                            <?php if($_SESSION["login"]["idcard"]&&$_SESSION["login"]["fullname"]){ ?>
                                 <span class="f2">已认证</span>
+                            <?php }else{ ?>
+                                <a href="/web/userhome/iframe/usered/u4.php">立即认证</a>
                             <?php } ?>
                         </div>
                         <div class="li">
                             资金密码
                             <span class="f1">为了您的账户安全，请设置资金密码。</span>
-                            <?php if($user_infos["ac_pass"]==null){ ?>
-                                <a href="/web/userhome/iframe/usered/u5.php">立即设置</a>
+                            <?php if($_SESSION["login"]["ac_pass"]){ ?>
+                                <a href="/web/userhome/iframe/usered/u5.php">修改</a>
                             <?php }else{ ?>
-                                <a href="/web/userhome/iframe/usered/u5_m.php">修改</a>
+                                <a href="/web/userhome/iframe/usered/u5.php">立即设置</a>
                             <?php } ?>
                         </div>
                     </div>

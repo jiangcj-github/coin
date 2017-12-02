@@ -59,11 +59,13 @@
 /*btc_out*/
 .right .s3{}
 .right .s3 .input-group{}
-.s3>.input-group{display:flex;align-items:flex-start;padding:8px 20px;}
+.s3>.input-group{display:flex;align-items:flex-start;padding:10px 20px;}
 .s3>.input-group>label{line-height:30px;height:30px;width:100px;text-align:right;padding-right:10px;}
 .s3>.input-group>input{outline:none;padding:2px 5px;height:30px;font-size:14px;width:200px;border:1px solid #e4e4e4;}
-.s3>.input-group>.addon{line-height:30px;height:30px;padding:0 10px;background:#f0ad4e;color:#fff;margin-left:-1px;}
+.s3>.input-group>select{outline:none;padding:2px 5px;height:30px;font-size:14px;width:200px;border:1px solid #e4e4e4;}
+.s3>.input-group>.addon{height:30px;padding:0 15px;background:#f0ad4e;color:#fff;margin-left:-1px;outline:none;border:none;cursor:pointer;}
 .s3>.input-group>.addon:hover{background:#ff7519;}
+.s3>.input-group>.addon[disabled]{background:#ccc;cursor:not-allowed;}
 .s3>.input-group>.info{margin-left:10px;color:#777;line-height:30px;}
 .s3>.f1{padding-left:120px;margin:10px 0;}
 .s3>.f1 input[type=checkbox]{vertical-align:-2px;}
@@ -72,7 +74,8 @@
 .s3>.f2{padding-left:120px;border-bottom:1px solid #e4e4e4;padding-bottom:20px;margin-top:20px;}
 .s3>.f2 button{border:none;outline:none;background:#2e7fd8;color:#fff;border-radius:3px;cursor:pointer;padding:7px 15px;width:200px;}
 .s3>.f2 button:hover{background:#3385ff;}
-.s3>.f2 .info{color:#666;margin-left:20px;}
+.s3>.f2 button[disabled]{background:#ccc;cursor:not-allowed;}
+.s3>.f2>.info{margin-left:20px;color:#995500;padding-left:20px;background: url(/web/userhome/iframe/ad/img/warn.svg) no-repeat 0 center;background-size:14px auto;}
 
 /*history*/
 .s4{padding:20px;}

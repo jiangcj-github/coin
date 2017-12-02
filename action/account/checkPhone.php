@@ -1,37 +1,22 @@
 <?php
 require_once("../../global/config.php");
-require_once("../../global/AliyunSMS.php");
-session_start();
+require_once("../../global/sms/AliyunSMS.php");
 
 //登录检查
+session_start();
 if(!isset($_SESSION["login"])){
     die_json(["msg"=>"用户未登录"]);
 }
 $vid=$_SESSION["login"]["id"];
-//phone
-if(!isset($_REQUEST["phone"])){
-    die_json(["msg"=>"缺少参数"]);
+$phone=$_SESSION["login"]["phone"];
+if(!$phone){
+    die_json(["msg"=>"未验证手机"]);
 }
-$phone=$_REQUEST["phone"];
-if(preg_match("/^1[0-9]{10}$/",$phone)<=0){
-    die_json(["msg"=>"手机号码不正确"]);
-}
-
 //数据库操作
 $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
 $conn->set_charset("utf8");
-//手机号是否验证
-$stmt=$conn->prepare("select vid from user_infos where phone=?");
-$stmt->bind_param("s",$phone);
-$stmt->execute();
-$result=$stmt->get_result();
-$data=$result->fetch_all(MYSQLI_ASSOC);
-if(count($data)>0){
-    die_json(["msg"=>"手机号已验证"]);
-}
-$stmt->close();
 //时间间隔检查
-$stmt=$conn->prepare("select sendCode,num from checkCode_strict2 where vid=?");
+$stmt=$conn->prepare("select sendCode,num from checkCode_strict3 where vid=?");
 $stmt->bind_param("i",$vid);
 $stmt->execute();
 $stmt->bind_result($stri_sec,$num);
@@ -54,9 +39,9 @@ $sendResult=AliyunSMS($phone,$code);
 if($sendResult!="OK"){
     die_json(["msg"=>"发送失败"]);
 }
-$_SESSION["checkPhone"]=$phone.$code;
+$_SESSION["checkPhone_account"]=$code;
 //写入发送状态
-$stmt=$conn->prepare("insert into checkCode_strict2(vid,sendCode,num) values(?,?,0) ON DUPLICATE KEY update sendCode=?,num=(num+1)%3");
+$stmt=$conn->prepare("insert into checkCode_strict3(vid,sendCode,num) values(?,?,0) ON DUPLICATE KEY update sendCode=?,num=(num+1)%3");
 $stri_time=(new DateTime())->format("Y-m-d H:i:s");
 $stmt->bind_param("iss",$vid,$stri_time,$stri_time);
 $stmt->execute();

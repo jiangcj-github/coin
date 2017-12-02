@@ -1,19 +1,3 @@
-<?php
-require_once("../../../../global/config.php");
-include("../../../../global/checkLogin.php");
-
-$vid=$_SESSION["login"]["id"];
-//数据库操作
-$conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
-$conn->set_charset("utf8");
-//查询infos
-$stmt=$conn->prepare("select idcard,fullname from user_infos where vid=?");
-$stmt->bind_param("i",$vid);
-$stmt->execute();
-$result=$stmt->get_result();
-$infos=$result->fetch_all(MYSQLI_ASSOC)[0];
-$stmt->close();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,26 +25,21 @@ $stmt->close();
                 </div>
             </div>
             <div class="s6">
-                <?php if($infos["idcard"] && $infos["fullname"]){ ?>
-                    <div class="input-group">
-                        <label for="fullname">真实姓名：</label>
-                        <span><?php echo $infos["fullname"] ?></span>
-                    </div>
-                    <div class="input-group">
-                        <label for="idcard">身份证号码：</label>
-                        <span><?php echo $infos["idcard"] ?></span>
-                    </div>
-                    <div class="f1">
-                        <span>实名认证已完成</span>
+                <?php if($_SESSION["login"]["fullname"]&&$_SESSION["login"]["idcard"]){ ?>
+                    <div class="finish">
+                        <img src="/web/userhome/iframe/usered/img/finish.svg">
+                        <span>您已完成实名认证&nbsp;<b><?php echo $_SESSION["login"]["idcard"] ?></b></span>
                     </div>
                 <?php }else{ ?>
                     <div class="input-group">
                         <label for="fullname">真实姓名：</label>
                         <input type="text" id="fullname">
+                        <span class="info">输入您的真实姓名</span>
                     </div>
                     <div class="input-group">
                         <label for="idcard">身份证号码：</label>
                         <input type="text" id="idcard">
+                        <span class="info">输入您的身份证号</span>
                     </div>
                     <div class="f1">
                         <button class="btn" id="submit">提交</button>

@@ -1,0 +1,67 @@
+<?php
+require_once("../../../global/config.php");
+require_once("../../../global/wallet/btc.php");
+
+//登录检查
+session_start();
+if(!isset($_SESSION["login"])){
+    die_json(["msg"=>"用户未登录"]);
+}
+$vid=$_SESSION["login"]["id"];
+//
+//check
+if(!isset($_REQUEST["check"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$check=$_REQUEST["check"];
+if($check!=$_SESSION["checkPhone_account"]){
+    die_json(["msg"=>"手机验证码不正确"]);
+}
+//addr
+if(!isset($_REQUEST["addr"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$addr=$_REQUEST["addr"];
+if(!preg_match("/\S+/",$addr)){
+    die_json(["msg"=>"转出地址不正确"]);
+}
+//num
+if(!isset($_REQUEST["num"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$num=$_REQUEST["num"];
+if(!is_numeric($num)||$num<=0){
+    die_json(["msg"=>"转出数量不正确"]);
+}
+//fee
+if(!isset($_REQUEST["fee"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$fee=$_REQUEST["fee"];
+if(!is_numeric($fee)||$fee<=0){
+    die_json(["msg"=>"交易手续费不正确"]);
+}
+//ac_pass
+if(!isset($_REQUEST["ac_pass"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$ac_pass=$_REQUEST["ac_pass"];
+if($ac_pass!=md5($_SESSION["login"]["ac_pass"])){
+    die_json(["msg"=>"资金密码不正确"]);
+}
+
+$btcAddr=$_SESSION["login"]["btcAddr"];
+//btc
+$btc=new btc();
+$btcNum=$btc->checkAddr($btcAddr);
+$btcLock=$_SESSION["login"]["btcLock"];
+//核对账户
+if($btcLock<0||$btcLock>$btcNum){
+    die_json(["msg"=>"账户异常"]);
+}
+if($num>$btcNum-$btcLock){
+    die_json(["msg"=>"您的可用余额不足"]);
+}
+//
+$data=$btc->pay($btcAddr,$addr,$num,$fee);
+die_json(["ok"=>"ok","data"=>$data]);

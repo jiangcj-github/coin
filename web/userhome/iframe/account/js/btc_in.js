@@ -1,14 +1,14 @@
-var account={};
-account.widges={
+var btc_in={};
+btc_in.widges={
     btcNum:$("#btcNum"),
     btcLock:$("#btcLock"),
     btcAvail:$("#btcAvail")
 };
-account.init=function(){
+btc_in.init=function(){
     var _this=this;
     _this.btcCheck();
 };
-account.btcCheck=function(){
+btc_in.btcCheck=function(){
     var _this=this;
     ajaxForm.action(null,{
         type:"get",
@@ -22,4 +22,4 @@ account.btcCheck=function(){
         }
     })
 };
-account.init();
+btc_in.init();
