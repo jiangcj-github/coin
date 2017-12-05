@@ -1,5 +1,5 @@
 <?php
-require_once("../../global/global.php");
+require_once("../../global/config.php");
 
 //登录检查
 session_start();
@@ -55,13 +55,29 @@ $wx=$_REQUEST["wx"];
 if($wx&&preg_match("/^[a-zA-Z][a-zA-Z0-9-_]{5,19}$/",$wx)<=0){
     die_json(["msg"=>"微信号不正确"]);
 }
-
+//ispub
+if(!isset($_REQUEST["ispub"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$ispub=$_REQUEST["ispub"];
+if($ispub!=0&&$ispub!=1){
+    die_json(["msg"=>"参数错误"]);
+}
 //数据库操作
 $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
 $conn->set_charset("utf8");
 //更新记录
-$stmt=$conn->prepare("update user_infos set sex=?,age=?,province=?,city=?,qq=?,wx=? where vid=?");
-$stmt->bind_param("sissssi",$sex,$age,$province,$city,$qq,$wx,$vid);
+$stmt=$conn->prepare("update user_infos set sex=?,age=?,province=?,city=?,qq=?,wx=?,ispub=? where vid=?");
+$stmt->bind_param("sissssii",$sex,$age,$province,$city,$qq,$wx,$ispub,$vid);
 $stmt->execute();
 $stmt->close();
+//更新session
+$_SESSION["login"]["sex"]=$sex;
+$_SESSION["login"]["age"]=$age;
+$_SESSION["login"]["province"]=$province;
+$_SESSION["login"]["city"]=$city;
+$_SESSION["login"]["qq"]=$qq;
+$_SESSION["login"]["wx"]=$wx;
+$_SESSION["login"]["ispub"]=$ispub;
+//结束
 die_json(["ok"=>"ok","data"=>""]);

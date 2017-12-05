@@ -1,5 +1,5 @@
 <?php
-require("../../global/global.php");
+require("../../global/config.php");
 include("../checkAdmin.php");
 
 $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
@@ -12,7 +12,7 @@ $data=$result->fetch_all(MYSQLI_ASSOC);
 <head>
     <title>notices管理</title>
     <link href="/admin/web/page.css" rel="stylesheet">
-    <script src="/web/common/jquery-3.2.1.js"></script>
+    <script src="/web/layout/js/jquery-3.2.1.js"></script>
 </head>
 <body>
 <div>
@@ -71,7 +71,7 @@ $data=$result->fetch_all(MYSQLI_ASSOC);
     </div>
 </div>
 <script src="/admin/web/page.js"></script>
-<script src="/web/common/common.js"></script>
+<script src="/web/layout/js/common.js"></script>
 <script>
     $("#a_btn").click(function() {
         var domain = $("#a_domain").val();

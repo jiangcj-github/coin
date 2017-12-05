@@ -1,0 +1,60 @@
+<?php
+require_once("../../global/config.php");
+session_start();
+
+//登录检查
+if(!isset($_SESSION["login"])){
+    die_json(["msg"=>"用户未登录"]);
+}
+$vid=$_SESSION["login"]["id"];
+//phone
+if(!isset($_REQUEST["phone"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$phone=$_REQUEST["phone"];
+if(preg_match("/^1[0-9]{10}$/",$phone)<=0){
+    die_json(["msg"=>"手机号码不正确"]);
+}
+//ispub2
+if(!isset($_REQUEST["ispub2"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$ispub2=$_REQUEST["ispub2"];
+if($ispub2!=0&&$ispub2!=1){
+    die_json(["msg"=>"参数错误"]);
+}
+//code
+if(!isset($_REQUEST["code"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$code=$_REQUEST["code"];
+if(!isset($_SESSION["checkPhone"])||$phone.$code!=$_SESSION["checkPhone"]){
+    die_json(["msg"=>"验证码错误"]);
+}
+//不允许重复验证
+if($_SESSION["login"]["phone"]){
+    die_json(["msg"=>"已验证手机"]);
+}
+//数据库操作
+$conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
+$conn->set_charset("utf8");
+//是否重复的手机号
+$stmt=$conn->prepare("select vid from user_infos where phone=?");
+$stmt->bind_param("s",$phone);
+$stmt->execute();
+$result=$stmt->get_result();
+$data=$result->fetch_all(MYSQLI_ASSOC);
+if(count($data)>0){
+    die_json(["msg"=>"此手机号已被验证"]);
+}
+$stmt->close();
+//更新手机号
+$stmt=$conn->prepare("update user_infos set phone=?,ispub2=? where vid=?");
+$stmt->bind_param("sii",$phone,$ispub2,$vid);
+$stmt->execute();
+$stmt->close();
+//更新session
+$_SESSION["login"]["phone"]=$phone;
+$_SESSION["login"]["ispub2"]=$ispub2;
+//结束
+die_json(["ok"=>"ok","data"=>""]);

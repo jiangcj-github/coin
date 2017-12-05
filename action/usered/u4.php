@@ -1,0 +1,42 @@
+<?php
+require_once("../../global/config.php");
+require_once("checkIdcard.php");
+
+//登录检查
+session_start();
+if(!isset($_SESSION["login"])){
+    die_json(["msg"=>"用户未登录"]);
+}
+$vid=$_SESSION["login"]["id"];
+//fullname
+if(!isset($_REQUEST["fullname"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$fullname=$_REQUEST["fullname"];
+if(!preg_match("/^[\x{4e00}-\x{9fa5}A-Za-z]+$/u",$fullname)){
+    die_json(["msg"=>"姓名不正确"]);
+}
+//idcard
+if(!isset($_REQUEST["idcard"])){
+    die_json(["msg"=>"缺少参数"]);
+}
+$idcard=$_REQUEST["idcard"];
+if(!checkIdentity($idcard)){
+    die_json(["msg"=>"身份证号码验证不通过"]);
+}
+//是否实名认证
+if($_SESSION["login"]["idcard"]&&$_SESSION["login"]["fullname"]){
+    die_json(["msg"=>"实名认证已完成"]);
+}
+$conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
+$conn->set_charset("utf8");
+//更新实名信息
+$stmt=$conn->prepare("update user_infos set fullname=?,idcard=? where vid=?");
+$stmt->bind_param("ssi",$fullname,$idcard,$vid);
+$stmt->execute();
+$stmt->close();
+//更新session
+$_SESSION["login"]["idcard"]=$idcard;
+$_SESSION["login"]["fullname"]=$fullname;
+//结束
+die_json(["ok"=>"ok","data"=>""]);

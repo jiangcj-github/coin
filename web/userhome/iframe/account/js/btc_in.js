@@ -1,0 +1,25 @@
+var btc_in={};
+btc_in.widges={
+    btcNum:$("#btcNum"),
+    btcLock:$("#btcLock"),
+    btcAvail:$("#btcAvail")
+};
+btc_in.init=function(){
+    var _this=this;
+    _this.btcCheck();
+};
+btc_in.btcCheck=function(){
+    var _this=this;
+    ajaxForm.action(null,{
+        type:"get",
+        url:"/action/account/btc/check.php",
+        success:function(data){
+            if(data.ok){
+                _this.widges.btcNum.text(data.data.btcNum);
+                _this.widges.btcLock.text(data.data.btcLock);
+                _this.widges.btcAvail.text(data.data.btcAvail);
+            }
+        }
+    })
+};
+btc_in.init();

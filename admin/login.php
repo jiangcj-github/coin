@@ -27,11 +27,11 @@ if(isset($_REQUEST["admin"])&&isset($_REQUEST["pass"])){
 <body>
     <form method="post" class="admin">
         <div class="row">
-            <label>管理員賬戶：</label>
+            <label>管理员账号：</label>
             <input type="text" name="admin" value="<?php echo $admin ?>">
         </div>
         <div class="row">
-            <label>密碼：</label>
+            <label>密码：</label>
             <input type="password" name="pass" value="<?php echo $pass ?>">
         </div>
         <div class="row">
