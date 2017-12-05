@@ -43,7 +43,7 @@
 .s3>.input-group.x2 select{margin-right:10px;}
 .s3>.input-group>input{outline:none;padding:2px 5px;height:30px;font-size:14px;width:200px;border:1px solid #ccc;}
 .s3>.input-group>.info{margin-left:10px;color:#777;line-height:30px;}
-.s3>.check-group{padding-left:120px;margin:10px 0;}
+.s3>.check-group{padding-left:120px;margin:10px 0;user-select:none;}
 .s3>.check-group input[type=checkbox]{vertical-align:-2px;}
 .s3>.check-group .info{margin-left:20px;color:#777;line-height:30px;}
 .s3>.f1{margin-top:20px;padding:15px 0 0 20px;border-top:1px solid #e4e4e4;}
@@ -68,7 +68,7 @@
 .s5>.check>button:hover{background:#999900;}
 .s5>.check>button[disabled]{cursor:not-allowed;background:#cccccc !important;}
 .s5>.input-group>.info{margin-left:10px;color:#777;line-height:30px;}
-.s5>.check-group{padding-left:120px;margin:10px 0;}
+.s5>.check-group{padding-left:120px;margin:10px 0;user-select:none;}
 .s5>.check-group input[type=checkbox]{vertical-align:-2px;}
 .s5>.check-group .info{margin-left:20px;color:#777;line-height:30px;}
 .s5>.f1{margin-top:20px;padding:15px 0 0 20px;border-top:1px solid #e4e4e4;}
