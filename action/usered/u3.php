@@ -31,12 +31,16 @@ $code=$_REQUEST["code"];
 if(!isset($_SESSION["checkPhone"])||$phone.$code!=$_SESSION["checkPhone"]){
     die_json(["msg"=>"验证码错误"]);
 }
+//不允许重复验证
+if($_SESSION["login"]["phone"]){
+    die_json(["msg"=>"已验证手机"]);
+}
 //数据库操作
 $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
 $conn->set_charset("utf8");
 //是否重复的手机号
-$stmt=$conn->prepare("select vid from user_infos where phone=? and vid!=?");
-$stmt->bind_param("si",$phone,$vid);
+$stmt=$conn->prepare("select vid from user_infos where phone=?");
+$stmt->bind_param("s",$phone);
 $stmt->execute();
 $result=$stmt->get_result();
 $data=$result->fetch_all(MYSQLI_ASSOC);

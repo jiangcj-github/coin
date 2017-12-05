@@ -27,39 +27,35 @@
             <div class="s51">
                 <?php if($_SESSION["login"]["ac_pass"]){ ?>
                     <div class="input-group">
-                        <label for="ac_pass1">资金密码：</label>
-                        <input type="text" id="ac_pass1" class="password">
-                        <span class="info">输入您的真实姓名</span>
+                        <label for="ac_pass1">当前密码：</label>
+                        <input type="text" id="ac_pass1" class="password" tabindex="1">
+                        <span class="info">输入您当前的资金密码，<a href="/web/userhome/iframe/usered/u5_reset.php" class="forget">忘记密码？</a></span>
                     </div>
                     <div class="input-group">
-                        <label for="ac_pass1">资金密码：</label>
-                        <input type="text" id="ac_pass1" class="password">
-                        <span class="info">输入您的真实姓名</span>
+                        <label for="ac_pass2">新密码：</label>
+                        <input type="text" id="ac_pass2" class="password" tabindex="2">
+                        <span class="info">设置您的资金密码，6-15个字符，仅限0-9a-zA-Z._-</span>
                     </div>
                     <div class="input-group">
-                        <label for="ac_pass2">确认资金密码：</label>
-                        <input type="text" id="ac_pass2" class="password">
-                        <span class="info">输入您的身份证号</span>
-                    </div>
-                    <div class="input-group">
-                        <label for="check">手机验证码：</label>
-                        <input type="text" id="check" class="addin"><button class="addon" id="checkBtn">获取验证码</button>
-                        <span class="info">发送后15分钟内有效，请尽快输入</span>
+                        <label for="ac_pass3">确认密码：</label>
+                        <input type="text" id="ac_pass3" class="password" tabindex="3">
+                        <span class="info">确认您的资金密码</span>
                     </div>
                 <?php }else{ ?>
                     <div class="input-group">
-                        <label for="ac_pass1">资金密码：</label>
-                        <input type="text" id="ac_pass1" class="password">
-                        <span class="info">输入您的真实姓名</span>
+                        <label for="ac_pass2">资金密码：</label>
+                        <input type="text" id="ac_pass2" class="password" tabindex="1">
+                        <span class="info">设置您的资金密码，6-15个字符，仅限0-9a-zA-Z._-</span>
                     </div>
                     <div class="input-group">
-                        <label for="ac_pass2">确认资金密码：</label>
-                        <input type="text" id="ac_pass2" class="password">
-                        <span class="info">输入您的身份证号</span>
+                        <label for="ac_pass3">确认资金密码：</label>
+                        <input type="text" id="ac_pass3" class="password" tabindex="2">
+                        <span class="info">确认您的资金密码</span>
                     </div>
                 <?php } ?>
                 <div class="f1">
-                    <button class="btn" id="submit">提交</button>
+                    <button class="btn" id="submit" tabindex="4">提交</button>
+                    <span class="info"> 对资金的所有操作都需要您提供资金密码，请牢记您的资金密码。</span>
                 </div>
             </div>
 
@@ -73,7 +69,7 @@
         $(this).prop("type","password");
     });
 </script>
-<script src="/web/userhome/iframe/usered/js/IdCodeValid.js"></script>
-<script src="/web/userhome/iframe/usered/js/u4.js"></script>
+<script>var isModify=<?php echo $_SESSION["login"]["ac_pass"]?1:0 ?>;</script>
+<script src="/web/userhome/iframe/usered/js/u5.js"></script>
 </body>
 </html>

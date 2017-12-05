@@ -25,7 +25,7 @@
     background-image:url(/web/userhome/iframe/msg/img/no-record3.png);background-repeat:no-repeat;background-position:center center;background-size:auto 100px;}
 .s1>.pg-ctrl{height:30px;margin-top:15px;text-align:right;}
 .s1>.pg-ctrl>button{outline:none;cursor:pointer;background:#fff;padding:3px 15px;font-weight:bold;border-radius:3px;border:1px solid #999;}
-.s1>.pg-ctrl>button:hover{border-color:#3385ff;}
+.s1>.pg-ctrl>button:hover{border-color:#3385ff;color:#3385ff;}
 .s1>.pg-ctrl>button.disabled{color:#ccc;border-color:#ccc !important;}
 
 

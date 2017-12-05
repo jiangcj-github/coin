@@ -91,7 +91,9 @@
                             手机验证
                             <span class="f1">验证您的手机号码，提高账户安全性。</span>
                             <?php if($_SESSION["login"]["phone"]){ ?>
-                                <a href="/web/userhome/iframe/usered/u3.php">重新验证</a>
+                                <button href="javascript:void(0);" id="pub" class="pub <?php echo $_SESSION["login"]["ispub2"]?"show":"" ?>"></button>
+                                <span class="fgap">|</span>
+                                <span class="f2">已认证</span>
                             <?php }else{ ?>
                                 <a href="/web/userhome/iframe/usered/u3.php">去验证</a>
                             <?php } ?>
@@ -121,5 +123,6 @@
         <?php include("../../../layout/footer.php") ?>
     </div>
     <script>left.activeItem("usered");</script>
+    <script src="/web/userhome/iframe/usered/js/usered.js"></script>
 </body>
 </html>

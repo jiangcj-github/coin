@@ -46,13 +46,17 @@ a{text-decoration:none;color:#444;}
     border:6px solid transparent;border-bottom:8px solid #f0ad4e;}
 .header .pinfo .drop:hover .panel{display:block;}
 .header .drop .panel.hide{display:none !important;}
-.header .drop .c1{width:200px;color:#444;cursor:default;}
+.header .drop .c1{width:240px;color:#444;cursor:default;}
 .header .drop .c1 .c1-h{margin:0;line-height:32px;text-indent:10px;font-weight:normal;
     border-bottom:1px solid #e4e4e4;color:#fff;background:#f0ad4e;border-radius:3px 3px 0 0;}
 .header .drop .c1 .c1-li{display:block;line-height:24px;padding:5px 10px;color:#444;border-bottom:1px solid #f6f6f6;}
 .header .drop .c1 .c1-li .time{display:block;text-align:right;line-height:16px;font-size:10px;color:#666;}
 .header .drop .c1 .c1-li:hover{background:#f4f4f4;transition:background 0.3s;}
 .header .drop .c1 .c1-li:last-child{border-radius:0 0 3px 3px;}
+.header .drop .c1 .c1-fo{height:30px;line-height:30px;background:#f3f3f3;border-bottom-left-radius:3px;border-bottom-right-radius:3px;}
+.header .drop .c1 .c1-fo a{color:#4c4c4c;display:block;text-align:center;text-shadow:0 1px 1px #fff;}
+.header .drop .c1 .c1-fo a:hover{color:#222;}
+
 .header .drop .c2{width:160px;padding:2px 0;}
 .header .drop .c2:before{border-bottom-color:#fff !important;}
 .header .drop .c2 .c2-li{display:flex;align-items:center;height:36px;padding:0 10px;border-bottom:1px solid #f6f6f6;color:#444;}

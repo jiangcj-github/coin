@@ -1,6 +1,10 @@
 <?php
 
 function AliyunSMS($phone,$code){
+    echo $code;
+    return "OK";
+
+    /*
     date_default_timezone_set("GMT");
     //云平台
     $accessKeyId="LTAIp9Mr9aQLvoZP ";
@@ -32,4 +36,5 @@ function AliyunSMS($phone,$code){
     //
     $smsResult=json_decode(file_get_contents($url));
     return $smsResult->Coke;
+    */
 }

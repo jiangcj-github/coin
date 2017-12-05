@@ -96,7 +96,7 @@ if ($result){
     echo "checkCode_strict2 created failed"."<br>";
 }
 
-//checkCode_strict3 转出验证手机
+//checkCode_strict3 转出
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS checkCode_strict3(
         vid int(32) NOT NULL,
@@ -109,6 +109,21 @@ if ($result){
     echo "checkCode_strict3 created"."<br>";
 }else{
     echo "checkCode_strict3 created failed"."<br>";
+}
+
+//checkCode_strict4 重置资金密码
+$result=$conn->query("
+    CREATE TABLE IF NOT EXISTS checkCode_strict4(
+        vid int(32) NOT NULL,
+        sendCode VARCHAR(255) NOT NULL,
+        num int(32) NOT NULL DEFAULT 0,
+        PRIMARY KEY(vid)
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+");
+if ($result){
+    echo "checkCode_strict4 created"."<br>";
+}else{
+    echo "checkCode_strict4 created failed"."<br>";
 }
 
 //ads
@@ -189,6 +204,7 @@ $result=$conn->query("
         time VARCHAR (255) NOT NULL,
         state int(32) NOT NULL DEFAULT 0,
         remake VARCHAR (255),
+        notice int(32) NOT NULL DEFAULT 1,
         PRIMARY KEY(id)
     )ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;                                                                                                                                         
 ");

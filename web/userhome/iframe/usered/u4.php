@@ -28,7 +28,7 @@
                 <?php if($_SESSION["login"]["fullname"]&&$_SESSION["login"]["idcard"]){ ?>
                     <div class="finish">
                         <img src="/web/userhome/iframe/usered/img/finish.svg">
-                        <span>您已完成实名认证&nbsp;<b><?php echo $_SESSION["login"]["idcard"] ?></b></span>
+                        <span>您已完成实名认证&nbsp;<b><?php echo substr($_SESSION["login"]["idcard"],0,4)."*****".substr($_SESSION["login"]["idcard"],-3) ?></b></span>
                     </div>
                 <?php }else{ ?>
                     <div class="input-group">

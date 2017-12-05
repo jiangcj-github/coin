@@ -1,20 +1,3 @@
-<?php
-require_once("../../../../global/config.php");
-include("../../../../global/checkLogin.php");
-require_once("../../../../global/wallet/btc.php");
-
-$vid=$_SESSION["login"]["id"];
-//数据库操作
-$conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
-$conn->set_charset("utf8");
-//查询infos
-$stmt=$conn->prepare("select phone,idcard,fullname,ac_pass from user_infos where vid=?");
-$stmt->bind_param("i",$vid);
-$stmt->execute();
-$result=$stmt->get_result();
-$info=$result->fetch_all(MYSQLI_ASSOC)[0];
-$stmt->close();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,18 +47,18 @@ $stmt->close();
                 </div>
                 <div class="input-group">
                     <label for="price">价格：</label>
-                    <input type="text" id="price" class="addon">
+                    <input type="text" id="price" class="addon" tabindex="1">
                     <span class="input-addon cny"></span>
                     <span class="info">您的出售价格，单位(元)</span>
                 </div>
                 <div class="input-group">
                     <label for="num">出售数量：</label>
-                    <input type="text" id="num">
+                    <input type="text" id="num" tabindex="2">
                     <span class="info">出售的货币数量</span>
                 </div>
                 <div class="input-group">
                     <label for="pay_method">付款方式：</label>
-                    <input type="text" class="opt" id="pay_method">
+                    <input type="text" class="opt" id="pay_method" tabindex="3">
                     <a href="javascript:void(0);" class="opt-btn">
                         <div class="select">
                             <div class="option">微信转账</div>
@@ -87,26 +70,33 @@ $stmt->close();
                 </div>
                 <div class="input-group">
                     <label for="remake">备注：</label>
-                    <textarea id="remake" placeholder=""></textarea>
+                    <textarea id="remake" placeholder="" tabindex="4"></textarea>
                     <span class="info">添加备注信息，不超过100个字符</span>
                 </div>
                 <div class="input-group">
                     <label for="ac_pass">资金密码：</label>
-                    <input type="text" id="ac_pass" autocomplete="new" class="password">
-                    <span class="info">为了您的账户安全，请输入交易密码</span>
+                    <input type="text" id="ac_pass" class="password" tabindex="5">
+                    <span class="info">为了您的账户安全，请输入资金密码</span>
+                </div>
+                <div class="check-group">
+                    <label>
+                        <input type="checkbox" id="notice" checked="checked">
+                        <span>开启短信通知</span>
+                    </label>
+                    <span class="info">当有人接单时，我们会向您发送一条通知短信。</span>
                 </div>
                 <div class="f1">
-                    <?php if(!$info["phone"]){ ?>
+                    <?php if(!$_SESSION["login"]["phone"]){ ?>
                         <button class="btn" id="submit" disabled="disabled">挂单</button>
                         <span class="info">您还未验证手机，不允许出售货币。</span>
-                    <?php }else if(!$info["idcard"]||!$info["fullname"]){ ?>
+                    <?php }else if(!$_SESSION["login"]["idcard"]||!$_SESSION["login"]["fullname"]){ ?>
                         <button class="btn" id="submit" disabled="disabled">挂单</button>
                         <span class="info">您还未实名认证，不允许出售货币。</span>
-                    <?php }else if(!$info["ac_pass"]){ ?>
+                    <?php }else if(!$_SESSION["login"]["ac_pass"]){ ?>
                         <button class="btn" id="submit" disabled="disabled">挂单</button>
                         <span class="info">您还未设置资金密码，请先设置资金密码。</span>
                     <?php }else{ ?>
-                        <button class="btn" id="submit">挂单</button>
+                        <button class="btn" id="submit" tabindex="6">挂单</button>
                     <?php } ?>
                 </div>
             </div>

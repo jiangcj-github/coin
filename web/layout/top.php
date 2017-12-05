@@ -24,8 +24,17 @@
                 <div class="pi-item drop">
                     <a href="/web/userhome/iframe/msg/msg.php"><i class="icon msg"></i><span class="badge hide" id="top_msgBadge">0</span></a>
                     <div class="panel c1 hide" id="msg_drop">
-                        <h4 class="c1-h">有 <span id="top_msgNum">0</span> 条新消息</h4>
-                        <div id="msg-ul"></div>
+                        <h4 class="c1-h">您有 <span id="top_msgNum">0</span> 条新消息</h4>
+                        <div id="msg-ul">
+                            <a href="/web/userhome/iframe/msg/msg.php" class="c1-li">新消息<span class="time">3天前</span></a>
+                            <a href="/web/userhome/iframe/msg/msg.php" class="c1-li">新消息<span class="time">3天前</span></a>
+                            <a href="/web/userhome/iframe/msg/msg.php" class="c1-li">新消息<span class="time">3天前</span></a>
+                            <a href="/web/userhome/iframe/msg/msg.php" class="c1-li">新消息<span class="time">3天前</span></a>
+                            <a href="/web/userhome/iframe/msg/msg.php" class="c1-li">新消息<span class="time">3天前</span></a>
+                        </div>
+                        <div class="c1-fo">
+                            <a href="/web/userhome/iframe/msg/msg.php">查看全部</a>
+                        </div>
                     </div>
                 </div>
                 <div class="pi-item drop">

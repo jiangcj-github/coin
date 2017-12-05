@@ -32,7 +32,7 @@
         <?php include("../../left/left.php") ?>
         <div class="right">
             <div class="head">
-                <a href="/web/userhome/iframe/sell/u1_btc.php">出售虚拟货币</a>
+                <a href="/web/userhome/iframe/sell/u1_btc.php" class="new">出售虚拟货币</a>
                 <a href="/web/userhome/iframe/sell/u1_btc.php" class="info">交易记录></a>
             </div>
             <div class="s1">
@@ -77,7 +77,7 @@
                 <div class="para">出售须知：</div>
                 <div class="para">1.&nbsp;您必须先<a href="/web/userhome/iframe/usered/u3.php">验证手机</a>，并且完成<a href="/web/userhome/iframe/usered/u4.php">实名认证</a>，才能发布广告。</div>
                 <div class="para">2.&nbsp;发布卖单后您所出售的部分虚拟货币将被锁定，直至取消卖单或者出售完成。</div>
-                <div class="para">2.&nbsp;了解如何交易虚拟货币，以及交易流程。确保交易过程中资产安全。<a href="#">详细</a></div>
+                <div class="para">2.&nbsp;了解如何交易虚拟货币，以及交易流程。如何确保交易过程中资产安全，请点击右侧链接。<a href="#">详细</a></div>
             </div>
         </div>
     </div>

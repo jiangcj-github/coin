@@ -6,6 +6,7 @@ u1.inputs={
     pay_method:$("#pay_method"),
     remake:$("#remake"),
     ac_pass:$("#ac_pass"),
+    notice:$("#notice"),
     submitBtn:$("#submit")
 };
 u1.widges={
@@ -102,6 +103,7 @@ u1.sendBtc=function(){
     var num=parseFloat(_this.inputs.num.val());
     var remake=_this.inputs.remake.val();
     var ac_pass=md5(_this.inputs.ac_pass.val());
+    var notice=_this.inputs.notice.is(":checked")?1:0;
     if(coin!="BTC"){
         _this.log("不支持此货币");
         return;
@@ -128,17 +130,14 @@ u1.sendBtc=function(){
     }
     ajaxForm.action(_this.inputs.submitBtn,{
         type:"post",
-        url:"/action/sell/u1.php",
-        data:{coin:coin,price:price,num:num,pay_method:pay_method,remake:remake,ac_pass:ac_pass},
+        url:"/action/sell/u1_btc.php",
+        data:{coin:coin,price:price,num:num,pay_method:pay_method,remake:remake,ac_pass:ac_pass,notice:notice},
         success:function(data){
             if(data.ok){
                 location.href="/web/userhome/iframe/sell/sell.php";
             }else if(data.msg){
                 _this.log(data.msg);
             }
-        },
-        error:function(){
-            _this.log("服务器出错");
         }
     });
 };

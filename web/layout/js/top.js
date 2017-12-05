@@ -40,7 +40,7 @@ top.uiMsg=function(){
     var _this=this;
     _this.widges.msgul.empty();
     var data=_this.msgBuffer;
-    for(var i=0;i<data.length;i++){
+    for(var i=0;i<data.length&&i<5;i++){
         var li=template("tpl-msgli",{data:data[i]});
         _this.widges.msgul.append(li);
     }

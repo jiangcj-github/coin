@@ -23,16 +23,6 @@
             $isModify=true;
         }
     }
-    //查询infos
-    $info=["phone"=>true,"idcard"=>true,"fullname"=>true];
-    if(!$isModify){
-        $stmt=$conn->prepare("select phone,idcard,fullname from user_infos where vid=?");
-        $stmt->bind_param("i",$vid);
-        $stmt->execute();
-        $result=$stmt->get_result();
-        $info=$result->fetch_all(MYSQLI_ASSOC)[0];
-        $stmt->close();
-    }
     //页面参数
     $page=[];
     $page["title"]=$isModify?"设置广告":"发布广告";
@@ -81,7 +71,7 @@
                     </div>
                     <div class="input-group">
                         <label for="coin">虚拟货币：</label>
-                        <input type="text" class="opt" id="coin" value="<?php echo $ad["coin"] ?>">
+                        <input type="text" class="opt" id="coin" value="<?php echo $ad["coin"] ?>" tabindex="1">
                         <a href="javascript:void(0);" class="opt-btn">
                             <div class="select">
                                 <div class="option">BTC</div>
@@ -95,23 +85,23 @@
                     </div>
                     <div class="input-group">
                         <label for="price">价格：</label>
-                        <input type="text" id="price" class="addon" value="<?php echo $ad["price"] ?>">
+                        <input type="text" id="price" class="addon" value="<?php echo $ad["price"] ?>" tabindex="2">
                         <span class="input-addon cny"></span>
                         <span class="info">您的期望价格，单位(元)</span>
                     </div>
                     <div class="input-group">
                         <label for="minNum">最小交易量：</label>
-                        <input type="text" id="minNum" value="<?php echo $ad["minNum"] ?>">
+                        <input type="text" id="minNum" value="<?php echo $ad["minNum"] ?>" tabindex="3">
                         <span class="info">每一笔交易的最小数量，默认为&nbsp;0</span>
                     </div>
                     <div class="input-group">
                         <label for="maxNum">最大交易量：</label>
-                        <input type="text" id="maxNum" value="<?php echo $ad["maxNum"] ?>">
+                        <input type="text" id="maxNum" value="<?php echo $ad["maxNum"] ?>" tabindex="4">
                         <span class="info">每一笔交易的最大数量</span>
                     </div>
                     <div class="input-group">
                         <label for="method">交易方式：</label>
-                        <input type="text" class="opt" id="method" value="<?php echo $ad["method"] ?>">
+                        <input type="text" class="opt" id="method" value="<?php echo $ad["method"] ?>" tabindex="5">
                         <a href="javascript:void(0);" class="opt-btn">
                             <div class="select">
                                 <div class="option">当面交易</div>
@@ -124,18 +114,18 @@
                     </div>
                     <div class="input-group">
                         <label for="remake">备注：</label>
-                        <textarea id="remake"><?php echo $ad["remake"] ?></textarea>
+                        <textarea id="remake" tabindex="6"><?php echo $ad["remake"] ?></textarea>
                         <span class="info">为该条广告添加备注信息，不超过100个字符</span>
                     </div>
                     <div class="f1">
-                        <?php if(!$info["phone"]){ ?>
+                        <?php if(!$_SESSION["login"]["phone"]){ ?>
                             <button class="btn" id="submit" disabled="disabled"><?php echo $page["submitBtn"] ?></button>
                             <span class="info">您还未验证手机，不允许发布广告。</span>
-                        <?php }else if(!$info["idcard"]||!$info["fullname"]){ ?>
+                        <?php }else if(!$_SESSION["login"]["idcard"]||!$_SESSION["login"]["fullname"]){ ?>
                             <button class="btn" id="submit" disabled="disabled"><?php echo $page["submitBtn"] ?></button>
                             <span class="info">您还未实名认证，不允许发布广告。</span>
                         <?php }else{ ?>
-                            <button class="btn" id="submit"><?php echo $page["submitBtn"] ?></button>
+                            <button class="btn" id="submit" tabindex="7"><?php echo $page["submitBtn"] ?></button>
                         <?php } ?>
                     </div>
                 </div>

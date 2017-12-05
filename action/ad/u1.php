@@ -65,19 +65,17 @@ if(mb_strlen($remake)>100){
     die_json(["msg"=>"备注不超过100个字符"]);
 }
 
+//检查是否实名认证，及手机验证
+if(!$_SESSION["login"]["phone"]){
+    die_json(["msg"=>"未验证手机"]);
+}
+if(!$_SESSION["login"]["fullname"]||$_SESSION["login"]["idcard"]){
+    die_json(["msg"=>"未完成实名认证"]);
+}
+
 //数据库操作
 $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
 $conn->set_charset("utf8");
-//检查是否实名认证，及手机验证
-$stmt=$conn->prepare("select vid from user_infos where phone is not null and idcard is not null and fullname is not null and vid=?");
-$stmt->bind_param("i",$vid);
-$stmt->execute();
-$resutl=$stmt->get_result();
-$data=$resutl->fetch_all(MYSQLI_ASSOC);
-$stmt->close();
-if(count($data)<=0){
-    die_json(["msg"=>"未完成手机验证或实名认证"]);
-}
 //发布广告
 $stmt=$conn->prepare("insert into ads(vid,nick,flag,coin,price,method,minNum,maxNum,remake,time) values(?,?,?,?,?,?,?,?,?,?)");
 $time=(new DateTime())->format("Y-m-d H:i:s");

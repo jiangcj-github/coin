@@ -32,7 +32,7 @@
         <?php include("../../left/left.php") ?>
         <div class="right">
             <div class="head">
-                <a href="/web/userhome/iframe/ad/u1.php">发布广告</a>
+                <a href="/web/userhome/iframe/ad/u1.php" class="new">发布广告</a>
             </div>
             <div class="s1">
                 <table>
@@ -75,7 +75,7 @@
                 <div class="para">关于广告：</div>
                 <div class="para">1.&nbsp;您必须先<a href="/web/userhome/iframe/usered/u3.php">验证手机</a>，并且完成<a href="/web/userhome/iframe/usered/u4.php">实名认证</a>，才能发布广告。</div>
                 <div class="para">2.&nbsp;发布广告时您可以选择更多币种，广告的交易流程不会经过平台，平台无法保证您的资金安全，请谨慎交易。<a href="#">详细</a></div>
-                <div class="para">3.&nbsp;注册用户每个月有100次免费发布广告的机会，<a href="#">升级会员</a>会获得更多的次数。</div>
+                <div class="para">3.&nbsp;您可以任意发布广告或者删除广告，我们不会收取任何费用。</div>
             </div>
         </div>
     </div>

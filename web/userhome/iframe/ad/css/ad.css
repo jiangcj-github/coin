@@ -5,8 +5,10 @@
 .main .right{margin-left:220px;padding:0 20px;}
 .right .h3{font-size:16px;margin-bottom:10px;padding:0 0 10px 5px;border-bottom:1px solid #e3e3e3;color:#222;}
 .right>.head{color:#222;margin-bottom:20px;}
-.right>.head a{display:inline-block;height:30px;line-height:30px;padding:0 20px;background:#3385ff;color:#fff;border-radius:3px;}
-.right>.head a:hover{background:#2e7fd8;}
+.right>.head a{display:inline-block;height:30px;line-height:30px;padding:0 20px;background-color:#3385ff;color:#fff;border-radius:3px;}
+.right>.head a:hover{background-color:#2e7fd8;}
+.right>.head .new{background-repeat:no-repeat;background-image:url(/web/userhome/iframe/ad/img/new.svg);background-position:15px 6px;
+    background-size:16px auto;padding-left:37px;}
 
 .right .s1{min-height:200px;}
 .right .s1>table{width:100%;border-collapse:collapse;font-size:14px;color:#444;}
@@ -37,7 +39,7 @@
 .u .left{display:none;}
 .u .right{margin-left:0;}
 .right .s3{margin-top:20px;}
-.s3>.input-group{display:flex;align-items:flex-start;padding:8px 20px;}
+.s3>.input-group{display:flex;align-items:flex-start;padding:10px 20px;}
 .s3>.input-group>label{line-height:30px;height:30px;width:100px;text-align:right;padding-right:10px;}
 .s3>.input-group>input{outline:none;padding:2px 5px;height:30px;font-size:14px;width:250px;border:1px solid #e4e4e4;}
 .s3>.input-group>input.addon{padding-right:43px;}

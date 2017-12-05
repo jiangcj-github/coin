@@ -47,12 +47,12 @@
                         <span class="info">选择您所在的地区</span>
                     </div>
                     <div class="input-group">
-                        <label>QQ号：</label>
+                        <label for="qq">QQ号：</label>
                         <input type="text" id="qq" value="<?php echo $_SESSION["login"]["qq"] ?>">
                         <span class="info">您的QQ号码</span>
                     </div>
                     <div class="input-group">
-                        <label>微信号：</label>
+                        <label for="wx">微信号：</label>
                         <input type="text" id="wx" value="<?php echo $_SESSION["login"]["wx"] ?>">
                         <span class="info">您的微信号码</span>
                     </div>

@@ -19,11 +19,13 @@ $stmt=$conn->prepare("select id,nick,email,time from users where email=? and md5
 $stmt->bind_param("ss",$email,$pass);
 $stmt->execute();
 $result=$stmt->get_result();
-$login=$result->fetch_all(MYSQLI_ASSOC)[0];
-if(count($login)<=0){
+$data=$result->fetch_all(MYSQLI_ASSOC);
+if(count($data)<=0){
     die_json(["msg"=>"邮箱或密码不正确"]);
 }
 $stmt->close();
+//
+$login=$data[0];
 $vid=$login["id"];
 //查询user_infos
 $stmt=$conn->prepare("select sex,age,province,city,qq,wx,phone,idcard,fullname,ac_pass,ispub,ispub2 from user_infos where vid=?");

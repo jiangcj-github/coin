@@ -30,28 +30,30 @@
                         <img src="/web/userhome/iframe/usered/img/finish.svg">
                         <span>您已验证手机号&nbsp;<b><?php echo substr($_SESSION["login"]["phone"],0,3)."****".substr($_SESSION["login"]["phone"],-4) ?></b></span>
                     </div>
+                    <div class="fn1">为了您的账户安全，不允许重复验证。如果您需要修改手机号码，请联系人工客服。</div>
+                <?php }else{ ?>
+                    <div class="input-group">
+                        <label for="phone">手机号码：</label>
+                        <input type="text" id="phone">
+                        <span class="info">输入您的手机号码</span>
+                    </div>
+                    <div class="input-group check">
+                        <label for="check">验证码：</label>
+                        <input type="text" id="check">
+                        <button id="check_send">发送验证码</button>
+                        <span class="info">验证码15分钟内有效，请尽快输入</span>
+                    </div>
+                    <div class="check-group">
+                        <label>
+                            <input type="checkbox" id="ispub2" <?php if($_SESSION["login"]["ispub2"]) echo "checked=\"checked\""; ?>>
+                            <span>是否公开您的手机号码</span>
+                        </label>
+                        <span class="info">如果您选中此项，其他人在交易时可以看到您的手机号码。</span>
+                    </div>
+                    <div class="f1">
+                        <button class="btn" id="submit">提交</button>
+                    </div>
                 <?php } ?>
-                <div class="input-group">
-                    <label for="phone">手机号码：</label>
-                    <input type="text" id="phone">
-                    <span class="info">输入您的手机号码</span>
-                </div>
-                <div class="input-group check">
-                    <label for="check">验证码：</label>
-                    <input type="text" id="check">
-                    <button id="check_send">发送验证码</button>
-                    <span class="info">验证码15分钟内有效，请尽快输入</span>
-                </div>
-                <div class="check-group">
-                    <label>
-                        <input type="checkbox" id="ispub2" <?php if($_SESSION["login"]["ispub2"]) echo "checked=\"checked\""; ?>>
-                        <span>是否公开您的手机号码</span>
-                    </label>
-                    <span class="info">如果您选中此项，其他人在交易时可以看到您的手机号码。</span>
-                </div>
-                <div class="f1">
-                    <button class="btn" id="submit">提交</button>
-                </div>
             </div>
         </div>
     </div>

@@ -14,7 +14,7 @@ if(!isset($_REQUEST["check"])){
     die_json(["msg"=>"缺少参数"]);
 }
 $check=$_REQUEST["check"];
-if($check!=$_SESSION["checkPhone_account"]){
+if(!isset($_SESSION["checkPhone_account"])||$check!=$_SESSION["checkPhone_account"]){
     die_json(["msg"=>"手机验证码不正确"]);
 }
 //addr
@@ -46,11 +46,25 @@ if(!isset($_REQUEST["ac_pass"])){
     die_json(["msg"=>"缺少参数"]);
 }
 $ac_pass=$_REQUEST["ac_pass"];
+
+//检查是否实名认证，及手机验证
+if(!$_SESSION["login"]["phone"]){
+    die_json(["msg"=>"手机未验证"]);
+}
+if(!$_SESSION["login"]["idcard"]||!$_SESSION["login"]["fullname"]){
+    die_json(["msg"=>"未实名认证"]);
+}
+if(!$_SESSION["login"]["ac_pass"]){
+    die_json(["msg"=>"未设置交易密码"]);
+}
+
+//资金密码是否正确
 if($ac_pass!=md5($_SESSION["login"]["ac_pass"])){
     die_json(["msg"=>"资金密码不正确"]);
 }
 
 $btcAddr=$_SESSION["login"]["btcAddr"];
+
 //btc
 $btc=new btc();
 $btcNum=$btc->checkAddr($btcAddr);

@@ -21,6 +21,6 @@
 .left .ul a i.account{background-image:url(/web/userhome/left/img/account.svg);}
 .left .ul a.active i.account{background-image:url(/web/userhome/left/img/account1.svg);}
 
-.left .ul a label{position:absolute;right:20px;top:12px;display:block;padding:0 5px;background:green;
+.left .ul a label{position:absolute;right:20px;top:14px;display:block;padding:0 5px;background:green;
     font-size:12px;line-height:16px;border-radius:8px;margin-left:40px;color:#fff;font-weight:bold;}
 .left .ul a label.hide{display:none !important;}

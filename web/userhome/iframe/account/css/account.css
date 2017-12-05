@@ -67,7 +67,7 @@
 .s3>.input-group>.addon:hover{background:#ff7519;}
 .s3>.input-group>.addon[disabled]{background:#ccc;cursor:not-allowed;}
 .s3>.input-group>.info{margin-left:10px;color:#777;line-height:30px;}
-.s3>.f1{padding-left:120px;margin:10px 0;}
+.s3>.f1{padding-left:120px;margin:10px 0;user-select:none;}
 .s3>.f1 input[type=checkbox]{vertical-align:-2px;}
 .s3>.f1 a{color:#2e7fd8;}
 .s3>.f1 a:hover{color:#ff9900;}

@@ -1,7 +1,3 @@
 <?php
-
-if(!isset($_REQUEST["text"])){
-    die();
-}
-$text=$_REQUEST["text"];
-echo $text;
+session_start();
+echo $_SESSION["dd"];
