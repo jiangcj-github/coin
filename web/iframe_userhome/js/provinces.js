@@ -2190,6 +2190,7 @@ province.init=function(){
         var p=$(this).val();
         var index=parseInt($(this).find("option[value="+p+"]").data("index"));
         _this.widges.citySelect.empty();
+        if(isNaN(index)) return;
         for(i=0;i<_this.data[index].citys.length;i++){
             var name=_this.data[index].citys[i].citysName;
             _this.widges.citySelect.append("<option value='"+name+"'>"+name+"</option>");
