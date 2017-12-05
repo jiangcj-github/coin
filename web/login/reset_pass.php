@@ -21,14 +21,14 @@ $conn->set_charset("utf8");
         <div class="main">
             <div class="loginBox2">
                 <div class="h3">重置密码</div>
-                <input type="email" placeholder="注册邮箱" class="input text" id="email">
-                <input type="password" placeholder="新密码 (6-15个字符，仅限0-9a-zA-Z._-)" class="input text" id="pass">
-                <input type="password" placeholder="确认密码" class="input text" id="pass1">
+                <input type="email" placeholder="注册邮箱" class="input text" id="email" tabindex="1">
+                <input type="password" placeholder="新密码 (6-15个字符，仅限0-9a-zA-Z._-)" class="input text" id="pass" tabindex="2">
+                <input type="password" placeholder="确认密码" class="input text" id="pass1" tabindex="3">
                 <div class="checkcode">
-                    <input type="text" placeholder="邮箱验证码" class="input text" id="check">
+                    <input type="text" placeholder="邮箱验证码" class="input text" id="check" tabindex="4">
                     <button class="input btn" id="check_send">获取验证码</button>
                 </div>
-                <button class="input btn" id="submit">提交</button>
+                <button class="input btn" id="submit" tabindex="5">提交</button>
             </div>
         </div>
         <?php include("../layout/footer.php") ?>
