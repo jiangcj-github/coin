@@ -1,7 +1,7 @@
 <div class="footer-wrap">
     <div class="footer">
         <div class="fl">
-            <h3>淘币客<small>.site</small></h3>
+            <h3>淘币客</h3>
             <span class="desc">自由方便的线下交易市场</span>
         </div>
         <div class="ct">
