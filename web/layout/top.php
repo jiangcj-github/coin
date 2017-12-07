@@ -53,7 +53,7 @@
     <a href="/web/userhome/iframe/msg/msg.php" class="c1-li">{{data.title}}<span class="time">{{data.time}}</span></a>
 </script>
 <script>var isLogin=<?php echo $isLogin?1:0 ?>;</script>
-<script src="/web/layout/js/jquery-3.2.1.js"></script>
+<script src="/web/layout/js/jquery-3.2.1.min.js"></script>
 <script src="/web/layout/js/common.js"></script>
 <script src="/web/layout/js/template-web.js"></script>
 <script src="/web/layout/js/top.js"></script>
