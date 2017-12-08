@@ -17,7 +17,7 @@ extension_loaded("mysqli");
 $mysql=array(
     "host"=>"localhost",
     "user"=>"root",
-    "password"=>"taobik_908",
+    "password"=>"root",
     "database"=>"coin"
 );
 

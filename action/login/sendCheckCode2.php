@@ -45,8 +45,8 @@ for ($i=0;$i<6;$i++ ){
 //发送邮件
 $mail = new PHPMailer();
 $mail->isSMTP();
-$mail->SMTPAuth = false;
-$mail->Host = "taobik.com";
+$mail->SMTPAuth = true;
+$mail->Host = "smtp.sina.com";
 $mail->Port = 25;
 $mail->CharSet = "UTF-8";
 $mail->FromName = "淘币客";
