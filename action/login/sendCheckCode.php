@@ -42,22 +42,13 @@ $code="";
 for ($i=0;$i<6;$i++ ){
     $code.=mt_rand(0,9);
 }
-//发送邮件
-$mail = new PHPMailer();
-$mail->isSMTP();
-$mail->SMTPAuth = false;
-$mail->Host = "taobik.com";
-$mail->Port = 25;
-$mail->CharSet = "UTF-8";
-$mail->FromName = "淘币客";
-$mail->Username = "taobike_site@sina.com";
-$mail->Password = "20090928";
-$mail->From = "taobike_site@sina.com";
-$mail->isHTML(true);
-$mail->addAddress($addr);
-$mail->Subject = "邮箱验证";
-$mail->Body = "<p>本次登录的验证码是:&nbsp;".$code."</p><p>为了确保您的帐号安全，该验证码仅1小时内使用有效，请勿直接回复该邮件。</p>";
-$status = $mail->send();
+
+$subject="邮箱验证";
+$message= "<p>本次登录的验证码是:&nbsp;".$code."</p><p>为了确保您的帐号安全，该验证码仅1小时内使用有效，请勿直接回复该邮件。</p>";
+if(!mail($addr,$subject,$message)){
+    die_json(["发送失败"]);
+}
+
 //記錄操作時間
 $stmt=$conn->prepare("insert into checkCode_strict(email,sendCode) values(?,?) ON DUPLICATE KEY update sendCode=?");
 $stri_time=(new DateTime())->format("Y-m-d H:i:s");
