@@ -1,3 +1,5 @@
 <?php
-session_start();
-echo $_SESSION["dd"];
+
+
+
+mail("398017990@qq.com","coin","coin");
