@@ -50,14 +50,14 @@
                     <span class="info">转出数量</span>
                 </div>
                 <div class="input-group">
-                    <label for="fee">手续费：</label>
-                    <input type="text" id="fee" value="0">
-                    <span class="info">该手续费由矿工收取，可能会影响区块链网络确认速度，平台不会收取任何费用</span>
+                    <label for="fee">交易手续费：</label>
+                    <input type="text" id="fee" value="0.0001">
+                    <span class="info">手续费由矿工收取，平台不会收取任何费用<a href="#" class="help">帮助</a></span>
                 </div>
                 <div class="input-group">
-                    <label for="ac_pass">交易密码：</label>
+                    <label for="ac_pass">资金密码：</label>
                     <input type="text" id="ac_pass" class="password">
-                    <span class="info">您设置的资产密码</span>
+                    <span class="info">您设置的资金密码</span>
                 </div>
                 <div class="input-group">
                     <label for="check">手机验证码：</label>
@@ -88,7 +88,7 @@
             <div class="s22">
                 <div class="para">转出说明</div>
                 <div class="para">1.&nbsp;您必须先<a href="/web/userhome/iframe/usered/u3.php">验证手机</a>，并且完成<a href="/web/userhome/iframe/usered/u4.php">实名认证</a>，才能进行该操作。</div>
-                <div class="para">2.&nbsp;货币的转出是自动的，实际入账时间取决于区块链网络的确认速度，提高转账手续费可加快确认速度。<a href="#">详细</a></div>
+                <div class="para">2.&nbsp;货币的转出是自动的，实际入账时间取决于区块链网络的确认速度，提高转账手续费可加快网络确认。<a href="#">详细</a></div>
                 <div class="para">3.&nbsp;货币的转入转出是完全免费的，我们不会对此次操作收取任何费用。</div>
             </div>
         </div>

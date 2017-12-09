@@ -67,6 +67,8 @@
 .s3>.input-group>.addon:hover{background:#ff7519;}
 .s3>.input-group>.addon[disabled]{background:#ccc;cursor:not-allowed;}
 .s3>.input-group>.info{margin-left:10px;color:#777;line-height:30px;}
+.s3>.input-group>.info a{margin:0 3px;background:no-repeat 0 center;background-size:16px auto;padding-left:16px;color:#3385ff;}
+.s3>.input-group>.info a.help{background-image:url(/web/userhome/iframe/account/img/help.svg);}
 .s3>.f1{padding-left:120px;margin:10px 0;user-select:none;}
 .s3>.f1 input[type=checkbox]{vertical-align:-2px;}
 .s3>.f1 a{color:#2e7fd8;}

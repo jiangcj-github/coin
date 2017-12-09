@@ -9,6 +9,7 @@ btc_out.inputs={
     num:$("#num"),
     ac_pass:$("#ac_pass"),
     check:$("#check"),
+    fee:$("#fee"),
     protocol:$("#protocol"),
     sendBtn:$("#submit"),
     checkBtn:$("#checkBtn")
@@ -62,6 +63,7 @@ btc_out.send=function(){
     var num=parseFloat(_this.inputs.num.val());
     var ac_pass=md5(_this.inputs.ac_pass.val());
     var check=_this.inputs.check.val();
+    var fee=_this.inputs.fee.val();
     var protocol=_this.inputs.protocol.is(":checked");
     if(!protocol){
         _this.log("请先阅读并同意转出协议");
@@ -82,7 +84,7 @@ btc_out.send=function(){
     ajaxForm.action(_this.inputs.sendBtn,{
         type:"post",
         url:"/action/account/btc/btc_out.php",
-        data:{addr:addr,num:num,ac_pass:ac_pass,check:check},
+        data:{addr:addr,num:num,ac_pass:ac_pass,check:check,fee:fee},
         success:function(data){
             if(data.ok){
                 location.href="/web/userhome/iframe/account/account.php";

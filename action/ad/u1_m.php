@@ -42,7 +42,7 @@ if(!isset($_REQUEST["minNum"])){
     die_json(["msg"=>"缺少参数"]);
 }
 $minNum=$_REQUEST["minNum"];
-if(!is_numeric($minNum)||$minNum<=0){
+if(!is_numeric($minNum)||$minNum<0){
     die_json(["msg"=>"最小交易量不正确"]);
 }
 //maxNum

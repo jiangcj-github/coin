@@ -69,7 +69,7 @@ if(mb_strlen($remake)>100){
 if(!$_SESSION["login"]["phone"]){
     die_json(["msg"=>"未验证手机"]);
 }
-if(!$_SESSION["login"]["fullname"]||$_SESSION["login"]["idcard"]){
+if(!$_SESSION["login"]["fullname"]||!$_SESSION["login"]["idcard"]){
     die_json(["msg"=>"未完成实名认证"]);
 }
 

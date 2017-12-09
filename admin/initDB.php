@@ -249,7 +249,6 @@ $result=$conn->query("
         pay_info VARCHAR (255) NOT NULL,
         num double NOT NULL,
         start_time VARCHAR (255) NOT NULL,
-        end_time VARCHAR (255) NOT NULL,
         remake VARCHAR (255),
         step int(32) NOT NULL DEFAULT 0,
         state int(32) NOT NULL DEFAULT 0,

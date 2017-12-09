@@ -1,7 +1,7 @@
 var left={};
 left.items={
     usered:$(".left i.usered").parent("a"),
-    member:$(".left i.member").parent("a"),
+    tx:$(".left i.tx").parent("a"),
     account:$(".left i.account").parent("a"),
     ad:$(".left i.ad").parent("a"),
     sell:$(".left i.sell").parent("a"),
@@ -23,8 +23,8 @@ left.activeItem=function(iname){
         case "usered":
             _this.items.usered.addClass("active");
             break;
-        case "member":
-            _this.items.member.addClass("active");
+        case "tx":
+            _this.items.tx.addClass("active");
             break;
         case "account":
             _this.items.account.addClass("active");

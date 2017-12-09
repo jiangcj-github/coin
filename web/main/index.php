@@ -40,7 +40,7 @@ $conn->set_charset("utf8");
                     <tr> <th>发布时间</th> <th>卖家</th> <th>虚拟货币</th> <th>期望价格</th> <th>最小限额</th> <th>最大限额</th> <th></th></tr>
                     </thead>
                     <tbody>
-                    <tr> <td>3天前</td> <td>lindakai</td> <td>BTC</td> <td class="price">33212.2 CNY</td> <td>无限制</td> <td>3</td> <td><a href="#">购买</a></td></tr>
+                    <tr> <td>3天前</td> <td>lindakai</td> <td>BTC</td> <td class="price">33212.2 CNY</td> <td>无限制</td> <td>3</td> <td><a href="/web/userhome/iframe/tx/tx1.php">购买</a></td></tr>
                     <tr> <td>3天前</td> <td>lindakai</td> <td>BTC</td> <td class="price">33212.2 CNY</td> <td>无限制</td> <td>3</td> <td><a href="#">购买</a></td></tr>
                     <tr> <td>3天前</td> <td>lindakai</td> <td>BTC</td> <td class="price">33212.2 CNY</td> <td>无限制</td> <td>3</td> <td><a href="#">购买</a></td></tr>
                     <tr> <td>3天前</td> <td>lindakai</td> <td>BTC</td> <td class="price">33212.2 CNY</td> <td>无限制</td> <td>3</td> <td><a href="#">购买</a></td></tr>
