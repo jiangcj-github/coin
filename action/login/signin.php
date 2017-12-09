@@ -35,14 +35,6 @@ $result=$stmt->get_result();
 $data=$result->fetch_all(MYSQLI_ASSOC)[0];
 $stmt->close();
 $login=array_merge($login,$data);
-//查询user_walltes_btc
-$stmt=$conn->prepare("select xpub,btcAddr from user_wallets_btc where vid=?");
-$stmt->bind_param("i",$vid);
-$stmt->execute();
-$result=$stmt->get_result();
-$data=$result->fetch_all(MYSQLI_ASSOC)[0];
-$stmt->close();
-$login=array_merge($login,$data);
 //
 $_SESSION["login"]=$login;
 die_json(["ok"=>"ok","data"=>""]);

@@ -2,4 +2,4 @@
 
 
 
-mail("398017990@qq.com","coin","coin");
+echo mail("398017990@qq.com","coin","coin");

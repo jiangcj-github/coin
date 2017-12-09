@@ -52,7 +52,7 @@ $mail->CharSet = "UTF-8";
 $mail->FromName = "淘币客";
 $mail->Username = "taobike_site@sina.com";
 $mail->Password = "20090928";
-$mail->From = "taobike_site@sina.com";
+$mail->From = "lindakai@taobik.com";
 $mail->isHTML(true);
 $mail->addAddress($addr);
 $mail->Subject = "邮箱验证";

@@ -44,14 +44,14 @@
                 <div class="f1">
                     <img src="/web/userhome/iframe/account/img/btc.png" class="c1">
                     <span class="c2">BTC</span>
-                    <span class="c3"><?php echo $_SESSION["login"]["btcAddr"] ?></span>
-                    <img class="c4" src="/action/account/qrcode.php?text=<?php echo $_SESSION["login"]["btcAddr"] ?>">
+                    <span class="c3">XXX</span>
+                    <img class="c4" src="/action/account/qrcode.php?text=<?php echo "XXX" ?>">
                 </div>
             </div>
             <div class="s22">
                 <div class="para">转入说明</div>
                 <div class="para">1.&nbsp;货币的转入是自动的，实际入账时间取决于区块链网络的确认速度。<a href="#">详细</a></div>
-                <div class="para">2.&nbsp;该地址是您专有的钱包地址，转账前请仔细确认地址是否正确，您可以同时进行多次充值。</div>
+                <div class="para">2.&nbsp;该地址是您专有的钱包地址，转账前请仔细确认地址是否正确，您可以同时对该地址进行多次充值。</div>
             </div>
         </div>
     </div>

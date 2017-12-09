@@ -54,8 +54,6 @@ if ($result){
 $result=$conn->query("
     CREATE TABLE IF NOT EXISTS user_wallets_btc(
         vid int(32) UNIQUE NOT NULL,
-        xpub VARCHAR(255) NOT NULL,
-        btcAddr VARCHAR(255) NOT NULL,
         btcNum double NOT NULL DEFAULT 0,
         btcLock double NOT NULL DEFAULT 0,
         PRIMARY KEY(vid)
@@ -65,6 +63,26 @@ if ($result){
     echo "user_wallets_btc created"."<br>";
 }else{
     echo "user_wallets_btc created failed"."<br>";
+}
+
+//wallet_historys
+/*
+ * coin 大写，如BTC
+ * inout [0-in,1-out]
+ */
+$result=$conn->query("
+    CREATE TABLE IF NOT EXISTS wallet_historys(
+        vid int(32) NOT NULL,
+        coin VARCHAR(255) NOT NULL,
+        type int(32) NOT NULL,
+        num double NOT NULL,
+        time VARCHAR (255) NOT NULL
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+");
+if ($result){
+    echo "wallet_historys created"."<br>";
+}else{
+    echo "wallet_historys created failed"."<br>";
 }
 
 //checkCode_strict 注册邮箱验证

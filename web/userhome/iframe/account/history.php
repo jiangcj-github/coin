@@ -1,3 +1,19 @@
+<?php
+    require_once("../../../../global/config.php");
+    include("../../../../global/checkLogin.php");
+
+    $vid=$_SESSION["login"]["id"];
+    //数据库操作
+    $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
+    $conn->set_charset("utf8");
+    //查询sells
+    $stmt=$conn->prepare("select coin,type,num,time from wallet_historys where vid=? order by time desc");
+    $stmt->bind_param("i",$vid);
+    $stmt->execute();
+    $result=$stmt->get_result();
+    $historys=$result->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,25 +45,23 @@
                         <div class="coin">货币</div>
                         <div class="type">类型</div>
                         <div class="value">数量</div>
-                        <div class="hash">Hash值</div>
                     </div>
-                    <div class="loading"></div>
+                    <?php foreach($historys as $v){ ?>
+                        <div class="li">
+                            <div class="time"><?php echo $v["time"] ?></div>
+                            <div class="coin"><?php echo $v["coin"] ?></div>
+                            <div class="type"><?php echo $v["type"]?"转入":"转出" ?></div>
+                            <div class="value"><?php echo $v["num"] ?></div>
+                        </div>
+                    <?php } ?>
+                    <?php if(count($historys)<=0){ ?>
+                        <div class="no-record">暂无记录</div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
         <?php include("../../../layout/footer.php") ?>
-
     </div>
-    <script id="tpl-li" type="text/html">
-        <div class="li">
-            <div class="time">{{data.time}}</div>
-            <div class="coin">{{data.coin}}</div>
-            <div class="type">{{data.type}}</div>
-            <div class="value">{{data.value}}</div>
-            <div class="hash">{{data.hash}}</div>
-        </div>
-    </script>
     <script>left.activeItem("account");</script>
-    <script src="/web/userhome/iframe/account/js/history.js"></script>
 </body>
 </html>

@@ -63,19 +63,25 @@ if($ac_pass!=md5($_SESSION["login"]["ac_pass"])){
     die_json(["msg"=>"资金密码不正确"]);
 }
 
-$btcAddr=$_SESSION["login"]["btcAddr"];
-
-//btc
-$btc=new btc();
-$btcNum=$btc->checkAddr($btcAddr);
-$btcLock=$_SESSION["login"]["btcLock"];
+//数据库操作
+$conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["database"]);
+$conn->set_charset("utf8");
+//查询账户
+$stmt=$conn->prepare("select btcNum,btcLock from user_wallets_btc where vid=?");
+$stmt->bind_param("i",$vid);
+$stmt->execute();
+$result=$stmt->get_result();
+$wallet=$result->fetch_all(MYSQLI_ASSOC)[0];
+$stmt->close();
 //核对账户
+$btcNum=$wallet["btcNum"];
+$btcLock=$wallet["btcLock"];
 if($btcLock<0||$btcLock>$btcNum){
     die_json(["msg"=>"账户异常"]);
 }
 if($num>$btcNum-$btcLock){
     die_json(["msg"=>"您的可用余额不足"]);
 }
-//
-$data=$btc->pay($btcAddr,$addr,$num,$fee);
-die_json(["ok"=>"ok","data"=>$data]);
+//转出
+
+die_json(["ok"=>"ok","data"=>""]);
