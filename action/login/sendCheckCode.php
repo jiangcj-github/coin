@@ -16,7 +16,7 @@ $conn = new mysqli($mysql["host"], $mysql["user"], $mysql["password"], $mysql["d
 $conn->set_charset("utf8");
 //邮箱是否注册
 $stmt=$conn->prepare("select id from users where email=?");
-$stmt->bind_param("s",$email);
+$stmt->bind_param("s",$addr);
 $stmt->execute();
 $result=$stmt->get_result();
 $data=$result->fetch_all(MYSQLI_ASSOC);

@@ -1,5 +1,8 @@
 <?php
+require_once("../../global/phpqrcode/phpqrcode.php");
 
-
-
-echo mail("398017990@qq.com","coin","coin");
+if(!isset($_REQUEST["text"])){
+    die();
+}
+$text=$_REQUEST["text"];
+QRcode::png($text);
