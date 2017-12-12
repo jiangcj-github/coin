@@ -45,7 +45,7 @@
                     <img src="/web/userhome/iframe/account/img/btc.png" class="c1">
                     <span class="c2">BTC</span>
                     <span class="c3">XXX</span>
-                    <img class="c4" src="/action/account/qrcode.php?text=<?php echo "XXX" ?>">
+                    <div class="c4"></div>
                 </div>
             </div>
             <div class="s22">
@@ -59,6 +59,7 @@
 
 </div>
 <script>left.activeItem("account");</script>
+<script src="/web/userhome/iframe/account/js/qrcode.min.js"></script>
 <script src="/web/userhome/iframe/account/js/btc_in.js"></script>
 </body>
 </html>

@@ -45,11 +45,11 @@
 
 .right .s21{padding:20px;}
 .right .s21>.h4{font-size:16px;margin-bottom:10px;padding:0 0 10px 5px;color:#222;}
-.right .s21>.f1{border:1px solid #f8a9a9;border-radius:3px;padding: 20px;display:flex;align-items:center;}
+.right .s21>.f1{border:1px solid #f8a9a9;border-radius:3px;padding:20px;display:flex;align-items:center;}
 .right .s21>.f1>.c1{margin-right:10px;}
 .right .s21>.f1>.c2{width:60px;font-size:16px;}
 .right .s21>.f1>.c3{flex-grow:1;font-size:16px;color:#ff7519;}
-.right .s21>.f1>.c4{margin:-20px 0;width:100px;height:100px;}
+.right .s21>.f1>.c4{margin:-10px 0;width:80px;height:80px;}
 
 .right .s22{padding:20px;}
 .right .s22>.para{line-height:22px;font-size:14px;margin:5px 0;}
